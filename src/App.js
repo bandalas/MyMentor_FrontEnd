@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
   render() {
@@ -22,6 +23,12 @@ class App extends Component {
         </header>
       </div>
     );
+  }
+
+  componentDidMount() {
+   axios.get('http://localhost:3001') 
+    .then((value)=> {console.log(value)})
+    .catch((reason)=> {console.log(reason)})
   }
 }
 
