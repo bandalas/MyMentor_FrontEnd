@@ -1,5 +1,5 @@
 import React, {Component}from 'react';
-import axios from 'axios';
+import axios from 'axios'
 
 class Login extends Component {
 
@@ -20,11 +20,15 @@ class Login extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Correo Electronico
-                        <input type='email' name='email' onChange={this.handleInputChange}/>
+                        <input  type='email' 
+                                name='email'
+                                onChange={this.handleInputChange}/>
                     </label>
                     <label>
                         Contraseña
-                        <input type='password' name='password' onChange={this.handleInputChange}/>
+                        <input  type='password' 
+                                name='password'                                 
+                                onChange={this.handleInputChange}/>
                     </label>
                     <input type='submit' value='Submit'/>
                 </form>
@@ -33,26 +37,30 @@ class Login extends Component {
     }
 
     handleInputChange(event) {
-        if(event.target.name == 'email') this.setState({email: event.target.value});
-        if(event.target.name == 'password') this.setState({password: event.target.value});
-        console.log(this.state.email, this.state.password);
+        if(event.target.name === 'email') this.setState({email: event.target.value});
+        if(event.target.name === 'password') this.setState({password: event.target.value});
     }
 
     handleSubmit(event) {
         event.preventDefault();
         this.performPostAction()
-
     }
 
     performPostAction(){
-        const data = {
-            email : this.state.email,
-            password : this.state.password
+        let data = {
+            'email' : this.state.email,
+            'password' : this.state.password
         };
-
+        
         axios.post('http://localhost:3001/auth', data)
-            .then(value => console.log(value))
-            .catch(reason => console.log(reason));
+            .then(value => {
+                if(value.data.error) console.log('Error!');
+                else{
+                    console.log(value.data)
+                }
+            })
+            .catch(reason => {
+            });
     }
 }
 
