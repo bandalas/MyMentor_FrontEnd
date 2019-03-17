@@ -15,11 +15,15 @@ class LandingNavBar extends Component {
                         </Form>
                         <Nav className="navbar-right">
                             <Nav.Link href="#home">Explora</Nav.Link>
-                            <Nav.Link as={NavLink} exact to="/login" >
-                                Inicia Sesión
+                            <Nav.Link as={NavLink} exact to="/login">
+                                <div className="box box-outline">
+                                    Inicia Sesión
+                                </div>
                             </Nav.Link>
-                            <Nav.Link href="#pricing">
-                                <Button variant="outline-info">Registrate</Button>
+                            <Nav.Link as={NavLink} exact to="/sign-up">
+                                <div className="box box-outline-blue">
+                                    Registrate
+                                </div>
                             </Nav.Link>
                         </Nav>
                     </Navbar>
