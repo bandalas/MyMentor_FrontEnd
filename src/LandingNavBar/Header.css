@@ -8,3 +8,38 @@
     right: 0;
     margin-right: 2%;
 }
+
+.box {
+    display: inline-block;
+    font-weight: 400;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.box-outline {
+    color: #e0a42c;
+    border-color: #e0a42c;
+}
+
+.box-outline:hover {
+    background-color: #e0a42c;
+    color: white;
+}
+
+.box-outline-blue {
+    color: #13afe8;
+    border-color: #13afe8;
+}
+
+.box-outline-blue:hover {
+    background-color: #13afe8;
+    color: white;
+}
