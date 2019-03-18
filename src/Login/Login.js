@@ -2,6 +2,7 @@ import React, {Component}from 'react';
 import {Form, Button, Col } from 'react-bootstrap';
 import axios from 'axios';
 import './login.css';
+import { NavLink} from 'react-router-dom';
 import NormalForm from './NormalForm.js/NormalForm';
 import ErrorForm from './ErrorForm/ErrorForm';
 
@@ -26,9 +27,14 @@ class Login extends Component {
                     {!hasError ? <NormalForm onInputChange = {this.handleInputChange}/> 
                                : <ErrorForm onInputChange = {this.handleInputChange}/>}
                     <Col md="4">
+                    <div class="LoginButtons">
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
+                    <div class="Reset">
+                        <NavLink to="/reset">Olvidaste tu clave?</NavLink>
+                    </div>
+                    </div>
                     </Col>
                 </Form>
                 
