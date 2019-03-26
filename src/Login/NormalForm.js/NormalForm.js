@@ -14,6 +14,7 @@ class NormalForm extends Component {
                 <Col md="4">
                     <Input  type="email"
                             name="email"
+                            required
                             onChange={this.props.onInputChange}/>
                 </Col>
                 <Col md="4">
@@ -22,6 +23,7 @@ class NormalForm extends Component {
                 <Col md="4">
                     <Form.Control   type="password"
                                     name="password"
+                                    required
                                     onChange={this.props.onInputChange}/>
                 </Col>
             </FormGroup>       
