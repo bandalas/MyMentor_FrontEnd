@@ -6,3 +6,17 @@
     display: flex;
     align-content: center;
 }
+
+
+.LoginButtons
+{
+display: inline-block;
+}
+
+.Reset
+{
+display: inline-block;
+padding-left: 20px;
+}
+
+
