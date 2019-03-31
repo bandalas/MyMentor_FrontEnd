@@ -13,33 +13,44 @@ class Login extends Component {
         this.state = {
             email : '',
             password: '',
-            wrong_data: false
+            wrong_data: false,
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.performPostAction = this.performPostAction.bind(this);
     }
 
     render() {
         const hasError = this.state.wrong_data;
-        return(
-            <div className="login-form">
-                <Form onSubmit={this.handleSubmit}>
-                    {!hasError ? <NormalForm onInputChange = {this.handleInputChange}/> 
-                               : <ErrorForm onInputChange = {this.handleInputChange}/>}
-                    <Col md="4">
-                    <div class="LoginButtons">
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
-                    <div class="Reset">
-                        <NavLink to="/reset">Olvidaste tu clave?</NavLink>
-                    </div>
-                    </div>
-                    </Col>
-                </Form>
-                
-            </div>
-        );
+        if(this.state.formHasBeenSubmitted) {
+            return(
+                <div>
+                    This is where Student Dashboard should be
+                </div>
+            );
+        }
+        else {
+            return(
+                <div className="login-form">
+
+                    <Form onSubmit={this.handleSubmit}>
+                        {!hasError ? <NormalForm onInputChange = {this.handleInputChange}/> 
+                                   : <ErrorForm onInputChange = {this.handleInputChange}/>}
+                        <Col md="4">
+                        <div class="LoginButtons">
+                            <Button variant="primary" type="submit">
+                                Submit
+                            </Button>
+                            <div class="Reset">
+                                <NavLink to="/reset">Olvidaste tu clave?</NavLink>
+                            </div>
+                        </div>
+                        </Col>
+                    </Form>
+                    
+                </div>
+            );
+        }
     }
 
 
@@ -67,14 +78,19 @@ class Login extends Component {
                 }
                 else {
                     this.setState({wrong_data: false})
-                    const user_name = value.data.user.firstName;
                     const user_type = value.data.type;
-                    alert('Welcome user:'+user_name+' of type: '+user_type);
+                    if (user_type === 'Student') {
+                        this.props.history.push('/student/dashboard');
+                        this.props.onUserLogin({
+                            authenticated: true,
+                            token: value.data.token
+                        });
+                    }
                 }
             })
             .catch(reason => {
             });
     }
 }
-
+//export default withRouter(Login);
 export default Login;
