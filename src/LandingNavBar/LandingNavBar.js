@@ -11,7 +11,7 @@ class LandingNavBar extends Component {
                         <Navbar.Brand href="#home">My Mentor Logo</Navbar.Brand>
                         <Form inline className="md">
                             <Form.Control type="text" placeholder="Search" className="mr-sm-2"/>
-                            <Button variant="outline-info">Search</Button>
+                            <Button type="submit">Submit</Button>
                         </Form>
                         <Nav className="navbar-right">
                             <Nav.Link href="#home">Explora</Nav.Link>

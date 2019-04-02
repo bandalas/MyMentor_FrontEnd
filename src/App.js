@@ -5,7 +5,8 @@ import LandingNavBar from './LandingNavBar/LandingNavBar';
 import Login from './Login/Login';
 import Reset from './Reset/Reset';
 import Bookings from './Bookings/Bookings';
-
+import MyClasses_T from './MyClasses_T/MyClasses_T';
+import Classes_T from './Classes_T/Classes_T';
 
 class App extends Component {
   render() {
@@ -16,7 +17,9 @@ class App extends Component {
             <LandingNavBar/>
             <Route exact path='/login' component={Login}/>
             <Route exact path='/reset' component={Reset}/>
-            <Route exact path='/bookings' component={Bookings}/>
+            <Route exact path='/tutors/bookings' component={Bookings}/>
+            <Route exact path='/tutors/myclasses' component={MyClasses_T}/>
+            <Route exact path='/tutors/classes' component={Classes_T}/>
           </div>
         </Router>
       </div>
