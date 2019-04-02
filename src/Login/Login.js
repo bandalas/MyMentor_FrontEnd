@@ -26,14 +26,14 @@ class Login extends Component {
                 <Form onSubmit={this.handleSubmit}>
                     {!hasError ? <NormalForm onInputChange = {this.handleInputChange}/> 
                                : <ErrorForm onInputChange = {this.handleInputChange}/>}
-                    <Col md="4">
-                    <div class="LoginButtons">
+                    <Col md="6">
+                    <div class="Login">
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
-                    <div class="Reset">
-                        <NavLink to="/reset">Olvidaste tu clave?</NavLink>
-                    </div>
+                        <div class="Reset">
+                            <NavLink to="/reset">Olvidaste tu clave?</NavLink>
+                        </div>
                     </div>
                     </Col>
                 </Form>

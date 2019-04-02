@@ -1,5 +1,6 @@
 import React, {Component}from 'react';
 import {Form, Button, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 import './reset.css';
 import NormalForm from './NormalForm.js/NormalForm';
 
@@ -19,10 +20,13 @@ class Reset extends Component {
             <div className="reset-form">
                 <Form onSubmit={this.handleSubmit}>
                     {<NormalForm onInputChange = {this.handleInputChange}/>}
-                    <Col md="4">
+                    <Col md="8" className="ResetButtons">
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
+                        <Link exact to="/login" className="pl-3">
+                            Regresar
+                        </Link>
                     </Col>
                 </Form>
                 

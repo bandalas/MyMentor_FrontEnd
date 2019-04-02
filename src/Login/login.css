@@ -1,22 +1,16 @@
+
 .login-form {
-    margin-top: 100px;
+  width: 600px;
+  margin: 100px auto;
 }
 
-.center-block {
-    display: flex;
-    align-content: center;
+.Login {
+    display: inline-block;
 }
 
-
-.LoginButtons
-{
-display: inline-block;
-}
-
-.Reset
-{
-display: inline-block;
-padding-left: 20px;
+.Reset {
+    display: inline-block;
+    padding-left: 20px;
 }
 
 

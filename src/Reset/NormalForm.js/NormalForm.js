@@ -11,9 +11,10 @@ class NormalForm extends Component {
                 <Col md="4">
                     <Form.Label>Correo Electrónico</Form.Label>
                 </Col>
-                <Col md="4">
+                <Col md="8">
                     <Input  type="email"
                             name="email"
+                            required
                             onChange={this.props.onInputChange}/>
                 </Col>
             </FormGroup>       
