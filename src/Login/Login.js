@@ -67,9 +67,14 @@ class Login extends Component {
                 }
                 else {
                     this.setState({wrong_data: false})
-                    const user_name = value.data.user.firstName;
                     const user_type = value.data.type;
-                    alert('Welcome user:'+user_name+' of type: '+user_type);
+                    if (user_type === 'Tutor') {
+                        this.props.history.push('/tutor/dashboard');
+                        this.props.onUserLogin({
+                            authenticated: true,
+                            token: value.data.token
+                        });
+                    }
                 }
             })
             .catch(reason => {
