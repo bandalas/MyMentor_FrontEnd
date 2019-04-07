@@ -1,5 +1,5 @@
 import React, {Component}from 'react';
-import {Form, Button, Col } from 'react-bootstrap';
+import {Form, Button, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
 import './login.css';
 import { NavLink} from 'react-router-dom';
@@ -22,37 +22,27 @@ class Login extends Component {
 
     render() {
         const hasError = this.state.wrong_data;
-        if(this.state.formHasBeenSubmitted) {
-            return(
-                <div>
-                    This is where Student Dashboard should be
-                </div>
-            );
-        }
-        else {
-            return(
-                <div className="login-form">
-
-                    <Form onSubmit={this.handleSubmit}>
+        return(
+            <div id="login-card">
+                <h2>Iniciar sesión</h2>
+                <Form onSubmit={this.handleSubmit}>
                         {!hasError ? <NormalForm onInputChange = {this.handleInputChange}/> 
-                                   : <ErrorForm onInputChange = {this.handleInputChange}/>}
-                        <Col md="4">
-                        <div class="LoginButtons">
-                            <Button variant="primary" type="submit">
-                                Submit
-                            </Button>
-                            <div class="Reset">
-                                <NavLink to="/reset">Olvidaste tu clave?</NavLink>
-                            </div>
-                        </div>
-                        </Col>
-                    </Form>
+                        : <ErrorForm onInputChange = {this.handleInputChange}/>}
                     
-                </div>
-            );
-        }
+                    <div className="login-buttons">
+                        <Col xs="10" className="reset">
+                            <NavLink to="/reset">¿Olvidaste tu contraseña?</NavLink>
+                        </Col>
+                        <Col xs="10">
+                            <Button variant="primary" type="submit" className="bttn-full-size">
+                                Iniciar sesión
+                            </Button>
+                        </Col>
+                    </div>
+                </Form>  
+            </div>
+        );
     }
-
 
     handleInputChange(event) {
         if(event.target.name === 'email') this.setState({email: event.target.value});
@@ -92,5 +82,5 @@ class Login extends Component {
             });
     }
 }
-//export default withRouter(Login);
+
 export default Login;

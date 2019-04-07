@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import './Header.css';
 import { NavLink } from 'react-router-dom';
 
-//import NavLink from 'react-bootstrap/NavLink';
-
 class LandingNavBar extends Component {
     render() {
         return(
-            <div>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/login">Login</NavLink>
+            <div id="landing-navbar" className="nav-bar">
+                <div id="navbar-right" className="content-right">
+                    <NavLink to="/">Home</NavLink>
+                    <NavLink to="/login">Inicia Sesión</NavLink>
+                    <NavLink to="/">Registrate</NavLink>
+                </div>
             </div>
         );
     }
 }
+
 
 export default LandingNavBar;

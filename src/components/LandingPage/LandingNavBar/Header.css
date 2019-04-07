@@ -1,45 +1,35 @@
-.main-navbar {
+
+.nav-bar {
+    z-index: 60;
+    position: relative;
+    height: 60px;
+    justify-content: space-between;
+    background-color: #fff;
+    height: 60px;
+    border-bottom: 1px solid #e9eced;
+    margin: 0;
     background-color: white !important;
     box-shadow: 0 0 1px 1px rgba(20,23,28,0.1), 0 3px 1px 0 rgba(20,23,28,0.1);
 }
 
-.navbar-right {
-    position: fixed;
+#navbar-right {
+    position: absolute;
+    margin-top: 15px; 
+}
+
+#navbar-right > a {
+    margin-right: 30px;
+    text-decoration: none; 
+    padding-bottom: 21px;
+    color: #505763; 
+}
+
+#navbar-right > a:hover {
+    border-bottom: 3px solid #d5e85c;
+}
+
+.content-right {
     right: 0;
-    margin-right: 2%;
+    align-items: center;
 }
 
-.box {
-    display: inline-block;
-    font-weight: 400;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.box-outline {
-    color: #e0a42c;
-    border-color: #e0a42c;
-}
-
-.box-outline:hover {
-    background-color: #e0a42c;
-    color: white;
-}
-
-.box-outline-blue {
-    color: #13afe8;
-    border-color: #13afe8;
-}
-
-.box-outline-blue:hover {
-    background-color: #13afe8;
-    color: white;
-}
