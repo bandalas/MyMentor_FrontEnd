@@ -7,10 +7,10 @@ class ErrorForm extends Component {
     render(){
         return(
             <FormGroup>
-                <Col md="8">
+                <Col xs="10">
                     <Form.Label>Correo Electrónico</Form.Label>
                 </Col>
-                <Col md="8">
+                <Col xs="10">
                     <Input  invalid
                             type="email"
                             name="email"
@@ -20,10 +20,10 @@ class ErrorForm extends Component {
                     </FormFeedback>
                 </Col>
                 
-                <Col md="8">
+                <Col xs="10">
                     <Form.Label>Contraseña</Form.Label>
                 </Col>
-                <Col md="8">
+                <Col xs="10">
                     <Input   invalid
                              type="password"
                              name="password"
