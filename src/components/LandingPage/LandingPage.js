@@ -11,8 +11,8 @@ class LandingPage extends Component {
         super();
         this.handleLoginChange = this.handleLoginChange.bind(this);
         this.state = {
-            isAuthenticated: false,
-            userToken: ''
+            isAuthenticated: true,
+            userToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2E5OTE0YTYyNTAwOTBlZWEyZjUyOTIiLCJuYW1lIjoiS2FybGEiLCJ0eXBlIjoiU3R1ZGVudCIsImlhdCI6MTU1NDYxNjc4Mn0.5CnPhSUsiVVVMeDV8r50oL3oaT250wyACRk0n3qkW7Q'
         }
 
     }
