@@ -7,21 +7,23 @@ class NormalForm extends Component {
 
     render(){
         return(
-            <FormGroup>
-                <Col md="8">
-                    <Form.Label>Correo Electrónico</Form.Label>
+            <FormGroup >
+                <Col xs="10">
+                    <Form.Label>Correo electrónico</Form.Label>
                 </Col>  
-                <Col md="8">
-                    <Input  type="email"
+                <Col xs="10">
+                    <Input  bsSize="lg"
+                            type="email"
                             name="email"
                             required
                             onChange={this.props.onInputChange}/>
                 </Col>
-                <Col md="8" className="pt-4">
+                <Col xs="10">
                     <Form.Label>Contraseña</Form.Label>
                 </Col>
-                <Col md="8">
-                    <Form.Control   type="password"
+                <Col xs="10">
+                    <Input   bsSize="lg"
+                                    type="password"
                                     name="password"
                                     required
                                     onChange={this.props.onInputChange}/>

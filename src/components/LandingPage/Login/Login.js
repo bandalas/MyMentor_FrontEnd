@@ -1,5 +1,5 @@
 import React, {Component}from 'react';
-import {Form, Button, Col } from 'react-bootstrap';
+import {Form, Button, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
 import './login.css';
 import { NavLink} from 'react-router-dom';
@@ -13,35 +13,36 @@ class Login extends Component {
         this.state = {
             email : '',
             password: '',
-            wrong_data: false
+            wrong_data: false,
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.performPostAction = this.performPostAction.bind(this);
     }
 
     render() {
         const hasError = this.state.wrong_data;
         return(
-            <div className="login-form">
+            <div id="login-card">
+                <h2>Iniciar sesión</h2>
                 <Form onSubmit={this.handleSubmit}>
-                    {!hasError ? <NormalForm onInputChange = {this.handleInputChange}/> 
-                               : <ErrorForm onInputChange = {this.handleInputChange}/>}
-                    <Col md="6">
-                    <div class="Login">
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
-                        <div class="Reset">
-                            <NavLink to="/reset">Olvidaste tu clave?</NavLink>
-                        </div>
+                        {!hasError ? <NormalForm onInputChange = {this.handleInputChange}/> 
+                        : <ErrorForm onInputChange = {this.handleInputChange}/>}
+                    
+                    <div className="login-buttons">
+                        <Col xs="10" className="reset">
+                            <NavLink to="/reset">¿Olvidaste tu contraseña?</NavLink>
+                        </Col>
+                        <Col xs="10">
+                            <Button variant="primary" type="submit" className="bttn-full-size">
+                                Iniciar sesión
+                            </Button>
+                        </Col>
                     </div>
-                    </Col>
-                </Form>
-                
+                </Form>  
             </div>
         );
     }
-
 
     handleInputChange(event) {
         if(event.target.name === 'email') this.setState({email: event.target.value});
@@ -67,9 +68,14 @@ class Login extends Component {
                 }
                 else {
                     this.setState({wrong_data: false})
-                    const user_name = value.data.user.firstName;
                     const user_type = value.data.type;
-                    alert('Welcome user:'+user_name+' of type: '+user_type);
+                    if (user_type === 'Student') {
+                        this.props.history.push('/student/dashboard');
+                        this.props.onUserLogin({
+                            authenticated: true,
+                            token: value.data.token
+                        });
+                    }
                 }
             })
             .catch(reason => {
