@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import NotificationCard from './NotificationCard/NotificationCard';
+import { Redirect } from 'react-router-dom'
 
 class Notifications extends Component {
 
@@ -8,13 +9,19 @@ class Notifications extends Component {
         super(props);
         this.state = {
             raw_notifications : [],
-            classes_notifications : [],
+            classes_notifications : []
         };
         this.fetchPendingBookings = this.fetchPendingBookings.bind(this);
         this.fetchClassesById = this.fetchClassesById.bind(this);
         
     }
 
+    componentWillReceiveProps() {
+        if(!this.props.token) {
+            return <Redirect to="/dashboard/tutor"/>
+        }
+    }
+    
     componentDidMount() {
         this.fetchPendingBookings();
     }
@@ -31,10 +38,14 @@ class Notifications extends Component {
                     {this.state.raw_notifications.map(notification => {
                         const requested_class_id = notification.booked_class;
                         const requested_class = idToClassMap.get(requested_class_id);
-                        return (<NotificationCard  key={notification._id}
-                                            class_name={requested_class.name}
-                                            class_price={requested_class.cost}
-                                            class_schedule={requested_class.date}/>);
+                        return (<NotificationCard   key={notification._id}
+                                                    class_name={requested_class.name}
+                                                    class_price={requested_class.cost}
+                                                    class_schedule={requested_class.date}
+                                                    id = {notification._id}
+                                                    token = {this.props.token}
+                                                    onChange = {this.fetchPendingBookings}
+                                            />);
     
                     })}
                 </div>
@@ -90,6 +101,8 @@ class Notifications extends Component {
             })
             .catch(error => console.log(error));
     }
+
+    
 }
 
 export default Notifications;
