@@ -28,7 +28,6 @@ class Notifications extends Component {
             });
             return(
                 <div id="notifications">
-                    <div className="class-notification">
                     {this.state.raw_notifications.map(notification => {
                         const requested_class_id = notification.booked_class;
                         const requested_class = idToClassMap.get(requested_class_id);
@@ -38,8 +37,6 @@ class Notifications extends Component {
                                             class_schedule={requested_class.date}/>);
     
                     })}
-                    </div>
-                    
                 </div>
             );
         } else {

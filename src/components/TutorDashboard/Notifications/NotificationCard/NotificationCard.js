@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../notifications.css';
 
 class NotificationCard extends Component {
 
@@ -8,10 +9,10 @@ class NotificationCard extends Component {
 
     render() {
         return(
-            <div>
+            <div className="class-notification">
                 <p>{this.props.class_name}</p>
-                <p>{this.props.class_price}</p>
-                <p>{this.props.class_schedule}</p>
+                <p>${this.props.class_price}</p>
+                <p>Fecha: {this.props.class_schedule}</p>
             </div>
         );
     }
