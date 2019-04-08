@@ -73,7 +73,16 @@ class Login extends Component {
                         this.props.history.push('/student/dashboard');
                         this.props.onUserLogin({
                             authenticated: true,
-                            token: value.data.token
+                            token: value.data.token,
+                            type: user_type
+                        });
+                    }
+                    else if (user_type === 'Tutor') {
+                        this.props.history.push('/tutor/dashboard');
+                        this.props.onUserLogin({
+                            authenticated: true,
+                            token: value.data.token,
+                            type: user_type
                         });
                     }
                 }

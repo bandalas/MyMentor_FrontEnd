@@ -4,6 +4,8 @@ import Login from './Login/Login';
 import LandingNavBar from './LandingNavBar/LandingNavBar';
 import Content from './Content/Content';
 import StudentDashboard from '../StudentDashboard/StudentDashboard';
+import TutorDashboard from '../TutorDashboard/TutorDashboard';
+import StudentSignup from './Signup/Student/StudentSignup';
 
 class LandingPage extends Component {
 
@@ -12,7 +14,8 @@ class LandingPage extends Component {
         this.handleLoginChange = this.handleLoginChange.bind(this);
         this.state = {
             isAuthenticated: true,
-            userToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2E5OTE0YTYyNTAwOTBlZWEyZjUyOTIiLCJuYW1lIjoiS2FybGEiLCJ0eXBlIjoiU3R1ZGVudCIsImlhdCI6MTU1NDYxNjc4Mn0.5CnPhSUsiVVVMeDV8r50oL3oaT250wyACRk0n3qkW7Q'
+            userToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2FhYTA5YzMwNmMxNzFhNzE3MGRhMDUiLCJuYW1lIjoiR2VyYXJkbyIsInR5cGUiOiJUdXRvciIsImlhdCI6MTU1NDY5MzM1OH0.xlRP2ntTUvwqiNvhuztGZyd3hLe79oexB0S6yWoxeMA',
+            userType: 'Tutor'
         }
 
     }
@@ -32,6 +35,7 @@ class LandingPage extends Component {
                                     }
                                     exact/>
                                 <Route path="/" component={Content} exact />
+                                <Route path="/signup" component={StudentSignup} exact/>
                             </Switch>
                         </div>
                     </BrowserRouter>
@@ -39,30 +43,53 @@ class LandingPage extends Component {
             );
         }
         else {
-            return(
-                <div>
-                    <BrowserRouter>
-                        <div>
-                            <Switch>
-                                <Route 
-                                        path="/student/dashboard" 
-                                        render = {
-                                            (props) => <StudentDashboard {...props} token={this.state.userToken} />
-                                        }
-                                        exact
-                                />
-                            </Switch>
-                        </div>
-                    </BrowserRouter>
-                </div>
-            );
+            if(this.state.userType === 'Student') {
+                return(
+                    <div>
+                        <BrowserRouter>
+                            <div>
+                                <Switch>
+                                    <Route 
+                                            path="/student/dashboard" 
+                                            render = {
+                                                (props) => <StudentDashboard {...props} token={this.state.userToken} />
+                                            }
+                                            exact
+                                    />
+                                </Switch>
+                            </div>
+                        </BrowserRouter>
+                    </div>
+                );
+            }
+            else if(this.state.userType === 'Tutor') {
+                console.log('rip');
+                return(
+                    <div>
+                        <BrowserRouter>
+                            <div>
+                                <Switch>
+                                    <Route 
+                                            path="/tutor/dashboard" 
+                                            render = {
+                                                (props) => <TutorDashboard {...props} token={this.state.userToken} />
+                                            }
+                                            exact
+                                    />
+                                </Switch>
+                            </div>
+                        </BrowserRouter>
+                    </div>
+                );
+            }
         }
     }
 
     handleLoginChange(data) {
         this.setState({
             isAuthenticated: data.authenticated,
-            userToken: data.token
+            userToken: data.token,
+            userType: data.type
         });
     }
 }
