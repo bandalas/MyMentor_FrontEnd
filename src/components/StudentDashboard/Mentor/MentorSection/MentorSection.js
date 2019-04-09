@@ -21,7 +21,7 @@ class MentorSection extends Component {
         console.log(this.state.topMentors)
         return(
             <div className='top-mentors-section'>
-                <h1>Mentores mejor calificados</h1>
+                <h1 id="jumboh1" className="jumbotron">Mentores mejor calificados</h1>
                 {this.state.topMentors.map(mentor => (
                     <MentorCard key={mentor._id}
                                 firstName={mentor.firstName}
