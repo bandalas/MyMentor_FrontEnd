@@ -3,6 +3,8 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Login from './Login/Login';
 import LandingNavBar from './LandingNavBar/LandingNavBar';
 import Content from './Content/Content';
+import Search from './Search/Search';
+
 import StudentDashboard from '../StudentDashboard/StudentDashboard';
 import TutorDashboard from '../TutorDashboard/TutorDashboard';
 import StudentSignup from './Signup/Student/StudentSignup';
@@ -36,6 +38,7 @@ class LandingPage extends Component {
                                     exact/>
                                 <Route path="/" component={Content} exact />
                                 <Route path="/signup" component={StudentSignup} exact/>
+                                <Route path="/search" component={Search} exact/>
                             </Switch>
                         </div>
                     </BrowserRouter>
@@ -59,6 +62,7 @@ class LandingPage extends Component {
                                 </Switch>
                             </div>
                         </BrowserRouter>
+                        ola
                     </div>
                 );
             }

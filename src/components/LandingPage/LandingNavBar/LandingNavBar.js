@@ -6,8 +6,10 @@ class LandingNavBar extends Component {
     render() {
         return(
             <div id="landing-navbar" className="nav-bar">
-                <div id="navbar-right" className="content-right">
-                    <NavLink to="/">Home</NavLink>
+                <div className="navbar-item left">
+                    <NavLink to="/search">Busca</NavLink>
+                </div>
+                <div className="navbar-item right">
                     <NavLink to="/login">Inicia Sesión</NavLink>
                     <NavLink to="/signup">Registrate</NavLink>
                 </div>

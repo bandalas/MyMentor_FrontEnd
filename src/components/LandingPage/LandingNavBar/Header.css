@@ -12,24 +12,32 @@
     box-shadow: 0 0 1px 1px rgba(20,23,28,0.1), 0 3px 1px 0 rgba(20,23,28,0.1);
 }
 
-#navbar-right {
+.navbar-item {
     position: absolute;
-    margin-top: 15px; 
+    margin-top: 15px;
+    align-items: center;
 }
 
-#navbar-right > a {
+.navbar-item > a {
     margin-right: 30px;
     text-decoration: none; 
     padding-bottom: 21px;
     color: #505763; 
 }
 
-#navbar-right > a:hover {
+.navbar-item.left > a {
+    margin-left: 30px;
+}
+
+.navbar-item > a:hover {
     border-bottom: 3px solid #d5e85c;
 }
 
-.content-right {
+.navbar-item.right {
     right: 0;
-    align-items: center;
+}
+
+.navbar-item.left {
+    left: 0;
 }
 

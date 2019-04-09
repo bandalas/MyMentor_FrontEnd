@@ -1,0 +1,18 @@
+.search-form {
+  width: 600px;
+  margin: 100px auto;
+}
+
+.btn {
+  margin-left: 20px;
+}
+
+form {
+  width: 100%;
+  box-shadow: 0 0 0px 0px;
+}
+
+.form-group {
+  margin: auto 10%;
+  padding: 1% 0;
+}
