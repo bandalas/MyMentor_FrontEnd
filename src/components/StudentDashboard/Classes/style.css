@@ -1,4 +1,23 @@
-.class-card{
+.jumbotron { 
+    padding: 30px; /* fills out the jumbotron */
+    max-width: 100%;
+    background-image: linear-gradient(to left,#D24751, #812851 ,#6E2152,);
+    /* background-image: linear-gradient(to right, #1188b3e7, #13afe8,#1188b3e7); */
+    /* background-image: linear-gradient(to right, #d5e85cbe, #d5e85c,#d5e85cbe); */
+    /* background-color: #f3f35f; */
+    /* background-color: antiquewhite; */
+    /* background-color: cornsilk; */
+}
+
+#jumboh1{
+    text-align: center; /*centers the heading */
+    color: #DDD;  
+    font-family: 'Raleway', Helvetica, Arial, sans-serif;
+    /* font-weight: 600; */
+    /* text-transform: uppercase; */
+}
+
+/* .class-card{
     background-color: #fee7ea;
     margin-bottom: 1%;
-}
+} */
