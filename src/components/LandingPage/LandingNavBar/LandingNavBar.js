@@ -10,6 +10,7 @@ class LandingNavBar extends Component {
                     <NavLink to="/search">Busca</NavLink>
                 </div>
                 <div className="navbar-item right">
+                    <NavLink to="/tutors">Conviértete en tutor</NavLink>
                     <NavLink to="/login">Inicia Sesión</NavLink>
                     <NavLink to="/signup">Registrate</NavLink>
                 </div>
