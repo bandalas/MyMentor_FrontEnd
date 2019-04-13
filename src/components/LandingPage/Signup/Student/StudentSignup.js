@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import { Form, Col } from 'react-bootstrap';
+import { Form, Button, Col } from 'react-bootstrap';
 import { Input, FormGroup } from 'reactstrap';
+import './studentsignup.css';
+
 
 class StudentSignup extends Component {
 
@@ -24,9 +26,17 @@ class StudentSignup extends Component {
 
     render() {
         return(
-            <div id="student-signup">
-                <FormGroup>
 
+            <div class="card" id="student-signup">
+                <div class="title">
+                <h2>Unete a nuestra comunidad! </h2> 
+                </div>
+                <FormGroup>
+            
+
+
+
+        <div class="rest">
                     <Col>
                         <Form.Label>Nombre</Form.Label>
                     </Col>
@@ -97,8 +107,15 @@ class StudentSignup extends Component {
                                 onChange={this.onSemesterChange}
                                 required
                                         />
+
                     </Col>
+                            <Button variant="primary" type="submit" className="bttn-full-size">
+                                Completar Registro
+                            </Button>
+
+</div>
                 </FormGroup>
+
             </div>
         );
     }

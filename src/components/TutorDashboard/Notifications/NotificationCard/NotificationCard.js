@@ -20,6 +20,7 @@ class NotificationCard extends Component {
                 <p>Fecha: {this.props.class_schedule}</p>
                 <Button color="info" onClick={this.onAcceptBooking}>Aceptar</Button>
                 <Button color="danger" onClick={this.onRejectBooking}>Rechazar</Button>
+
             </div>
         );
     }
