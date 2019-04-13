@@ -35,6 +35,7 @@ class Notifications extends Component {
             });
             return(
                 <div id="notifications">
+                <div class="content">
                     {this.state.raw_notifications.map(notification => {
                         const requested_class_id = notification.booked_class;
                         const requested_class = idToClassMap.get(requested_class_id);
@@ -46,8 +47,11 @@ class Notifications extends Component {
                                                     token = {this.props.token}
                                                     onChange = {this.fetchPendingBookings}
                                             />);
+
     
                     })}
+
+</div>
                 </div>
             );
         } else {
