@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -207,7 +206,7 @@ class Search extends Component {
     handleFormInput(event) {
       let input = event.target.parentElement.getElementsByClassName("input-group-text")[0];
       let checkbox = input.children[0];
-      checkbox.checked = event.target.value.length != ""
+      checkbox.checked = event.target.value.length !== ""
     }
 
     changeRating( newRating, name ) {

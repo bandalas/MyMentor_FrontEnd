@@ -15,12 +15,12 @@ class SignupPartOne extends Component {
             university: '',
             semester: '',
             gpa: '',
-            modal:false
+            description: '',
+            modal: false
         };
         // Views
         this.renderFormPartOne = this.renderFormPartOne.bind(this);
         this.renderFormPartTwo = this.renderFormPartTwo.bind(this);
-        this.renderFormWithError = this.renderFormWithError.bind(this);
         this.toggle = this.toggle.bind(this);
 
         // Form Logic
@@ -49,7 +49,6 @@ class SignupPartOne extends Component {
     *****************************************/
 
     handleSignupSequence = () => {
-        console.log(this.formHasEmptyFields());
         if(this.formHasEmptyFields()) {
             this.setState({
                 hasError : true,
@@ -107,15 +106,22 @@ class SignupPartOne extends Component {
                 this.state.semester === "");
     }
 
-    /****************************************
-    *
-    *   Functions that render the HTML content
-    * 
-    *****************************************/
+    handleChildDescriptionChange = (description) => {
+        this.setState({
+            description: description
+        });
+    }
 
+    /****************************************
+     *
+     *   Functions that render the HTML content
+     * 
+     *****************************************/
+    
     renderFormPartOne() {
         return(
             <div>
+
                 <div>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
@@ -128,6 +134,7 @@ class SignupPartOne extends Component {
                         </ModalFooter>
                     </Modal>
                 </div>
+
                 <FormGroup>
                     <Col>
                         <Form.Label>Nombre</Form.Label>   
@@ -135,6 +142,7 @@ class SignupPartOne extends Component {
                     <Col>
                         <Input  type = "text"
                                 value = {this.state.firstName}
+                    
                                 onChange = {this.handleFirstNameChange}
                                 required
                                 />
@@ -189,77 +197,20 @@ class SignupPartOne extends Component {
         );
     }
 
-    renderFormWithError() {
-        return(
-            <div>
-                <FormGroup>
-                    <Col>
-                        <Form.Label>Nombre</Form.Label>   
-                    </Col>
-                    <Col>
-                        <Input  invalid
-                                type = "text"
-                                value = {this.state.firstName}
-                                onChange = {this.handleFirstNameChange}
-                                required
-                                />
-                    </Col>
-                    
-                    <Col>
-                        <Form.Label>Apellido(s)</Form.Label>
-                    </Col>
-                    <Col>
-                        <Input  invalid
-                                type="text" 
-                                value = {this.state.lastName}
-                                onChange = {this.handleLastNameChange}
-                                required
-                                />
-                    </Col>
-
-                    <Col>
-                        <Form.Label>Universidad</Form.Label>
-                    </Col>
-                    <Col>
-                        <Input  invalid
-                                type="text"
-                                value = {this.state.university}
-                                onChange = {this.handleUniversityChange}
-                                required
-                                />
-                    </Col>
-
-                    <Col>
-                        <Form.Label>Semestre</Form.Label>
-                    </Col>
-                    <Col>
-                        <Input  invalid
-                                type="number"
-                                value = {this.state.semester}
-                                onChange = {this.handleSemesterChange}
-                                required
-                                />
-                    </Col>
-
-                    <Col>
-                        <Form.Label>Promedio</Form.Label>
-                    </Col>
-                    <Col>
-                        <Input  invalid
-                                type="number"
-                                value = {this.state.gpa}
-                                onChange = {this.handleGPAChange}
-                                required />
-                    </Col>
-                </FormGroup>
-                <Button color="danger" onClick={this.props.handleForm}>Cancel</Button>
-                <Button color="info" onClick={this.handleSignupSequence}>Siguiente</Button>
-            </div>
-        );
-    }
-
     renderFormPartTwo() {
-        return( <SignupPartTwo returnToFormOne={this.handleSignupSequence}/> );
+        const tutor_object = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            institution: this.state.university,
+            semester: this.state.semester,
+            gpa: this.state.gpa
+        };
+
+        return( <SignupPartTwo  returnToFormOne={this.handleSignupSequence} 
+                                description={this.state.description}
+                                descriptionChange = {this.handleChildDescriptionChange}
+                                tutor = {tutor_object}
+                                /> );
     }
 
     toggle() {
@@ -268,6 +219,6 @@ class SignupPartOne extends Component {
             modal : false,
         })
     }
-
+    
 }
 export default SignupPartOne;

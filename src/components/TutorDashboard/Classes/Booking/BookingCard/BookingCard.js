@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 class BookingCard extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return(
             <div className="booking-card">
