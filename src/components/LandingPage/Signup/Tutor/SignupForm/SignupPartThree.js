@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { FormGroup, Col, Form } from 'react-bootstrap';
-import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter, FormFeedback } from 'reactstrap';
+import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter, FormFeedback, Popover, PopoverHeader, PopoverBody  } from 'reactstrap';
+import { Redirect } from 'react-router'
 import axios from 'axios';
 
 class SignupPartThree extends Component {
@@ -13,7 +14,9 @@ class SignupPartThree extends Component {
             confirmpass: '',
             match: true,
             taken: false,
-            modal: false
+            modal: true,
+            hasError: false,
+            redirect: false
         };
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -22,6 +25,7 @@ class SignupPartThree extends Component {
         
         this.toggle = this.toggle.bind(this);
         this.hasMissingFields = this.hasMissingFields.bind(this);
+        this.renderBodyOfForm = this.renderBodyOfForm.bind(this);
 
         this.checkIfEmailIsTaken = this.checkIfEmailIsTaken.bind(this);
         this.registerTutor = this.registerTutor.bind(this);
@@ -35,21 +39,36 @@ class SignupPartThree extends Component {
         });
     }
 
-    render() {  
+    render() {
+        if(this.state.redirect) {
+            return (<Redirect to="/login"/>);
+        } else {
+            return(
+                    <div>
+                        <Modal isOpen={this.state.modal} toggle={this.toggle} >
+                            <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                            <ModalBody>
+                                {this.renderBodyOfForm()}
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={this.props.returnToFormTwo}>Anterior</Button>{' '}
+                                <Button color="secondary" id="continue" onClick={this.registerTutor}>Registrar</Button>
+                            </ModalFooter>
+                        </Modal>
+                    </div>
+            );
+        }
+    }
+
+    renderBodyOfForm() {
         return(
             <div>
-                <div>
-                    <Modal isOpen={this.state.modal} toggle={this.toggle} >
-                        <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-                        <ModalBody>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </ModalBody>
-                        <ModalFooter>
-                        <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-                        </ModalFooter>
-                    </Modal>
-                </div>
+                <Popover placement="bottom" isOpen={this.state.hasError} target="continue" toggle={this.togglePopOver}>
+                    <PopoverHeader>Campos por completar</PopoverHeader>
+                    <PopoverBody>
+                        Todos los campos deben de estar llenos.
+                    </PopoverBody>
+                </Popover>
 
                 <FormGroup>
                     <Col>
@@ -86,33 +105,28 @@ class SignupPartThree extends Component {
                         {this.state.match ? ( <FormGroup>
                                                 <Col>
                                                  <Form.Label>Reingrese la contraseña</Form.Label>
-                                                </Col>
-                                                <Input  type = "password"
+                                                 <Input  type = "password"
                                                     onChange = {this.handlePasswordConfirmationChange}/>
-                                              </FormGroup>) 
-                                            : (<FormGroup>
+                                                </Col>
+                                              </FormGroup>
+                                              ) 
+                                            : (
+                                                <FormGroup>
                                                 <Col>
                                                  <Form.Label>Reingrese la contraseña</Form.Label>
-                                                </Col>
                                                   <Input  type = "password"
                                                      invalid
                                                      onChange = {this.handlePasswordConfirmationChange}/>
                                                   <FormFeedback>Las contraseñas deben de ser igual</FormFeedback>
-                                              </FormGroup>
+                                                </Col>
+                                                </FormGroup>
                                             )}
                         
                     </Col>
                 </FormGroup>
-                <Col>
-                    <Button color="primary"
-                            onClick={this.props.returnToFormTwo}>Anterior</Button>
-                    <Button color="danger"
-                            onClick={this.registerTutor}>Registrate</Button>
-                </Col>
             </div>
         );
     }
-
     /****************************************
     *
     *   Functions that will handle form input
@@ -185,7 +199,12 @@ class SignupPartThree extends Component {
 
     registerTutor () {
         if(this.hasMissingFields()) {
-            this.turnOnModal();
+            this.setState({
+                hasError: true
+            });
+            setTimeout(function() {
+                this.setState({ hasError: false});
+            }.bind(this),3500);
         } else {
             this.checkIfEmailIsTaken();
         }
@@ -216,16 +235,14 @@ class SignupPartThree extends Component {
 
             axios.post('http://localhost:3001/tutors/signup', tutor_data, config)
                 .then((response) => {
-                    console.log('omg');
+                    console.log('should redirect');
+                    this.setState({
+                        redirect:true
+                    });
                 })
                 .catch((error) => {console.log(error)});
         }
     }
 
-    turnOnModal = () => {
-        this.setState({
-            modal:true
-        });
-    }
 }
 export default SignupPartThree;

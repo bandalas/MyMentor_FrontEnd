@@ -63,7 +63,7 @@ class SignupPartOne extends Component {
             this.setState({
                 shouldLoadPartTwo : !this.state.shouldLoadPartTwo,
                 hasError: false,
-                modal: false
+                modal: true
             });
         }
     }
@@ -136,7 +136,6 @@ class SignupPartOne extends Component {
 
                         <ModalFooter>
                             <Button color="primary" id="continue" onClick={this.handleSignupSequence}>Siguiente</Button>{' '}
-                            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                         </ModalFooter>
 
                     </Modal>

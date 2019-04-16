@@ -24,6 +24,7 @@ class SignupPartTwo extends Component {
         // L o g i c
         this.handleAreaChange = this.handleAreaChange.bind(this);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+        this.handleImageChange = this.handleImageChange.bind(this);
         this.formHasMissingFields = this.formHasMissingFields.bind(this);
         this.toggle = this.toggle.bind(this);
     }
@@ -47,13 +48,16 @@ class SignupPartTwo extends Component {
             <div>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+
                     <ModalBody>
                         {this.renderBodyOfForm()}
                     </ModalBody>
+
                     <ModalFooter>
-                        <Button color="primary" id="continue" onClick={this.toggle}>Siguiente</Button>{' '}
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        <Button color="primary" onClick={this.props.returnToFormOne}>Anterior</Button>{' '}
+                        <Button color="secondary" id="continue" onClick={this.handleSignupSequence}>Siguiente</Button>
                     </ModalFooter>
+                    
                 </Modal>
             </div>
         );
@@ -73,9 +77,9 @@ class SignupPartTwo extends Component {
                     <Form.Label>
                         Imagen de perfil
                     </Form.Label><br/>
-                    <input  ref = {(ref) => {this.fileName = ref;}}
-                            type="file"
+                    <input  type="file"
                             name="recfiles"
+                            onChange = {this.handleImageChange}
                             />
                     
                     <Col>
@@ -106,8 +110,6 @@ class SignupPartTwo extends Component {
                                 onChange={this.handleDescriptionChange}
                                 />
                     </Col>
-                    <Button onClick={this.props.returnToFormOne}>Anterior</Button>
-                    <Button onClick={this.handleSignupSequence}>Siguiente</Button>
                 </FormGroup>
             </div>
         );
@@ -115,7 +117,7 @@ class SignupPartTwo extends Component {
 
     renderPartThree(){
         var tutor_object = this.props.tutor;
-        tutor_object.img = this.fileName.files[0];
+        tutor_object.img = this.state.profilePicture;
         tutor_object.category = this.state.areas;
         tutor_object.description = this.state.description;
         return(
@@ -136,8 +138,12 @@ class SignupPartTwo extends Component {
     handleSignupSequence = () => {
         if(this.formHasMissingFields()) {
             this.setState({
-                modal: true
+                modal: true,
+                hasError: true
             });
+            setTimeout(function() {
+                this.setState({ hasError: false});
+            }.bind(this),3500);
         }else{
             this.setState({
                 shouldLoadPartThree: !this.shouldLoadPartThree
@@ -173,9 +179,15 @@ class SignupPartTwo extends Component {
         this.props.descriptionChange(description);
     }
 
+    handleImageChange(event) {
+        const file = event.target.files[0];
+        this.setState({
+            profilePicture: file
+        });
+    }
     formHasMissingFields(){
         return (
-            !this.fileName.files[0] ||
+            this.state.profilePicture === "" ||
             this.state.areas.length === 0 ||
             this.state.description === ""
         )
