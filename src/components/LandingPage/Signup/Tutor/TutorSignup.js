@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button } from 'reactstrap';
+import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import SignupPartOne from './SignupForm/SignupPartOne';
 
 class TutorSignup extends Component {
@@ -7,7 +7,8 @@ class TutorSignup extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            displayForm : false
+            displayForm : false,
+            modal: false
         };
     }
 
@@ -16,13 +17,17 @@ class TutorSignup extends Component {
             return(
                 <div>
                     Aquí van las ventajas y descripción de ser Tutor<br/>
-                    <Button color="info" onClick={this.shouldDisplaySignupForm}>Registrate!</Button>
+                    <Button color="info" onClick={this.shouldDisplaySignupForm}>Registrate</Button>
                 </div>
             );
         }
         else {
             return(
-                <SignupPartOne handleForm={this.shouldDisplaySignupForm}/>
+                <div>
+                    Aquí van las ventajas y descripción de ser Tutor<br/>
+                    <Button color="info" onClick={this.shouldDisplaySignupForm}>Registrate</Button>
+                    <SignupPartOne/>
+                </div>
             );
         }
     }

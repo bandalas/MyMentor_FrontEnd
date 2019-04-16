@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 import { FormGroup, Form, Col} from 'react-bootstrap';
 import SignupPartTwo from './SingupPartTwo';
 
@@ -16,12 +16,14 @@ class SignupPartOne extends Component {
             semester: '',
             gpa: '',
             description: '',
-            modal: false
+            modal: true,
         };
         // Views
         this.renderFormPartOne = this.renderFormPartOne.bind(this);
         this.renderFormPartTwo = this.renderFormPartTwo.bind(this);
+        this.renderBodyOfForm = this.renderBodyOfForm.bind(this);
         this.toggle = this.toggle.bind(this);
+        this.togglePopOver = this.togglePopOver.bind(this);
 
         // Form Logic
         this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
@@ -54,7 +56,10 @@ class SignupPartOne extends Component {
                 hasError : true,
                 modal : true
             });
-        }else {
+            setTimeout(function() {
+                this.setState({ hasError: false});
+            }.bind(this),3500);
+        } else {
             this.setState({
                 shouldLoadPartTwo : !this.state.shouldLoadPartTwo,
                 hasError: false,
@@ -121,19 +126,34 @@ class SignupPartOne extends Component {
     renderFormPartOne() {
         return(
             <div>
-
                 <div>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+
                         <ModalBody>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            {this.renderBodyOfForm()}
                         </ModalBody>
+
                         <ModalFooter>
-                        <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                            <Button color="primary" id="continue" onClick={this.handleSignupSequence}>Siguiente</Button>{' '}
+                            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                         </ModalFooter>
+
                     </Modal>
                 </div>
+            </div>
+        );
+    }
+
+    renderBodyOfForm() {
+        return(
+            <div>
+                <Popover placement="bottom" isOpen={this.state.hasError} target="continue" toggle={this.togglePopOver}>
+                    <PopoverHeader>Campos por completar</PopoverHeader>
+                    <PopoverBody>
+                        Todos los campos deben de estar llenos.
+                    </PopoverBody>
+                </Popover>
 
                 <FormGroup>
                     <Col>
@@ -191,8 +211,6 @@ class SignupPartOne extends Component {
                                 required />
                     </Col>
                 </FormGroup>
-                <Button color="danger" onClick={this.props.handleForm}>Cancel</Button>
-                <Button color="info" onClick={this.handleSignupSequence}>Siguiente</Button>
             </div>
         );
     }
@@ -215,9 +233,12 @@ class SignupPartOne extends Component {
 
     toggle() {
         this.setState({
-            hasError : false,
             modal : false,
         })
+    }
+
+    togglePopOver() {
+        
     }
     
 }

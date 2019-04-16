@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { FormGroup, Form, Col } from 'react-bootstrap';
-import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter, Popover, PopoverHeader, PopoverBody  } from 'reactstrap';
 import SignupPartThree from './SignupPartThree';
 class SignupPartTwo extends Component {
 
@@ -11,13 +11,15 @@ class SignupPartTwo extends Component {
             profilePicture: '',
             areas: [],
             description: '',
-            modal: false,
+            modal: true,
             shouldLoadPartThree: false,
-            email: ''
+            email: '',
+            hasError: false
         };
         // V i e w s
         this.renderForm = this.renderForm.bind(this);
         this.renderPartThree = this.renderPartThree.bind(this);
+        this.renderBodyOfForm = this.renderBodyOfForm.bind(this);
 
         // L o g i c
         this.handleAreaChange = this.handleAreaChange.bind(this);
@@ -43,26 +45,37 @@ class SignupPartTwo extends Component {
     renderForm(){
         return (
             <div>
-                <div>
-                    <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                        <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-                        <ModalBody>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </ModalBody>
-                        <ModalFooter>
-                        <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                    <ModalBody>
+                        {this.renderBodyOfForm()}
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="primary" id="continue" onClick={this.toggle}>Siguiente</Button>{' '}
                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-                        </ModalFooter>
-                    </Modal>
-                </div>
-                
+                    </ModalFooter>
+                </Modal>
+            </div>
+        );
+    }
+
+    renderBodyOfForm() {
+        return(
+            <div>
+                <Popover placement="bottom" isOpen={this.state.hasError} target="continue" toggle={this.togglePopOver}>
+                    <PopoverHeader>Campos por completar</PopoverHeader>
+                    <PopoverBody>
+                        Todos los campos deben de estar llenos.
+                    </PopoverBody>
+                </Popover>
+
                 <FormGroup>
                     <Form.Label>
                         Imagen de perfil
                     </Form.Label><br/>
                     <input  ref = {(ref) => {this.fileName = ref;}}
                             type="file"
-                            name="profile-picture"
+                            name="recfiles"
                             />
                     
                     <Col>
@@ -107,7 +120,6 @@ class SignupPartTwo extends Component {
         tutor_object.description = this.state.description;
         return(
             <SignupPartThree    returnToFormTwo={this.returnToFormTwo}
-                                emailChange = {this.handleEmailChange}
                                 email = {this.state.email}
                                 tutor = {tutor_object}
                                 
@@ -136,12 +148,6 @@ class SignupPartTwo extends Component {
     returnToFormTwo = () => {
         this.setState({
             shouldLoadPartThree: false
-        });
-    }
-
-    handleEmailChange = (email) => {
-        this.setState({
-            email: email
         });
     }
 
@@ -177,7 +183,6 @@ class SignupPartTwo extends Component {
 
     toggle() {
         this.setState({
-            hasError : false,
             modal : false,
         })
     }
