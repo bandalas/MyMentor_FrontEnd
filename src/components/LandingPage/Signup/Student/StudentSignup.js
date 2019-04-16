@@ -34,8 +34,6 @@ class StudentSignup extends Component {
                 <FormGroup>
             
 
-
-
         <div class="rest">
                     <Col>
                         <Form.Label>Nombre</Form.Label>

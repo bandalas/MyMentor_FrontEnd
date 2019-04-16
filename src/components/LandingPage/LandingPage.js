@@ -8,6 +8,7 @@ import Search from './Search/Search';
 import StudentDashboard from '../StudentDashboard/StudentDashboard';
 import TutorDashboard from '../TutorDashboard/TutorDashboard';
 import StudentSignup from './Signup/Student/StudentSignup';
+import TutorSignup from './Signup/Tutor/TutorSignup';
 
 class LandingPage extends Component {
 
@@ -39,6 +40,7 @@ class LandingPage extends Component {
                                 <Route path="/" component={Content} exact />
                                 <Route path="/signup" component={StudentSignup} exact/>
                                 <Route path="/search" component={Search} exact/>
+                                <Route path="/tutors" component={TutorSignup} exact/>
                             </Switch>
                         </div>
                     </BrowserRouter>
