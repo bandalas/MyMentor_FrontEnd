@@ -1,5 +1,6 @@
 import React, {Component}from 'react';
 import {Form, Button, Col } from 'react-bootstrap';
+import {Route, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import './login.css';
 import { NavLink} from 'react-router-dom';
@@ -14,6 +15,11 @@ class Login extends Component {
             email : '',
             password: '',
             wrong_data: false,
+            isAuthenticated: false,
+            redirect: false,
+            type: '',
+            token: '',
+            id: ''
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,6 +28,18 @@ class Login extends Component {
 
     render() {
         const hasError = this.state.wrong_data;
+        if(this.state.redirect) {
+            if(this.state.type === 'Tutor') {
+                this.props.handleLogin({
+                    authenticated: true,
+                    token: this.state.token,
+                    id: this.state.id
+                });
+            }
+            else if (this.state.type === 'Student') {
+                return <Redirect to='/student/dashboard' />
+            }
+        }
         return(
             <div id="login-card">
                 <h2>Iniciar sesión</h2>
@@ -39,7 +57,9 @@ class Login extends Component {
                             </Button>
                         </Col>
                     </div>
-                </Form>  
+                </Form>
+
+
             </div>
         );
     }
@@ -60,7 +80,6 @@ class Login extends Component {
             'password' : this.state.password
         };
         
-        
         axios.post('http://localhost:3001/auth', data)
             .then(value => {
                 if(value.data.record_not_found) {
@@ -69,20 +88,16 @@ class Login extends Component {
                 else {
                     this.setState({wrong_data: false})
                     const user_type = value.data.type;
-                    if (user_type === 'Student') {
-                        this.props.history.push('/student/dashboard');
-                        this.props.onUserLogin({
-                            authenticated: true,
-                            token: value.data.token,
-                            type: user_type
-                        });
-                    }
-                    else if (user_type === 'Tutor') {
-                        this.props.history.push('/tutor/dashboard');
-                        this.props.onUserLogin({
-                            authenticated: true,
-                            token: value.data.token,
-                            type: user_type
+                    const token = value.data.token;
+                    const id = value.data.user._id;
+
+                    if (user_type === 'Student' || user_type === 'Tutor') {
+                        this.setState({
+                            type: user_type,
+                            redirect: true,
+                            isAuthenticated: true,
+                            token: token,
+                            id: id
                         });
                     }
                 }

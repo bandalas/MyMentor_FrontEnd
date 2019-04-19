@@ -213,7 +213,6 @@ class SignupPartThree extends Component {
     storeTutor() {
         if(!this.state.taken) {
             const tutor = this.props.tutor;
-            console.log(tutor);
 
             const tutor_data = new FormData();
             tutor_data.append('img', tutor.img);
