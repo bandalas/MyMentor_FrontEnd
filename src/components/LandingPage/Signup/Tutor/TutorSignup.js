@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button } from 'reactstrap';
 import SignupPartOne from './SignupForm/SignupPartOne';
 
 class TutorSignup extends Component {

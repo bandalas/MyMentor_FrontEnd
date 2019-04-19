@@ -12,7 +12,8 @@ class App extends Component {
     this.state = {
       authenticated: false,
       token: '',
-      id: ''
+      id: '',
+      type: ''
     }
     this.handleAuthenticationChange = this.handleAuthenticationChange.bind(this);
   }
@@ -24,9 +25,14 @@ class App extends Component {
       );
     }
     else {
-      return(
-        <TutorDashboard token={this.state.token} id={this.state.id}/>
-      )
+      if(this.state.type === 'Student') {
+
+      }
+      else if(this.state.type === 'Tutor') {
+        return(
+          <TutorDashboard token={this.state.token} id={this.state.id}/>
+          )
+      }
     }
     
   }
