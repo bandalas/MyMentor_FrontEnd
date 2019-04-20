@@ -10,39 +10,46 @@ class StudentDashboard extends Component{
     
     constructor(props) {
        super(props);
-       console.log(props.token);
+       // Functions that will handle the view
+       this.renderNavigation = this.renderNavigation.bind(this);
     }
 
     render() {
         return(
             <div>
                 <div id='student-navigation'> 
-                    <BrowserRouter>
-                        <div>
-                            <NavBar />
-                            <Switch>
-                                <Route  path="/student/search/mentor"
-                                        render = {
-                                            (props) => <MentorByRating {...props} token={this.props.token} />
-                                        }
-                                        exact/>
-                                <Route  path="/student/dashboard"
-                                        render = {
-                                            (props) => <StudentDashboardContent {...props} token={this.props.token} />
-                                        }
-                                        exact/>
-                                <Route  path="/student/search/class"
-                                        render = {
-                                            (props) => <ClassByAvailability {...props} token={this.props.token} />
-                                        }
-                                        exact />
-                            </Switch>
-                        </div>
-                    </BrowserRouter>
+                   { this.renderNavigation()}
                 </div>
                 
                 {/* <ClassCarousel token={this.props.token} /> */}
             </div>
+        );
+    }
+
+    renderNavigation() {
+        return(
+            <BrowserRouter>
+                <div>
+                    <NavBar />
+                    <Switch>
+                        <Route  path="/student/search/mentor"
+                                render = {
+                                    (props) => <MentorByRating {...props} token={this.props.token} />
+                                }
+                                exact/>
+                        <Route  path="/student/dashboard"
+                                render = {
+                                    (props) => <StudentDashboardContent {...props} token={this.props.token} />
+                                }
+                                exact/>
+                        <Route  path="/student/search/class"
+                                render = {
+                                    (props) => <ClassByAvailability {...props} token={this.props.token} />
+                                }
+                                exact />
+                    </Switch>
+                </div>
+            </BrowserRouter>
         );
     }
 }
