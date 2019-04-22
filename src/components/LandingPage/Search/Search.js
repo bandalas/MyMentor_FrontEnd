@@ -34,12 +34,12 @@ class Search extends Component {
 
     render() {
       return (
-        <div class="search-form">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="input-group" id="adv-search">
+        <div className="search-form">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="input-group" id="adv-search">
                   <Input name="name" handleInputChange={this.handleInputChange}></Input>
-                  <div class="input-group-btn">
+                  <div className="input-group-btn">
                       <Button variant="outline-info" onClick={this.handleShowModal}>
                         Filtros
                       </Button>
@@ -123,9 +123,9 @@ class Search extends Component {
               </div>
             </div>
           </div>
-          <div class="row mt-4">
-              <div class="col-lg-12">
-                  <table class="table" id="table">
+          <div className="row mt-4">
+              <div className="col-lg-12">
+                  <table className="table" id="table">
                       <thead>
                           <tr>
                               <th>Nombre</th>
@@ -154,32 +154,25 @@ class Search extends Component {
     handleCloseModal(event) {
       if(event && event.target.id === "update-filters") {
         let inputs = document.getElementsByClassName("input-group");
-        let anyChecked = false;
         // Get text filters
         for (var i = 1; i < inputs.length; i++) {
           let isChecked = inputs[i].getElementsByClassName("input-group-text")[0].children[0].checked;
           let input = inputs[i].children[1];
-          if(isChecked) {
-            anyChecked = true;
-            this.state[input.id] = input.value;
-          }
-          else {
-            this.state[input.id] = "";
-          }
-        }
-        // Get star filter
-        let stars = parseInt(document.getElementsByClassName("star-ratings")[0].title);
-        if(stars > 0) {
-          anyChecked = true;
-          this.state["average"] = stars;
-        }
-        else {
-          this.state["average"] = "";
+
+          this.setState({ [input.id] : input.value }, () => {
+            if(isChecked) {
+              this.performPostAction();
+            }
+          })
         }
 
-        if(anyChecked) {
-          this.performPostAction();
-        }
+        // Get star filter
+        let stars = parseInt(document.getElementsByClassName("star-ratings")[0].title);
+        this.setState({ "average" : stars }, () => {
+          if(stars > 0) {
+            this.performPostAction();
+          }
+        })
       }
       this.setState({ showModal: false });
     }
@@ -188,25 +181,21 @@ class Search extends Component {
       this.setState({ showModal: true, stars: 0 });
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
-        this.performPostAction();
-    }
-
     handleInputChange(input) {
       console.log(input)
-        this.state[input.name] = input.value; // setState doesnt work until second search :/
+      this.setState({ [input.name] : input.value }, () => {
         console.log(this.state.name)
         if (this.state.name.length !== "") {
           this.performPostAction();
         }
         console.log(this.state.results);
+      })
     }
 
     handleFormInput(event) {
       let input = event.target.parentElement.getElementsByClassName("input-group-text")[0];
       let checkbox = input.children[0];
-      checkbox.checked = event.target.value.length !== ""
+      checkbox.checked = event.target.value !== ""
     }
 
     changeRating( newRating, name ) {

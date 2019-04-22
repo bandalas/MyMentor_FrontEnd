@@ -11,7 +11,7 @@ class Input extends Component {
 
     render() {
       return(
-        <input type="text" class="form-control" placeholder="Buscar clases..." onChange={this.onChange}/>
+        <input type="text" className="form-control" placeholder="Buscar clases..." onChange={this.onChange}/>
       );
     }
 
