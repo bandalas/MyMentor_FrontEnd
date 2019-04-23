@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import './ClassCard.css'
 
 class ClassEditor extends Component {
     constructor(props) {
@@ -20,21 +22,20 @@ class ClassEditor extends Component {
 
     render() {
         return(
-            <div className='editor-container'>
-                <div className='left'>
-                    <h1>{this.props.name}</h1>
-                    <p>Materia: {this.props.subject}</p>
-                    <p>Descripción: {this.props.description}</p>
-                    <p>Fecha: {this.state.date}</p>
-                    <p>Hora: {this.state.time} hrs.</p>
-                </div>
-                <div className='right'>
-                    <Button color='info'>Editar</Button>
-                    <Button     color='danger'
-                        // Function that cancels the current selected class
-                                onClick={this.cancelCurrentClass}>Cancelar</Button>
-                </div>
-            </div>
+            <Card className="tutor-class" id={this.props.id}>
+              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Body>
+                <Card.Title>{this.props.name}</Card.Title>
+                <Card.Text>
+                  <p><b>Materia:</b> {this.props.subject}</p>
+                  <p><b>Descripción:</b> {this.props.description}</p>
+                  <p><b>Fecha:</b> {this.state.date}</p>
+                  <p><b>Hora:</b> {this.state.time} hrs.</p>
+                </Card.Text>
+                <Button variant='info'>Editar</Button>
+                <Button variant='danger' onClick={this.cancelCurrentClass}>Cancelar</Button>
+              </Card.Body>
+            </Card>
         );
     }
 
@@ -76,22 +77,25 @@ class ClassEditor extends Component {
     * 
     *   *   *   *   *   *   *   *   *   *   *   *   *   */
     // Function that cancels the current selected class
-    cancelCurrentClass() {
-        const id = this.props.id;
-        const url = 'http://localhost:3001/tutors/cancel-class/'+id
-        const token = this.props.token;
-        const headers = {
-            'Content-Type': 'application/json',
-            'x-auth-token' : token 
-        };
-        // Since it's a put method, it expects a change in the second parameter
-        axios.put(url, { } ,{headers})
-            .then( response => {
-                console.log(response);
-            })
-            .catch( error => {
-                console.log(error);
-            });
+    cancelCurrentClass(event) {
+        if(window.confirm("Está seguro que desea cancelar la clase?")) {
+            const id = this.props.id;
+            const url = 'http://localhost:3001/tutors/cancel-class/' + id
+            const token = this.props.token;
+            const headers = {
+                'Content-Type': 'application/json',
+                'x-auth-token' : token 
+            };
+            // Since it's a put method, it expects a change in the second parameter
+            axios.put(url, { } ,{headers})
+                .then( response => {
+                    this.props.deleteCard(this.props.id);
+                    console.log(response);
+                })
+                .catch( error => {
+                    console.log(error);
+                });
+        }
     }
 }
 export default ClassEditor;

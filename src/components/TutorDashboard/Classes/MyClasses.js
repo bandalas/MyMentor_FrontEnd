@@ -17,13 +17,14 @@ class MyClasses extends Component {
         this.getAllAvailableTutorClass = this.getAllAvailableTutorClass.bind(this);
         this.displayModal = this.displayModal.bind(this);
         this.displayAllClasses = this.displayAllClasses.bind(this);
+        this.deleteCard = this.deleteCard.bind(this);
     }
 
     componentDidMount() {
         this.getAllAvailableTutorClass();
     }
 
-    render(){
+    render() {
         console.log(this.state.classes);
         return(
             <div> 
@@ -87,17 +88,27 @@ class MyClasses extends Component {
         return(
             <div>
                 {this.state.classes.map( current_class => {
-                    return (<ClassEditor    key = {current_class._id}
-                                            id = {current_class._id}
+                    return (<ClassEditor    id = {current_class._id}
                                             token = {this.props.token}
                                             name = {current_class.name}
                                             subject = {current_class.subject}
                                             area = {current_class.area}
                                             description = {current_class.description}
-                                            date = {current_class.date} />)
+                                            date = {current_class.date}
+                                            deleteCard = {this.deleteCard} />)
                 })}
             </div>
         );
+    }
+
+    // Removes card element from array
+    deleteCard(id) {
+        let array = [...this.state.classes];
+        let index = this.state.classes.findIndex(tutorClass => tutorClass._id === id);
+        array.splice(index, 1)
+        this.setState({
+            classes: array
+        })
     }
 }
 export default MyClasses;
