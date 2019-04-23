@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Header.css';
+import '../../../Navbar.css';
 import { NavLink } from 'react-router-dom';
 
 class LandingNavBar extends Component {
