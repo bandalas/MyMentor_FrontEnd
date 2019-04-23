@@ -5,6 +5,7 @@ import TutorDashboardContent from './Content/TutorDashboardContent';
 import Notifications from './Notifications/Notifications';
 import Bookings from './Classes/Booking/Booking';
 import MyClasses from './Classes/MyClasses';
+import Search from '../LandingPage/Search/Search';
 
 class TutorDashboard extends Component{
     
@@ -25,31 +26,32 @@ class TutorDashboard extends Component{
                 <div id='tutor-navigation'> 
                     <BrowserRouter>
                         <div>
-                            <NavBarTutor />
+                            <NavBarTutor/>
                             <Switch>
-                            <Route  path="/tutor/dashboard"
-                                    render = {
-                                        (props) => <TutorDashboardContent {...props} token={this.props.token} />
-                                    }
-                                    exact/>
+                                <Route  path="/search" component={Search} exact/>
+                                <Route  path="/tutor/dashboard"
+                                        render = {
+                                            (props) => <TutorDashboardContent {...props} token={this.props.token} />
+                                        }
+                                        exact/>
 
-                            <Route  path="/tutor/classes"
-                                    render = {
-                                        (props) => <MyClasses {...props} token={this.props.token}
-                                                                            id={this.props.id} />
-                                    }
-                                    exact/>
+                                <Route  path="/tutor/classes"
+                                        render = {
+                                            (props) => <MyClasses {...props} token={this.props.token}
+                                                                                id={this.props.id} />
+                                        }
+                                        exact/>
 
-                            <Route  path="/tutor/notifications"
-                                    render = {
-                                        (props) => <Notifications {...props} token={this.props.token} />
-                                    }
-                                    exact/>
-                            <Route  path="/tutor/bookings"
-                                    render = {
-                                        (props) => <Bookings {...props} token={this.props.token} />
-                                    }
-                                    exact/>
+                                <Route  path="/tutor/notifications"
+                                        render = {
+                                            (props) => <Notifications {...props} token={this.props.token} />
+                                        }
+                                        exact/>
+                                <Route  path="/tutor/bookings"
+                                        render = {
+                                            (props) => <Bookings {...props} token={this.props.token} />
+                                        }
+                                        exact/>
                             
                             </Switch>
                         </div>
