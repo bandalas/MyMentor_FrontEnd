@@ -11,13 +11,13 @@ class Bookings extends Component {
         return(
             <div className="booking-tabs">
                 <Tabs defaultActiveKey="pending" id="booking-tabs">
-                    <Tab eventKey="pending" title="Pendientes">
-                       <Pending token={this.props.token}/>
+                    <Tab eventKey="pending" title="Pendientes" className="tab">
+                        <Pending token={this.props.token}/>
                     </Tab>
-                    <Tab eventKey="accepted" title="Acceptadas">
+                    <Tab eventKey="accepted" title="Acceptadas" className="tab">
                         <Accepted token={this.props.token}/>
                     </Tab>
-                    <Tab eventKey="cancelled" title="Canceladas">
+                    <Tab eventKey="cancelled" title="Canceladas" className="tab">
                         <Cancelled token={this.props.token}/>
                     </Tab>
                 </Tabs>                    

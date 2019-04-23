@@ -22,10 +22,13 @@ class Pending extends Component {
             <div id='cancelled-container'>
                 {this.state.raw_cancelled.map(booking => {
                     return (<BookingCard    key={booking._id}
+                                            token={this.props.token}
+                                            id={booking._id}
                                             tutor={booking.tutor}
                                             booked_class={booking.booked_class}
                                             student={booking.student}
-                                            
+                                            status={booking.status}
+                                            refreshBookings={this.fetchCancelledBookings}
                             />)
                 })}    
             </div>

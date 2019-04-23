@@ -19,16 +19,18 @@ class Accepted extends Component {
     render() {
         
         return(
-            <div id='accepted-container'>
-                {this.state.raw_accepted.map(booking => {
-                    return (<BookingCard    key={booking._id}
-                                            tutor={booking.tutor}
-                                            booked_class={booking.booked_class}
-                                            student={booking.student}
-                                            
-                            />)
-                })}    
-            </div>
+            this.state.raw_accepted.map(booking => {
+                return (<BookingCard    key={booking._id}
+                                        token={this.props.token}
+                                        id={booking._id}
+                                        tutor={booking.tutor}
+                                        booked_class={booking.booked_class}
+                                        student={booking.student}
+                                        status={booking.status}
+                                        refreshBookings={this.fetchAcceptedBookings}
+                                        
+                        />)
+            })
         );
     }
 

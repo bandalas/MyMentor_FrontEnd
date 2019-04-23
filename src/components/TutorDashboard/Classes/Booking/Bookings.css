@@ -4,3 +4,8 @@
     height: 600px;
     overflow: scroll;
 }
+
+.tab {
+    padding: 10px;
+    margin-bottom: 10px;
+}
