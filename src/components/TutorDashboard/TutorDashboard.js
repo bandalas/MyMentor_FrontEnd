@@ -5,7 +5,9 @@ import TutorDashboardContent from './Content/TutorDashboardContent';
 import Notifications from './Notifications/Notifications';
 import Bookings from './Classes/Booking/Booking';
 import MyClasses from './Classes/MyClasses';
+
 import Search from '../LandingPage/Search/Search';
+import Reviews from './Reviews/Reviews';
 
 class TutorDashboard extends Component{
     
@@ -53,6 +55,12 @@ class TutorDashboard extends Component{
                                         }
                                         exact/>
                             
+                               <Route  path="/tutors/reviews"
+                                    render = {
+                                        (props) => <Reviews {...props} token={this.props.token} />
+                                    }
+                                    exact/>
+
                             </Switch>
                         </div>
                     </BrowserRouter>
