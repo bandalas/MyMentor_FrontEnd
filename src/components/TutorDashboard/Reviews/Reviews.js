@@ -31,6 +31,8 @@ class Reviews extends Component {
                                             comment={reviews.comment}
                                             stars={reviews.stars}
                                             date={reviews.date}
+                                            id = {reviews._id}
+                                            token = {this.props.token}
 
                                             
                             />)
