@@ -24,7 +24,7 @@ class MentorByRating extends Component {
                     <MentorCard key={mentor._id}
                                 firstName={mentor.firstName}
                                 lastName={mentor.lastName}
-                                stars={mentor.stars}
+                                rating={mentor.rating}
                                 description={mentor.description}
                     />
                 ))}
