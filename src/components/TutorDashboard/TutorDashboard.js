@@ -12,9 +12,6 @@ class TutorDashboard extends Component{
     constructor(props) {
        super(props);
        console.log(props.token);
-       this.state = {
-           isAuthenticated : false
-       };
     }
 
     render() {

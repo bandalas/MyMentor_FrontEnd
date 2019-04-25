@@ -16,7 +16,6 @@ class Login extends Component {
             password: '',
             // Data for view
             wrong_data: false,
-            isAuthenticated: false,
             // Data for authentication
             type: '',
             token: '',
@@ -32,15 +31,6 @@ class Login extends Component {
     }
 
     render() {
-        if(this.state.isAuthenticated) {
-            // If the user is authenticated, we tell the parent so the new view is loaded
-            this.props.handleLogin({
-                authenticated: true,
-                token: this.state.token,
-                id: this.state.id,
-                type: this.state.type
-            });
-        }
         return(
             <div id="login-card">
                 <h2>Iniciar sesión</h2>
@@ -115,18 +105,16 @@ class Login extends Component {
                     this.setState({wrong_data: true})
                 }
                 else {
-                    this.setState({wrong_data: false})
-                    const user_type = value.data.type;
                     const token = value.data.token;
                     const id = value.data.user._id;
-                    if (user_type === 'Student' || user_type === 'Tutor') {
-                        this.setState({
-                            type: user_type,
-                            isAuthenticated: true,
-                            token: token,
-                            id: id
-                        });
-                    }
+                    const user_type = value.data.type;
+                    // Give access
+                    this.props.handleLogin({
+                        isAuthenticated: true,
+                        token: token,
+                        id: id,
+                        type: user_type
+                    });
                 }
             })
             .catch(reason => {

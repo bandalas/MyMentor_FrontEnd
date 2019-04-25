@@ -4,6 +4,7 @@ import './index.css';
 import LandingPage from './components/LandingPage/LandingPage';
 import TutorDashboard from './components/TutorDashboard/TutorDashboard';
 import StudentDashboard from './components/StudentDashboard/StudentDashboard';
+import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 
 class App extends Component {
 
@@ -13,19 +14,19 @@ class App extends Component {
       authenticated: false,
       token: '',
       id: '',
-      type: '',
       type: ''
     }
     this.handleAuthenticationChange = this.handleAuthenticationChange.bind(this);
   }
 
-  render() { 
+  render() {
     if(!this.state.authenticated) {
       return(
         <LandingPage handleLogin={this.handleAuthenticationChange} />
       );
     }
     else {
+      console.log(this.state.type)
       if(this.state.type === 'Student') {
         return(
           <StudentDashboard  token={this.state.token} />
@@ -36,13 +37,18 @@ class App extends Component {
           <TutorDashboard token={this.state.token} id={this.state.id}/>
         );
       }
+      else if(this.state.type === 'Admin') {
+        return (
+          <AdminDashboard token={this.state.token}/>
+        );
+      }
     }
     
   }
 
   handleAuthenticationChange(data) {
     this.setState({
-      authenticated: data.authenticated,
+      authenticated: data.isAuthenticated,
       token: data.token,
       id: data.id,
       type: data.type
