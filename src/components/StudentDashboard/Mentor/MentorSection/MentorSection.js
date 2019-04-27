@@ -18,7 +18,6 @@ class MentorSection extends Component {
     }
 
     render() {
-        console.log(this.state.topMentors)
         return(
             <div className='top-mentors-section'>
                 <h1 id="jumboh1" className="jumbotron">Mentores mejor calificados</h1>
@@ -28,6 +27,7 @@ class MentorSection extends Component {
                                 lastName={mentor.lastName}
                                 rating={mentor.rating}
                                 description={mentor.description}
+                                image={mentor.img}
                     />
                 ))}
             </div>
