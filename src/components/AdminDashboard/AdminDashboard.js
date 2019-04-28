@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-import { fetchUtils, Admin, Resource, ListGuesser } from 'react-admin';
-import { ClassList, TutorList, ReportList } from './Lists/Lists';
+import { fetchUtils, Admin, Resource, ShowGuesser, ListGuesser } from 'react-admin';
+import { ClassList, TutorList, ReportList, StudentList, ReviewList } from './Lists/Lists';
+import { ReportShow } from './Show/Show';
 import jsonServerProvider from 'ra-data-json-server';
 
 class AdminDashboard extends Component {
@@ -16,9 +17,11 @@ class AdminDashboard extends Component {
         return (
             <div>
                 <Admin dataProvider={this.api()}>
-                    <Resource name="admins/reports" list={ReportList} options={{ label: 'Reportes' }}/>
                     <Resource name="admins/classes" list={ClassList} options={{ label: 'Clases' }}/>
                     <Resource name="admins/tutors" list={TutorList} options={{ label: 'Tutores' }}/>
+                    <Resource name="admins/students" list={StudentList} options={{ label: 'Estudiantes' }}/>
+                    <Resource name="admins/reports" list={ReportList} show={ReportShow} options={{ label: 'Reportes' }}/>
+                    <Resource name="admins/reviews" list={ReviewList} options={{ label: 'Reseñas' }}/>
                 </Admin>
             </div>
         );
