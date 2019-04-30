@@ -12,7 +12,7 @@ class ProfileCard extends Component {
             picture goes here
 </div>
             <div class="outer">
-                <p>Nombre: {this.props.fistname} {this.props.ln}</p>
+                <p>Nombre: {this.props.firstName} {this.props.lastName}</p>
                 <p>Email: {this.props.email}</p>
                 <p>Institucion: {this.props.institution}</p>
                 <p>Semestre: {this.props.semester} Estrellas</p>

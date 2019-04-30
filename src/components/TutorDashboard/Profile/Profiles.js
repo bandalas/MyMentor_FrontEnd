@@ -28,12 +28,13 @@ class Profiles extends Component {
               <div id='userinfo-container'>
 
                 {this.state.userinfo.map(userinfo => {
-                    return (<ProfileCard       firstname={userinfo.firstname}
-                    lastname={userinfo.ln}
-                    email= {userinfo.em}
-                    institution= {userinfo.instit}
-                    semester= {userinfo.sems}
-                    description= {userinfo.dsc}            
+                    return (<ProfileCard       
+                    firstName={userinfo.firstName}
+                    lastName={userinfo.lastName}
+                    email= {userinfo.email}
+                    institution= {userinfo.institution}
+                    semester= {userinfo.semester}
+                    description= {userinfo.description}            
                             />)
                 })}    
             </div>

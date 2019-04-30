@@ -61,8 +61,8 @@ class TutorDashboard extends Component{
                                <Route  path="/tutors/profile"
                                     render = {
                                         (props) => <Profile {...props}  token={this.props.token}                
-                                                                        fn={this.props.firstname} 
-                                                                        ln={this.props.lastname} 
+                                                                        fn={this.props.firstName} 
+                                                                        ln={this.props.lastName}
                                                                         em={this.props.email} 
                                                                         instit={this.props.institution} 
                                                                         sems={this.props.semester} 
