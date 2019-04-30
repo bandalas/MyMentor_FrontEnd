@@ -5,6 +5,7 @@ import TutorDashboardContent from './Content/TutorDashboardContent';
 import Notifications from './Notifications/Notifications';
 import Bookings from './Classes/Booking/Booking';
 import MyClasses from './Classes/MyClasses';
+import Profile from './Profile/Profiles';
 
 import Search from '../LandingPage/Search/Search';
 import Reviews from './Reviews/Reviews';
@@ -55,6 +56,17 @@ class TutorDashboard extends Component{
                                <Route  path="/tutors/reviews"
                                     render = {
                                         (props) => <Reviews {...props} token={this.props.token} />
+                                    }
+                                    exact/>
+                               <Route  path="/tutors/profile"
+                                    render = {
+                                        (props) => <Profile {...props}  token={this.props.token}                
+                                                                        fn={this.props.firstname} 
+                                                                        ln={this.props.lastname} 
+                                                                        em={this.props.email} 
+                                                                        instit={this.props.institution} 
+                                                                        sems={this.props.semester} 
+                                                                        dsc={this.props.description} />
                                     }
                                     exact/>
 

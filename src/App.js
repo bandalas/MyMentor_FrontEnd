@@ -34,7 +34,7 @@ class App extends Component {
       }
       else if(this.state.type === 'Tutor') {
         return(
-          <TutorDashboard token={this.state.token} id={this.state.id}/>
+          <TutorDashboard token={this.state.token} id={this.state.id} fn={this.state.firstname} ln={this.state.lastname} em={this.state.email} instit={this.state.institution} sems={this.state.semester} dsc={this.state.description}/>
         );
       }
       else if(this.state.type === 'Admin') {
