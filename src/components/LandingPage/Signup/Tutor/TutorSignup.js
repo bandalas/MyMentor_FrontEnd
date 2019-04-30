@@ -54,19 +54,14 @@ class TutorSignup extends Component {
                     </div>
                     <div id="text_tutor">
                         <p>El ayudar a sus estudiantes a tener éxito es la mejor parte de su trabajo. Al hacer que ellos se apoyen en usted como tutor, y al compartir sus conocimientos con ellos, está haciendo una diferencia en sus vidas y, a su vez, ayudándolos a crecer académicamente.</p>
-                        <p>
-                            Es ahi en donde el tutores en linea resulta una alternativa atractiva y practica no solo para los estudiantes, sino para los tutores en sí.
-                        </p>
-                        <p>
-                            Beneficios de ser un tutor:
-                        </p>
+                        <p>Beneficios de ser tutor:</p>
                         <ol>
-                            <li>
-                                Horarios flexibles de enseñanza
-                                <ul>
-                                    <li> Puedes crear un horario flexible basado en cuando desea trabajar</li>
-                                </ul>
-                            </li>
+                            <li>Mayor visibilidad y más alumnos.</li>
+                            <li>Autoempleo e independencia.</li>
+                            <li>Sólo te preocupas por enseñar, nosotros hacemos todo lo demás.</li>
+                            <li>Incrementa tus ingresos.</li>
+                            <li>Cobros seguros de tus clases y pagos cómodos.</li>
+                            <li>Clases seguras en lugares seguros</li>
                         </ol>
                     </div>
                     <div className="wrapper">
