@@ -1,19 +1,30 @@
 /* 
     Signup Component
 */
-
-
-.card {
-background-color: white;
-width: 50%;
-margin-left: auto;
-margin-right: auto;
-margin-top: 3%;
-margin-bottom: 3%;
-box-shadow: 0 0 1px 1px rgba(20,23,28,0.1);
-
-
+/* //    colores para el iniciar sesion y posiblemente otras areas 
+// #6BD16F
+// #FEE93E
+// #9AD94D */
+#jubmt_student{
+    color: white;
+    text-align: center;
+    background-image: linear-gradient(to right, #6BD16F,#9AD94D,#FEE93E);
 }
+
+.jumbotron{
+    margin-bottom: 0; 
+}
+
+.fm_student {
+background-color: white;
+width: 100%;
+box-shadow: 0 0 1px 1px rgba(20,23,28,0.1);
+/* margin-bottom: 3%; */
+}
+
+/* .form-group{
+    margin: 0;
+} */
 
 .title {
 text-align: center;
@@ -21,8 +32,10 @@ padding-top: 50px;
 }
 
 .rest {
-margin-left: 20%;
-margin-right: auto;
-width: 50%;
-padding-bottom: 20px
+margin: 0 20%;
+}
+
+.lbl{
+    font-style: normal;
+
 }

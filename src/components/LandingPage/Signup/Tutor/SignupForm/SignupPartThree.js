@@ -72,11 +72,13 @@ class SignupPartThree extends Component {
 
                 <FormGroup>
                     <Col>
-                        <Form.Label>Correo Electrónico</Form.Label>
+                        <Form.Label className="input_label">Correo Electrónico</Form.Label>
                     </Col>
                     <Col>
                         {this.state.taken ? (<FormGroup>
-                                                <Input  type = "email"
+                                                <Input  
+                                                        // className="input_field"
+                                                        type = "email"
                                                         invalid
                                                         value = {this.state.email}
                                                         onChange = {this.handleEmailChange}
@@ -84,7 +86,9 @@ class SignupPartThree extends Component {
                                                 <FormFeedback>Oh no! El correo ya está registrado</FormFeedback>
                                              </FormGroup>)
                                           : (<FormGroup>
-                                              <Input  type = "email"
+                                              <Input  
+                                                // className="input_field"
+                                                type = "email"
                                                 value = {this.state.email}
                                                 onChange = {this.handleEmailChange}
                                                 />
@@ -92,10 +96,12 @@ class SignupPartThree extends Component {
                     </Col>
                     
                     <Col>
-                        <Form.Label>Contraseña</Form.Label>
+                        <Form.Label className="input_label">Contraseña</Form.Label>
                     </Col>
                     <Col>
-                        <Input  type = "password"
+                        <Input  
+                                className="input_field"
+                                type = "password"
                                 onChange = {this.handlePasswordChange}
                                 />
                     </Col>
@@ -104,8 +110,10 @@ class SignupPartThree extends Component {
                     <Col>
                         {this.state.match ? ( <FormGroup>
                                                 <Col>
-                                                 <Form.Label>Reingrese la contraseña</Form.Label>
-                                                 <Input  type = "password"
+                                                 <Form.Label className="input_label">Reingrese la contraseña</Form.Label>
+                                                 <Input  
+                                                    className="input_field"
+                                                    type = "password"
                                                     onChange = {this.handlePasswordConfirmationChange}/>
                                                 </Col>
                                               </FormGroup>
@@ -114,7 +122,9 @@ class SignupPartThree extends Component {
                                                 <FormGroup>
                                                 <Col>
                                                  <Form.Label>Reingrese la contraseña</Form.Label>
-                                                  <Input  type = "password"
+                                                  <Input  
+                                                    className="input_field"
+                                                    type = "password"
                                                      invalid
                                                      onChange = {this.handlePasswordConfirmationChange}/>
                                                   <FormFeedback>Las contraseñas deben de ser igual</FormFeedback>
