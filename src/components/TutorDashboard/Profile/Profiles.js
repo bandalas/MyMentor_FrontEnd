@@ -49,7 +49,7 @@ getuserInfo() {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-        const url ='http://localhost:3001/tutors/';
+        const url ='http://localhost:3001/tutors/userinfo';
         axios.get(url, {headers})
             .then(response => {
                 const userinfo = response.data;
