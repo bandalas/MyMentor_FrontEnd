@@ -46,7 +46,7 @@ class SignupPartThree extends Component {
             return(
                     <div>
                         <Modal isOpen={this.state.modal} toggle={this.toggle} >
-                            <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                            <ModalHeader toggle={this.toggle}>Parte 3: Tus claves</ModalHeader>
                             <ModalBody>
                                 {this.renderBodyOfForm()}
                             </ModalBody>
@@ -186,7 +186,7 @@ class SignupPartThree extends Component {
         const req_body = {
             tutor_email: this.state.email
         };
-        axios.post('http://localhost:3001/tutors/email', req_body)
+        axios.post('https://young-fortress-54541.herokuapp.com/tutors/email', req_body)
             .then((response) => {
                 this.setState({
                     taken: response.data.found
@@ -232,9 +232,8 @@ class SignupPartThree extends Component {
                 }
             };
 
-            axios.post('http://localhost:3001/tutors/signup', tutor_data, config)
+            axios.post('https://young-fortress-54541.herokuapp.com/tutors/signup', tutor_data, config)
                 .then((response) => {
-                    console.log('should redirect');
                     this.setState({
                         redirect:true
                     });

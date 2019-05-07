@@ -47,7 +47,7 @@ class SignupPartTwo extends Component {
         return (
             <div>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                    <ModalHeader toggle={this.toggle}>Paso 2: Cuentanos de ti</ModalHeader>
 
                     <ModalBody>
                         {this.renderBodyOfForm()}
