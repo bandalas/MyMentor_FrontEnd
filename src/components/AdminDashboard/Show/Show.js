@@ -1,5 +1,5 @@
 import React from 'react';
-
+import axios from 'axios';
 import { Show, SimpleShowLayout, TextField, DateField, EditButton, DeleteButton, ReferenceField } from 'react-admin';
 import { FullNameField } from '../Fields/Fields';
 
@@ -37,6 +37,26 @@ export const ReportShow = (props) => (
     </Show>
 );
 
-    
+    function deleteReview() {
+}
+
+function censorReview(){
+
+        const headers = {
+            'Content-Type': 'application/json'
+        }
+        const params = {
+           'id': this.props.data.id
+}
+        const url ='http://localhost:3001/admins/new-review/:id';
+        axios.put(url, {headers}, {params} )
+            .then(response => {
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+
 }
 
