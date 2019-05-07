@@ -24,7 +24,9 @@ class Reviews extends Component {
 
     render() {
         return(
+
               <div id='review-container'>
+
                 {this.state.reviews.map(reviews => {
                     return (<ReviewCard    student={reviews.student}
                                             class={reviews.class}

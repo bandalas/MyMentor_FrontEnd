@@ -11,6 +11,8 @@ class NavBar extends Component {
                     <NavLink to='/student/dashboard'>Home</NavLink>
                     <NavLink to='/student/search/mentor'>Mentores</NavLink>
                     <NavLink to='/student/search/class'>Clases</NavLink>
+                    <NavLink to='/login'>Logout</NavLink>
+                    
                 </div>
             </div>
         );

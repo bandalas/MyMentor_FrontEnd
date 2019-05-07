@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Show, SimpleShowLayout, TextField, DateField, EditButton, DeleteButton, ReferenceField } from 'react-admin';
 import { FullNameField } from '../Fields/Fields';
 
@@ -11,10 +12,13 @@ const cardActionStyle = {
     float: 'right',
 };
 
+
+
+
 const ReportShowActions = ({ basePath, data, resource }) => (
     <CardActions style={cardActionStyle}>
         <Button color="primary" onClick={deleteReview}>Regresar</Button>
-        <EditButton basePath={basePath} record={data}/>
+        <EditButton basePath={basePath} onClick={censorReview} record={data}/>
         <DeleteButton basePath={basePath} record={data}/>
     </CardActions>
 );
@@ -33,6 +37,6 @@ export const ReportShow = (props) => (
     </Show>
 );
 
-function deleteReview() {
     
 }
+

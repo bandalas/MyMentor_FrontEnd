@@ -15,6 +15,8 @@ class NavBarTutor extends Component {
                     <NavLink to='/tutor/notifications'>Mis Notificaciones</NavLink>
                     <NavLink to='/tutor/bookings'>Mis Reservaciones</NavLink>
                     <NavLink to='/tutors/reviews'>Reviews de mi</NavLink>
+                    <NavLink to='/tutors/profile'>Yo</NavLink>
+                    <NavLink to='/login'>Logout</NavLink>
                 </div>
             </div>
         );
