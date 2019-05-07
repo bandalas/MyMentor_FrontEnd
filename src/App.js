@@ -13,45 +13,31 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      authenticated: false,
-      //token: '',
-      //token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2FhNzVkMjNjMDA0NzE5YTc4NDdiZGQiLCJuYW1lIjoiQXJpYWRuYSIsInR5cGUiOiJTdHVkZW50IiwiaWF0IjoxNTU2MzgyMjk1fQ.2899RnlF5wxLEfTDyg_hXmXpha4E3hWwkj8wZMgSa24',
-      //id: '5caa75d23c004719a7847bdd',
-      id: '',
-      type: ''
-      //type: 'Student',
+      token: localStorage.getItem('token'),
+      id: localStorage.getItem('id'),
+      type: localStorage.getItem('type')
     }
     this.handleAuth = this.handleAuth.bind(this);
   }
 
-  render() { 
-    return(
-      <BrowserRouter>
-        <div>
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/student/dashboard' component={ studentAuth(StudentDashboard, this.state.token) }/>
-          <Route exact path='/' render={() => <LandingPage handleLogin={this.handleAuthenticationChange}/>} />
-        </div>
-      </BrowserRouter>
-    );
-
-    // if(!this.state.authenticated) {
-    //   return(
-    //     <LandingPage handleLogin={this.handleAuthenticationChange} />
-    //   );
-    // }
-    // else {
-    //   if(this.state.type === 'Student') {
-    //     return(
-    //       <StudentDashboard  token={this.state.token} />
-    //     );
-    //   }
-    //   else if(this.state.type === 'Tutor') {
-    //     return(
-    //       <TutorDashboard token={this.state.token} id={this.state.id}/>
-    //     );
-    //   }
-    // }
+  render() {
+    if(!this.state.token) {
+      return(
+        <LandingPage handleLogin={this.handleAuth} />
+      );
+    }
+    else {
+      console.log(this.state.type)
+      if(this.state.type === 'Student') {
+        return(<StudentDashboard/>);
+      }
+      else if(this.state.type === 'Tutor') {
+        return(<TutorDashboard/>);
+      }
+      else if(this.state.type === 'Admin') {
+        return (<AdminDashboard/>);
+      }
+    }
     
   }
 
