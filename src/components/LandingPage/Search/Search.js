@@ -213,7 +213,7 @@ class Search extends Component {
             'average' : this.state.average
         };
 
-        axios.post('http://localhost:3001/search/class', data)
+        axios.post('https://young-fortress-54541.herokuapp.com/search/class', data)
         .then((data) => {
           this.setState({
             results: data.data

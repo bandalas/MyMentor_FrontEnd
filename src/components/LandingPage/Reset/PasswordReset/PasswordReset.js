@@ -168,7 +168,7 @@ Confirma tu nuevo password
             token: values.token,
             password: this.state.password
         }
-        Axios.post('http://localhost:3001/students/reset_password', data)
+        Axios.post('https://young-fortress-54541.herokuapp.com/students/reset_password', data)
             .then(data => {
                 this.setState({
                     success: data.data.success,

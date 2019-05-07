@@ -263,7 +263,7 @@ class CreateClass extends Component {
                 'description': this.state.class_description,
                 'cost': this.state.class_price
             };
-            axios.post('http://localhost:3001/tutors/class',  data, config )
+            axios.post('https://young-fortress-54541.herokuapp.com/tutors/class',  data, config )
                 .then( response => {
                     this.setState({
                         showSpinner: true

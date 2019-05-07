@@ -42,8 +42,8 @@ function censorReview() {
         }
         const params = {
            'id': this.props.data.id
-        }
-        const url ='http://localhost:3001/admins/new-review/';
+}
+        const url ='https://young-fortress-54541.herokuapp.com/admins/new-review/';
         axios.put(url, {headers}, {params} )
             .then(response => {
                 console.log(response);
