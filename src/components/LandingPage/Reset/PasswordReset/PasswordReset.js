@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Col, Form, Button } from 'react-bootstrap';
 import { Modal, ModalHeader, ModalBody, ModalFooter , Alert, Input, FormGroup, FormFeedback  } from 'reactstrap';
-import { Redirect } from 'react-router-dom'
 import Axios from 'axios';
 import queryString from 'query-string'
 

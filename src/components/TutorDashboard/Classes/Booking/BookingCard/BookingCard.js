@@ -67,7 +67,7 @@ class BookingCard extends Component {
     updateBooking(confirmation, endpoint) {
         if(window.confirm(confirmation)) {
             const id = this.props.id;
-            const token = this.props.token;
+            const token = localStorage.getItem('token');
             const headers = {
                 headers:{
                     'Content-Type': 'application/json',

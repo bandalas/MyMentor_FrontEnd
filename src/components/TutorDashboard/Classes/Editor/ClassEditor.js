@@ -81,7 +81,7 @@ class ClassEditor extends Component {
         if(window.confirm("Está seguro que desea cancelar la clase?")) {
             const id = this.props.id;
             const url = 'http://localhost:3001/tutors/cancel-class/' + id
-            const token = this.props.token;
+            const token = localStorage.getItem('token');
             const headers = {
                 'Content-Type': 'application/json',
                 'x-auth-token' : token 

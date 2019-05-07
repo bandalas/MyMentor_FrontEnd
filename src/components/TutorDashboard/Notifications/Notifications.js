@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import NotificationCard from './NotificationCard/NotificationCard';
-import { Redirect } from 'react-router-dom'
 
 class Notifications extends Component {
 
@@ -14,12 +13,6 @@ class Notifications extends Component {
         this.fetchPendingBookings = this.fetchPendingBookings.bind(this);
         this.fetchClassesById = this.fetchClassesById.bind(this);
         
-    }
-
-    componentWillReceiveProps() {
-        if(!this.props.token) {
-            return <Redirect to="/dashboard/tutor"/>
-        }
     }
     
     componentDidMount() {
@@ -44,7 +37,6 @@ class Notifications extends Component {
                                                     class_price={requested_class.cost}
                                                     class_schedule={requested_class.date}
                                                     id = {notification._id}
-                                                    token = {this.props.token}
                                                     onChange = {this.fetchPendingBookings}
                                             />);
 
@@ -64,7 +56,7 @@ class Notifications extends Component {
     }
 
     fetchPendingBookings() {
-        const token = this.props.token;
+        const token = localStorage.getItem('token');
         const headers = {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
@@ -80,7 +72,7 @@ class Notifications extends Component {
     }
 
     fetchClassesById() {
-        const token = this.props.token;
+        const token = localStorage.getItem('token');
         let notifications_ids = []; 
         this.state.raw_notifications.forEach(element => {
             if(!notifications_ids.includes(element.booked_class)) {

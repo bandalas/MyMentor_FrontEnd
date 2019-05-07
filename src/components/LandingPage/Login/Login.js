@@ -15,11 +15,7 @@ class Login extends Component {
             email : '',
             password: '',
             // Data for view
-            wrong_data: false,
-            // Data for authentication
-            type: '',
-            token: '',
-            id: ''
+            wrong_data: false
         };
         // Functions that handle the view
         this.renderFormBody = this.renderFormBody.bind(this);
@@ -110,7 +106,6 @@ class Login extends Component {
                     const user_type = value.data.type;
                     // Give access
                     this.props.handleLogin({
-                        isAuthenticated: true,
                         token: token,
                         id: id,
                         type: user_type

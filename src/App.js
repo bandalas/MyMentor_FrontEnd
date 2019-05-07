@@ -11,44 +11,40 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      authenticated: false,
-      token: '',
-      id: '',
-      type: ''
+      token: localStorage.getItem('token'),
+      id: localStorage.getItem('id'),
+      type: localStorage.getItem('type')
     }
-    this.handleAuthenticationChange = this.handleAuthenticationChange.bind(this);
+    this.handleAuth = this.handleAuth.bind(this);
   }
 
   render() {
-    if(!this.state.authenticated) {
+    if(!this.state.token) {
       return(
-        <LandingPage handleLogin={this.handleAuthenticationChange} />
+        <LandingPage handleLogin={this.handleAuth} />
       );
     }
     else {
       console.log(this.state.type)
       if(this.state.type === 'Student') {
-        return(
-          <StudentDashboard  token={this.state.token} />
-        );
+        return(<StudentDashboard/>);
       }
       else if(this.state.type === 'Tutor') {
-        return(
-          <TutorDashboard token={this.state.token} id={this.state.id} fn={this.state.firstname} ln={this.state.lastname} em={this.state.email} instit={this.state.institution} sems={this.state.semester} dsc={this.state.description}/>
-        );
+        return(<TutorDashboard/>);
       }
       else if(this.state.type === 'Admin') {
-        return (
-          <AdminDashboard token={this.state.token}/>
-        );
+        return (<AdminDashboard/>);
       }
     }
     
   }
 
-  handleAuthenticationChange(data) {
+  handleAuth(data) {
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('id', data.id);
+    localStorage.setItem('type', data.type);
+
     this.setState({
-      authenticated: data.isAuthenticated,
       token: data.token,
       id: data.id,
       type: data.type

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button } from 'reactstrap';
-import { Redirect } from 'react-router-dom';
 import './reviews.css';
 import ReviewCard from './ReviewCard/ReviewCard';
 
@@ -9,7 +7,6 @@ class Reviews extends Component {
     constructor(props){
         super(props);
         this.state = {
-            token : this.props.token,
             id: this.props.id,
             reviews: [],
             display: false,
@@ -26,7 +23,6 @@ class Reviews extends Component {
         return(
 
               <div id='review-container'>
-
                 {this.state.reviews.map(reviews => {
                     return (<ReviewCard    student={reviews.student}
                                             class={reviews.class}
@@ -34,9 +30,6 @@ class Reviews extends Component {
                                             stars={reviews.stars}
                                             date={reviews.date}
                                             id = {reviews._id}
-                                            token = {this.props.token}
-
-                                            
                             />)
                 })}    
             </div>
@@ -45,7 +38,7 @@ class Reviews extends Component {
 
 
 getAllAvailableTutorReviews() {
-        const token = this.props.token;
+        const token = localStorage.getItem('token');
         const headers = {
             'Content-Type': 'application/json',
             'x-auth-token' : token 

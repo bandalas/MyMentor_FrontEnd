@@ -8,7 +8,6 @@ class CreateClass extends Component {
     constructor(props){
         super(props);
         this.state = {
-            token : this.props.token,
             id: this.props.id,
             modal: true,
             hasError: false,
@@ -248,7 +247,7 @@ class CreateClass extends Component {
             const date_str = this.state.class_date + ' ' + this.state.class_time;
             const date = new Date(date_str);
             
-            const token = this.state.token;
+            const token = localStorage.getItem('token');
             const config = {
                 headers: {
                     'x-auth-token' : token 

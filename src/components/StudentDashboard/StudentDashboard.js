@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NavBar from './Navigation/NavBar';
 import MentorByRating from './Mentor/MentorSearch/MentorByRating';
 import StudentDashboardContent from './Content/StudentDashboardContent';
 import ClassByAvailability from './Classes/ClassesSearch/ClassByAvailability';
+import { logout } from '../Auth/Auth';
 
 class StudentDashboard extends Component{
     
@@ -18,10 +19,10 @@ class StudentDashboard extends Component{
         return(
             <div>
                 <div id='student-navigation'> 
-                   { this.renderNavigation()}
+                   {this.renderNavigation()}
                 </div>
                 
-                {/* <ClassCarousel token={this.props.token} /> */}
+                {/* <ClassCarousel/> */}
             </div>
         );
     }
@@ -30,23 +31,12 @@ class StudentDashboard extends Component{
         return(
             <BrowserRouter>
                 <div>
-                    <NavBar />
+                    <NavBar/>
                     <Switch>
-                        <Route  path="/student/search/mentor"
-                                render = {
-                                    (props) => <MentorByRating {...props} token={this.props.token} />
-                                }
-                                exact/>
-                        <Route  path="/student/dashboard"
-                                render = {
-                                    (props) => <StudentDashboardContent {...props} token={this.props.token} />
-                                }
-                                exact/>
-                        <Route  path="/student/search/class"
-                                render = {
-                                    (props) => <ClassByAvailability {...props} token={this.props.token} />
-                                }
-                                exact />
+                        <Route path="/student/search/mentor" component={MentorByRating}/>
+                        <Route path="/student/dashboard" component={StudentDashboardContent}/>
+                        <Route path="/student/search/class" component={ClassByAvailability}/>
+                        <Route path="/logout" render={logout}/>
                     </Switch>
                 </div>
             </BrowserRouter>

@@ -36,7 +36,7 @@ class MentorSection extends Component {
 
     // Function that will fetch Top Rated Mentors
     queryTopMentors() {
-        const token = this.props.token;
+        const token = localStorage.getItem('token');
         const headers = {
             'Content-Type': 'application/json',
             'x-auth-token' : token 

@@ -22,7 +22,6 @@ class Pending extends Component {
             <div id='cancelled-container'>
                 {this.state.raw_cancelled.map(booking => {
                     return (<BookingCard    key={booking._id}
-                                            token={this.props.token}
                                             id={booking._id}
                                             tutor={booking.tutor}
                                             booked_class={booking.booked_class}
@@ -36,7 +35,7 @@ class Pending extends Component {
     }
 
     fetchCancelledBookings() {
-        const token = this.props.token;
+        const token = localStorage.getItem('token');
         const headers = {
             'Content-Type': 'application/json',
             'x-auth-token' : token 

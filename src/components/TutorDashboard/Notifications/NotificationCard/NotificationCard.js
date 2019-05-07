@@ -38,8 +38,7 @@ class NotificationCard extends Component {
     }
 
     makeAxiosRequest(url) {
-        
-        const token = this.props.token;
+        const token = localStorage.getItem('token');
         const headers = {
             'Content-Type': 'application/json',
             'x-auth-token' : token 

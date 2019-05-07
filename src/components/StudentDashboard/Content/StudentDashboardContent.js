@@ -6,8 +6,8 @@ class StudentDashboardContent extends Component {
     render(){
         return(
             <div>
-                <MentorSection token={this.props.token} />
-                <ClassSection token={this.props.token} />
+                <MentorSection/>
+                <ClassSection/>
             </div>
         );
     }

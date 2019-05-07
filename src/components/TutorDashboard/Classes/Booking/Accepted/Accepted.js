@@ -21,7 +21,6 @@ class Accepted extends Component {
         return(
             this.state.raw_accepted.map(booking => {
                 return (<BookingCard    key={booking._id}
-                                        token={this.props.token}
                                         id={booking._id}
                                         tutor={booking.tutor}
                                         booked_class={booking.booked_class}
@@ -35,7 +34,7 @@ class Accepted extends Component {
     }
 
     fetchAcceptedBookings() {
-        const token = this.props.token;
+        const token = localStorage.getItem('token');
         const headers = {
             'Content-Type': 'application/json',
             'x-auth-token' : token 

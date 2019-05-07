@@ -9,8 +9,6 @@ class MyClasses extends Component {
     constructor(props){
         super(props);
         this.state = {
-            token : this.props.token,
-            id: this.props.id,
             classes: [],
             display: false,
         }
@@ -34,9 +32,7 @@ class MyClasses extends Component {
                 *    Conditional rendering of modal that will contain the 
                 *    necessary form for creating a new class
                 */}
-                {this.state.display ? <CreateClass token={this.state.token} 
-                                                    id={this.state.id}
-                                                    unload={this.unloadCreation}/> : null}
+                {this.state.display ? <CreateClass unload={this.unloadCreation}/> : null}
             </div>
         );
     }
@@ -48,7 +44,7 @@ class MyClasses extends Component {
     *   *   *   *   *   *   *   *   *   *   *   *   *   */
     // Function that will fetch all available classes from the tutor
     getAllAvailableTutorClass() {
-        const token = this.props.token;
+        const token = localStorage.getItem('token');
         const headers = {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
@@ -89,7 +85,6 @@ class MyClasses extends Component {
             <div>
                 {this.state.classes.map( current_class => {
                     return (<ClassEditor    id = {current_class._id}
-                                            token = {this.props.token}
                                             name = {current_class.name}
                                             subject = {current_class.subject}
                                             area = {current_class.area}

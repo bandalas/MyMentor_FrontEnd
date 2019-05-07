@@ -6,13 +6,6 @@ import { ReportShow } from './Show/Show';
 import jsonServerProvider from 'ra-data-json-server';
 
 class AdminDashboard extends Component {
-    
-    constructor(props) {
-       super(props);
-
-       console.log(props.token);
-    }
-
     render() {
         return (
             <div>
@@ -32,8 +25,9 @@ class AdminDashboard extends Component {
             if (!options.headers) {
                 options.headers = new Headers({ Accept: 'application/json' });
             }
-            // add your own headers here
-            options.headers.set('x-auth-token', this.props.token);
+            
+            const token = localStorage.getItem('token');
+            options.headers.set('x-auth-token', token);
             return fetchUtils.fetchJson(url, options);
         }
 
