@@ -6,6 +6,8 @@ import Content from './Content/Content';
 import Search from './Search/Search';
 import StudentSignup from './Signup/Student/StudentSignup';
 import TutorSignup from './Signup/Tutor/TutorSignup';
+import Reset from './Reset/Reset';
+import PasswordReset from './Reset/PasswordReset/PasswordReset';
 
 class LandingPage extends Component {
 
@@ -25,6 +27,8 @@ class LandingPage extends Component {
                             <Route path="/signup"   component={StudentSignup} exact/>
                             <Route path="/search"   component={Search} exact/>
                             <Route path="/tutors"   component={TutorSignup} exact/>
+                            <Route path="/reset"    component={Reset} exact/>
+                            <Route path="/reset_password/reset"  component={PasswordReset}/>
                         </Switch>
                     </div>
                 </BrowserRouter>

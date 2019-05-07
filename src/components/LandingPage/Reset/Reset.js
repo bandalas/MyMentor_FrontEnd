@@ -1,25 +1,33 @@
 import React, {Component}from 'react';
-import {Form, Button, Col } from 'react-bootstrap';
+import {Form, Button, Col, Alert } from 'react-bootstrap';
+import { Input, FormGroup, FormFeedback} from 'reactstrap';
 import { Link } from 'react-router-dom'
 import './reset.css';
-import NormalForm from './NormalForm.js/NormalForm';
+import Axios from 'axios';
 
 class Reset extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            email : ''
+            email : '',
+            error : false,
+            success: false
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.performPasswordResetRequest = this.performPasswordResetRequest.bind(this);
     }
 
     render() {
         return(
             <div className="reset-form">
+                {this.state.success ? this.displayAlertSuccess() : null}
                 <Form onSubmit={this.handleSubmit}>
-                    {<NormalForm onInputChange = {this.handleInputChange}/>}
+                    <Col md="4">
+                        <Form.Label>Correo Electrónico</Form.Label>
+                    </Col>
+                    {this.state.error ? this.renderErrorForm() : this.renderNormalForm()}
                     <Col md="8" className="ResetButtons">
                         <Button variant="primary" type="submit">
                             Submit
@@ -34,6 +42,48 @@ class Reset extends Component {
         );
     }
 
+    renderNormalForm = () => {
+        return(
+            <FormGroup>
+                <Col md="8">
+                    <Input  type="email"
+                            name="email"
+                            required
+                            onChange={this.handleInputChange}/>
+                </Col>
+            </FormGroup>       
+        );
+    };
+
+    renderErrorForm = () => {
+        return(
+            <FormGroup>
+                <Input  invalid
+                        type="email"
+                        name="email"
+                        required
+                        onChange={this.handleInputChange}/>
+                <FormFeedback>Oh no! Sucedió un error, intentalo de nuevo</FormFeedback>
+            </FormGroup>
+        )
+    }
+
+    displayAlertSuccess = () => {
+        return (
+            <Alert variant="success">
+                <Alert.Heading>
+                Revisa tu correo
+                </Alert.Heading>
+                <p>
+                    Hemos enviado un correo a {this.state.email}. Da click al link que fue enviado para resetear
+                    tu contraseña
+                </p>
+                <p>
+                    Si no ves el correo, revisa otros lugares como tu folder de spam, basura y social.
+                </p>
+            </Alert>
+        );
+    }
 
     handleInputChange(event) {
         if(event.target.name === 'email') this.setState({email: event.target.value});
@@ -41,15 +91,26 @@ class Reset extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.performPostAction();
-        alert(" Si el correo existe, se mando un correo con instrucciones de como resetear su Password.");
+        this.performPasswordResetRequest();
     }
 
-    performPostAction(){
+    performPasswordResetRequest(){
         let data = {
             'email' : this.state.email
         };
-}
+        Axios.post('http://localhost:3001/students/forgot-password', data)
+            .then(data => {
+                const wasSuccessfull = data.data.success;
+                this.setState({
+                    error: !wasSuccessfull,
+                    success: wasSuccessfull
+                });
+                
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
  
 }
