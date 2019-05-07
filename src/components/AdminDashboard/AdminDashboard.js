@@ -31,7 +31,7 @@ class AdminDashboard extends Component {
             return fetchUtils.fetchJson(url, options);
         }
 
-        return jsonServerProvider('http://localhost:3001', httpClient);
+        return jsonServerProvider('https://young-fortress-54541.herokuapp.com', httpClient);
     }
 }
 
