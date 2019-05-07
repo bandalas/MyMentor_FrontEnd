@@ -17,7 +17,6 @@ const cardActionStyle = {
 
 const ReportShowActions = ({ basePath, data, resource }) => (
     <CardActions style={cardActionStyle}>
-        <Button color="primary" onClick={deleteReview}>Regresar</Button>
         <EditButton basePath={basePath} onClick={censorReview} record={data}/>
         <DeleteButton basePath={basePath} record={data}/>
     </CardActions>
