@@ -22,13 +22,14 @@ class Reset extends Component {
     render() {
         return(
             <div className="reset-form">
+            <div class="center" >
                 {this.state.success ? this.displayAlertSuccess() : null}
                 <Form onSubmit={this.handleSubmit}>
                     <Col md="4">
                         <Form.Label>Correo Electrónico</Form.Label>
                     </Col>
                     {this.state.error ? this.renderErrorForm() : this.renderNormalForm()}
-                    <Col md="8" className="ResetButtons">
+                    <Col md="5" className="ResetButtons">
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
@@ -37,7 +38,7 @@ class Reset extends Component {
                         </Link>
                     </Col>
                 </Form>
-                
+                </div>
             </div>
         );
     }
@@ -45,12 +46,14 @@ class Reset extends Component {
     renderNormalForm = () => {
         return(
             <FormGroup>
-                <Col md="8">
-                    <Input  type="email"
+<div class="emailinput">
+                <Col md="12">
+                    <Input  type="email" placeholder="El correo con el que te registraste...	"
                             name="email"
                             required
                             onChange={this.handleInputChange}/>
                 </Col>
+</div>
             </FormGroup>       
         );
     };

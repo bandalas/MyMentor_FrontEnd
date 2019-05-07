@@ -1,4 +1,5 @@
-.reset-form {
+.mainwindow {
+
 margin: 150px auto;
 border-style: solid;
 border-width: 1px;
@@ -6,28 +7,32 @@ border-color: grey;
 border-radius: 10px;
 margin-top: 3%;
 box-shadow: 0 0 4px 4px rgba(20,23,28,0.1);
-max-width: 50%;
+max-width: 70%;
 background-color: white;
 display: center;
-
-
+padding-top: 20px;
+padding-bottom: 20px;
 }
 
-.ResetButtons {
-margin-top: 10px;
+.pwinput1 {
+padding-left: 50px;
+padding-right: 50px;
 margin-bottom: 20px;
-margin-left: auto;
-text-align: center;
+
 
 }
 
-.center{
-background-color: white;
+.pwinput2 {
+padding-left: 50px;
+padding-right: 50px;
+
 
 }
 
 
-.emailinput{
+.resetbtn {
 
+text-align: right;
+padding-right: 20px;
 
 }
