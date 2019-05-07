@@ -101,7 +101,7 @@ class Reset extends Component {
         let data = {
             'email' : this.state.email
         };
-        Axios.post('http://localhost:3001/students/forgot-password', data)
+        Axios.post('https://young-fortress-54541.herokuapp.com/students/forgot-password', data)
             .then(data => {
                 const wasSuccessfull = data.data.success;
                 this.setState({

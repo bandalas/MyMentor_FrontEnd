@@ -27,13 +27,13 @@ class NotificationCard extends Component {
 
     onAcceptBooking() {
         const id = this.props.id;
-        const url = 'http://localhost:3001/tutors/bookings/accept/'+id;
+        const url = 'https://young-fortress-54541.herokuapp.com/tutors/bookings/accept/'+id;
         this.makeAxiosRequest(url);
     }
 
     onRejectBooking() {
         const id = this.props.id;
-        const url = 'http://localhost:3001/tutors/bookings/reject/'+id;
+        const url = 'https://young-fortress-54541.herokuapp.com/tutors/bookings/reject/'+id;
         this.makeAxiosRequest(url);
     }
 

@@ -41,7 +41,7 @@ class ClassSection extends Component {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-         axios.get('http://localhost:3001/students/new-classes', {headers})
+         axios.get('https://young-fortress-54541.herokuapp.com/students/new-classes', {headers})
             .then(data => {
                 const arr = data.data;
                 this.setState({
