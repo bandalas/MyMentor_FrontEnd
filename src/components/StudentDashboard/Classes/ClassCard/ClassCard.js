@@ -34,6 +34,7 @@ class ClassesCard extends Component {
     }
 
     renderConfirmationModal(){
+        return(
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Agendar cita</ModalHeader>
           <ModalBody>
@@ -42,7 +43,7 @@ class ClassesCard extends Component {
           <ModalFooter>
             <Button color="info" onClick={this.scheduleDate}>Confirmar</Button>{' '}
           </ModalFooter>
-        </Modal>
+        </Modal>);
     }
 
     toggle() {
