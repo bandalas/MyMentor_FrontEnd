@@ -41,7 +41,7 @@ class MentorSection extends Component {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-         axios.get('http://localhost:3001/students/mentors', {headers})
+         axios.get('https://young-fortress-54541.herokuapp.com/students/mentors', {headers})
             .then(data => {
                 const arr = data.data;
                 this.setState({
