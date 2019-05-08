@@ -47,8 +47,8 @@ reportReview()
                     'Content-Type': 'application/json',
                     'x-auth-token' : token 
             }}
-            const params = {description: "reeeeeee"} // Gonzalo no mames
-            axios.post('http://localhost:3001/tutors/report-review/' + id, params, headers)
+            const params = {description: ""} 
+            axios.post('https://young-fortress-54541.herokuapp.com/tutors/report-review/' + id, params, headers)
                 .then(data => {
                     const report = data.data;
                     console.log(report)
