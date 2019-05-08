@@ -6,7 +6,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import TutorDashboard from './components/TutorDashboard/TutorDashboard';
 import Login from './components/LandingPage/Login/Login';
 import StudentDashboard from './components/StudentDashboard/StudentDashboard';
-import studentAuth from './components/Auth/studentAuth';
+import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 
 class App extends Component {
 
