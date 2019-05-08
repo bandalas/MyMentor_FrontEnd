@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { FormGroup, Form, Col } from 'react-bootstrap';
 import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter, Popover, PopoverHeader, PopoverBody  } from 'reactstrap';
 import SignupPartThree from './SignupPartThree';
+import './SignupStyle.css';
+
 class SignupPartTwo extends Component {
 
     constructor(props) {
@@ -74,19 +76,27 @@ class SignupPartTwo extends Component {
                 </Popover>
 
                 <FormGroup>
-                    <Form.Label>
+                    <Form.Label className="input_label">
                         Imagen de perfil
                     </Form.Label><br/>
-                    <input  type="file"
+                    {/* <input  
+                            className="input_btn"
+                            type="file"
                             name="recfiles"
                             onChange = {this.handleImageChange}
-                            />
+                            /> */}
+                    <Input  className="input_btn"
+                            type="file"
+                            name="recfiles"
+                            onChange = {this.handleImageChange} />
                     
                     <Col>
-                        <Form.Label>Área de expertiz</Form.Label>
+                        <Form.Label className="input_label">Área de expertiz</Form.Label>
                     </Col>
                     <Col>
-                        <Input  type = "select"
+                        <Input  
+                                className="input_field"
+                                type = "select"
                                 onChange = {this.handleAreaChange}
                                 multiple>
                                 <option value='Matematicas'>Matemáticas</option>
@@ -102,10 +112,12 @@ class SignupPartTwo extends Component {
                         </Input>
                     </Col>
                     <Col>
-                        <Form.Label>Descripción</Form.Label>
+                        <Form.Label className="input_label">Descripción</Form.Label>
                     </Col>
                     <Col>
-                        <Input  type="textarea"
+                        <Input  
+                                className="input_field"
+                                type="textarea"
                                 value = {this.state.description}
                                 onChange={this.handleDescriptionChange}
                                 />

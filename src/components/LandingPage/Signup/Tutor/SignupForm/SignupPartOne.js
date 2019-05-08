@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 import { FormGroup, Form, Col} from 'react-bootstrap';
 import SignupPartTwo from './SingupPartTwo';
+import './SignupStyle.css';
 
 class SignupPartOne extends Component {
 
@@ -154,12 +155,14 @@ class SignupPartOne extends Component {
                     </PopoverBody>
                 </Popover>
 
-                <FormGroup>
+                <FormGroup className="">
                     <Col>
-                        <Form.Label>Nombre</Form.Label>   
+                        <Form.Label className="input_label">Nombre</Form.Label>   
                     </Col>
                     <Col>
-                        <Input  type = "text"
+                        <Input  
+                                className="input_field"
+                                type = "text"
                                 value = {this.state.firstName}
                     
                                 onChange = {this.handleFirstNameChange}
@@ -168,10 +171,12 @@ class SignupPartOne extends Component {
                     </Col>
                     
                     <Col>
-                        <Form.Label>Apellido(s)</Form.Label>
+                        <Form.Label className="input_label">Apellido(s)</Form.Label>
                     </Col>
                     <Col>
-                        <Input  type="text" 
+                        <Input  
+                                className="input_field"
+                                type="text" 
                                 value = {this.state.lastName}
                                 onChange = {this.handleLastNameChange}
                                 required
@@ -179,10 +184,12 @@ class SignupPartOne extends Component {
                     </Col>
 
                     <Col>
-                        <Form.Label>Universidad</Form.Label>
+                        <Form.Label className="input_label">Universidad</Form.Label>
                     </Col>
                     <Col>
-                        <Input  type="text"
+                        <Input  
+                                className="input_field"
+                                type="text"
                                 value = {this.state.university}
                                 onChange = {this.handleUniversityChange}
                                 required
@@ -190,10 +197,12 @@ class SignupPartOne extends Component {
                     </Col>
 
                     <Col>
-                        <Form.Label>Semestre</Form.Label>
+                        <Form.Label className="input_label">Semestre</Form.Label>
                     </Col>
                     <Col>
-                        <Input  type="number"
+                        <Input  
+                                className="input_field"
+                                type="number"
                                 value = {this.state.semester}
                                 onChange = {this.handleSemesterChange}
                                 required
@@ -201,10 +210,12 @@ class SignupPartOne extends Component {
                     </Col>
 
                     <Col>
-                        <Form.Label>Promedio</Form.Label>
+                        <Form.Label className="input_label">Promedio</Form.Label>
                     </Col>
                     <Col>
-                        <Input  type="number"
+                        <Input  
+                                className="input_field"
+                                type="number"
                                 value = {this.state.gpa}
                                 onChange = {this.handleGPAChange}
                                 required />

@@ -1,0 +1,111 @@
+#log{
+    height: 200px;
+    width: auto; 
+}
+
+#img_App{
+    height: auto;
+    width: 50%;
+    /* position: relative; */
+    display: inline-block;
+}
+
+#jmb{
+    background-image: linear-gradient(to right,#499349, #5BADA1, #6FC5EC);
+    color: white;
+    text-align: center;
+}
+
+#jmb_2{
+    background-image: linear-gradient(to right,#6E2152, #812851,#D24751);
+    color: white;
+}
+
+#jmb_3{
+    background-image: linear-gradient(to right,#6BD16F,#9AD94D,#FEE93E);
+    color: white;
+}
+
+.jh2{
+    text-align: left;
+}
+
+#ja{
+    text-align: center;
+}
+
+#description_img{
+    width: 95%;
+    height: auto;
+    /* margin: 7% 0; */
+}
+
+#pad_col{
+    padding-left: 5%;
+}
+
+#intro{ 
+    margin: 5% 0;
+}
+
+#intro2{
+    margin: 5% 0 2% 0;
+}
+
+.imgPhones{
+    width: 50%;
+    height: auto;
+    padding-bottom: 7%;
+}
+
+.single-feature{
+    width: 100%;
+    height: auto;
+}
+
+
+/* .conts > Container:nth-child(even){
+    background-color: white;
+} */
+
+.head1 > h2{
+    text-align: center;
+    color: #70C6F0;
+    font-size: 40px;
+}
+
+.description_content > h2{
+    /* margin: 7% 0; */
+    color: #70C6F0;
+    font-size: 50px;
+    text-align: left;
+}
+
+.description_content > p{
+    text-align: left;
+}
+
+.head_intro{
+    /* margin: 3% 0; */
+    /* background-color: black; */
+    /* padding-top: 20%;  */
+    text-align: left;
+}
+
+.head_intro > h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    color: #70C6F0;
+    font-size: 65px;
+}
+
+.head_intro > p{
+    color: #499145;
+    font-size: 20px;
+}
+
+
+
+/* .intro_1{ */
+    /* margin: 15% 0 0 15%; */
+/* } */

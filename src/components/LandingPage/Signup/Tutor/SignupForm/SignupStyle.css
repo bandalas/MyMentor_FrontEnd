@@ -1,0 +1,126 @@
+#jubmt{
+    color: white;
+    text-align: center;
+    background-image: linear-gradient(to right, #6E2152, #812851,#D24751);
+}
+
+#btn_register{
+    /* position: absolute; */
+    top: 50%;
+}
+
+#text_tutor{
+    /* text-align: center; */
+    margin: 3% 10%;
+    /* padding-bottom: 3%; */
+}
+
+.container{
+    text-align: center;
+}
+
+.titulo{
+    text-align: center;
+    font-weight: bold;
+}
+
+.input_btn{
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    /* font-weight: bold; */
+/* 
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0; */
+
+    /* position: relative;
+    overflow: hidden;
+    display: inline-block; */
+}
+
+.input_field{
+    border: 2px solid gray;
+    /* border: 2px solid #E9467B; */
+    /* border: 2px solid #58CCFB; */
+    color: black;
+    /* background-color: white; */
+    /* background-color: rgba(233, 70, 124, 0.26); */
+    /* background-color: rgba(88, 205, 251, 0.349); */
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.input_label{
+    font-weight: normal;
+    font-size: 15px;
+}
+
+.wrapper{
+    text-align: center;
+    width: 100%;
+    height: auto;
+}
+
+/* [type=file]{
+    /* height: 0;
+    overflow: hidden;
+    width: 0; */
+    
+    /* background: #f15d22;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+      font-family: 'Poppins', sans-serif;
+      font-size: inherit;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    outline: none;
+    padding: 1rem 50px;
+    position: relative;
+    transition: all 0.3s;
+    vertical-align: middle;
+}  */
+/* .input_btn+[id=label]{
+    /* overflow: hidden; */
+    /* background: #f15d22;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+      font-family: 'Poppins', sans-serif;
+      font-size: inherit;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    outline: none;
+    padding: 1rem 50px;
+    position: relative;
+    transition: all 0.3s;
+    vertical-align: middle;
+    
+}  */
+
+/* .input_btn Input[type=file]{ */
+/* #imgFile{
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+} */
+
+
+
+/* .form{
+    background-color: #58CCFB;
+} */
+

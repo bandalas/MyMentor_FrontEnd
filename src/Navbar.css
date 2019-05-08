@@ -37,6 +37,11 @@
     right: 0;
 }
 
+/* .navbar-item.right {
+    right: 10%;
+} */
+
+
 .navbar-item.left {
     left: 0;
 }

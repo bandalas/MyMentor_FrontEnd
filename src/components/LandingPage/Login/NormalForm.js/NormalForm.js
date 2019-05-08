@@ -8,20 +8,20 @@ class NormalForm extends Component {
     render(){
         return(
             <FormGroup >
-                <Col xs="10">
+                <Col xs="12">
                     <Form.Label>Correo electrónico</Form.Label>
                 </Col>  
-                <Col xs="10">
+                <Col xs="12">
                     <Input  bsSize="lg"
                             type="email"
                             name="email"
                             required
                             onChange={this.props.onInputChange}/>
                 </Col>
-                <Col xs="10">
+                <Col xs="12">
                     <Form.Label>Contraseña</Form.Label>
                 </Col>
-                <Col xs="10">
+                <Col xs="12">
                     <Input   bsSize="lg"
                                     type="password"
                                     name="password"
