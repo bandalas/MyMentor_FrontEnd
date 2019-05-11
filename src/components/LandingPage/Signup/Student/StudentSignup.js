@@ -161,7 +161,7 @@ class StudentSignup extends Component {
         const req_body = {
             tutor_email: this.state.email
         };
-        axios.post('http://localhost:3001/students/email', req_body)
+        axios.post('https://young-fortress-54541.herokuapp.com/students/email', req_body)
             .then((response) => {
                 this.setState({
                     taken: response.data.found,
@@ -183,7 +183,7 @@ class StudentSignup extends Component {
                 'semester'  :   this.state.semester
             }
             // Creating the post function for the record
-            axios.post('http://localhost:3001/students/signup', studentData)
+            axios.post('https://young-fortress-54541.herokuapp.com/students/signup', studentData)
                 .then( response => {
                     const success = response.data.success;
                     if(success) {

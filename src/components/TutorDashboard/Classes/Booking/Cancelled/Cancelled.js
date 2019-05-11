@@ -38,7 +38,7 @@ class Cancelled extends Component {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-        axios.get('http://localhost:3001/tutors/bookings/cancelled', {headers})
+        axios.get('https://young-fortress-54541.herokuapp.com/tutors/bookings/cancelled', {headers})
             .then(data => {
                 const arr = data.data;
                 console.log(arr);

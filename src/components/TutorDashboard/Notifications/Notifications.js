@@ -61,7 +61,7 @@ class Notifications extends Component {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-        axios.get('http://localhost:3001/tutors/bookings', {headers})
+        axios.get('https://young-fortress-54541.herokuapp.com/tutors/bookings', {headers})
             .then(val => {
                 const arr = val.data;
                 this.setState({raw_notifications : arr}, () => {
@@ -80,7 +80,7 @@ class Notifications extends Component {
             }
         });
      
-        axios.get('http://localhost:3001/tutors/class/',{
+        axios.get('https://young-fortress-54541.herokuapp.com/tutors/class/',{
             headers: {
                 'Content-Type': 'application/json',
                 'x-auth-token' : token 

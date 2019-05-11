@@ -99,7 +99,7 @@ class Login extends Component {
             'password' : this.state.password
         };
         
-        axios.post('http://localhost:3001/auth', data)
+        axios.post('https://young-fortress-54541.herokuapp.com/auth', data)
             .then(value => {
                 // Sets wrong data to true if a record with the data was not found
                 if(value.data.record_not_found) {

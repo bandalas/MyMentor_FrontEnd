@@ -49,7 +49,7 @@ class MyClasses extends Component {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-        const url ='http://localhost:3001/tutors/classes';
+        const url ='https://young-fortress-54541.herokuapp.com/tutors/classes';
         axios.get(url, {headers})
             .then(response => {
                 const classes = response.data;

@@ -74,7 +74,7 @@ class BookingCard extends Component {
                     'x-auth-token' : token 
             }}
             const params = {}
-            axios.put('http://localhost:3001/tutors/bookings/' + endpoint + id, params, headers)
+            axios.put('https://young-fortress-54541.herokuapp.com/tutors/bookings/' + endpoint + id, params, headers)
                 .then(data => {
                     const booking = data.data;
                     console.log(booking)

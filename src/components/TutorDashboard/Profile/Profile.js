@@ -45,7 +45,7 @@ class Profile extends Component {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-        const url ='http://localhost:3001/tutors/userInfo';
+        const url ='https://young-fortress-54541.herokuapp.com/tutors/userInfo';
         axios.get(url, {headers})
             .then(response => {
                 const userInfo = response.data;

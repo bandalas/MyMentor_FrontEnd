@@ -80,7 +80,7 @@ class ClassEditor extends Component {
     cancelCurrentClass(event) {
         if(window.confirm("Está seguro que desea cancelar la clase?")) {
             const id = this.props.id;
-            const url = 'http://localhost:3001/tutors/cancel-class/' + id
+            const url = 'https://young-fortress-54541.herokuapp.com/tutors/cancel-class/' + id
             const token = localStorage.getItem('token');
             const headers = {
                 'Content-Type': 'application/json',
