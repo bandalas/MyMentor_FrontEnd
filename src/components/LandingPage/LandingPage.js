@@ -6,8 +6,7 @@ import Content from './Content/Content';
 import Search from './Search/Search';
 import StudentSignup from './Signup/Student/StudentSignup';
 import TutorSignup from './Signup/Tutor/TutorSignup';
-import Reset from './Reset/Reset';
-import PasswordReset from './Reset/PasswordReset/PasswordReset';
+import TutorProfile from './../Profiles/Tutor/TutorProfile'
 
 class LandingPage extends Component {
 
@@ -23,12 +22,11 @@ class LandingPage extends Component {
                                         (props) => <Login {...props} handleLogin={this.props.handleLogin} />
                                     }
                                     exact />
-                            <Route path="/"         component={Content} exact />
-                            <Route path="/signup"   component={StudentSignup} exact/>
-                            <Route path="/search"   component={Search} exact/>
-                            <Route path="/tutors"   component={TutorSignup} exact/>
-                            <Route path="/reset"    component={Reset} exact/>
-                            <Route path="/reset_password/reset"  component={PasswordReset}/>
+                            <Route exact path="/"         component={Content} />
+                            <Route exact path="/signup"   component={StudentSignup} />
+                            <Route exact path="/search"   component={Search} />
+                            <Route exact path="/tutors"   component={TutorSignup} />
+                            <Route exact path="/user/:id" component={TutorProfile}/>
                         </Switch>
                     </div>
                 </BrowserRouter>

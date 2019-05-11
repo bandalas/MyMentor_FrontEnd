@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import {BrowserRouter, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import LandingPage from './components/LandingPage/LandingPage';
 import TutorDashboard from './components/TutorDashboard/TutorDashboard';
+import Login from './components/LandingPage/Login/Login';
 import StudentDashboard from './components/StudentDashboard/StudentDashboard';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 
@@ -48,7 +50,11 @@ class App extends Component {
       token: data.token,
       id: data.id,
       type: data.type
+    },() => {
+      console.log(this.state.token)
+      console.log(this.state.id)
     });
+    
   }
 }
 

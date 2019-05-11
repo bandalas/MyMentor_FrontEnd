@@ -40,7 +40,7 @@ class ClassByAvailability extends Component {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-         axios.get('https://young-fortress-54541.herokuapp.com/students/classes', {headers})
+         axios.get('https://young-fortress-54541.herokuapp.com/classes', {headers})
             .then(data => {
                 const arr = data.data;
                 this.setState({

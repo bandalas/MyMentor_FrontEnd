@@ -28,9 +28,14 @@ class Login extends Component {
 
     render() {
         return(
-            <div id="login-card">
-                <h2>Iniciar sesión</h2>
-                {this.renderFormBody()}
+            <div>
+                <div id="login-card">
+                    <h2>Iniciar sesión</h2>
+                </div>
+                <div>
+                    {this.renderFormBody()}
+                </div>    
+                
             </div>
         );
     }
@@ -50,11 +55,11 @@ class Login extends Component {
                     
                 <div className="login-buttons">
 
-                    <Col xs="10" className="reset">
+                    <Col xs="12" className="reset">
                         <NavLink to="/reset">¿Olvidaste tu contraseña?</NavLink>
                     </Col>
 
-                    <Col xs="10">
+                    <Col xs="12">
                         <Button variant="primary" type="submit" className="bttn-full-size">
                             Iniciar sesión
                         </Button>

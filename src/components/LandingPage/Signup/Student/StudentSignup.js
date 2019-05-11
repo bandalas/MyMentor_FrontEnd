@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Form, Button, Col } from 'react-bootstrap';
 import { Input, FormGroup, FormFeedback } from 'reactstrap';
 import { Redirect } from 'react-router'
+import { Jumbotron } from 'react-bootstrap';
 import axios from 'axios';
 import './studentsignup.css';
 
@@ -44,11 +45,15 @@ class StudentSignup extends Component {
         }
         else {
             return(
-                <div className="card" id="student-signup">
-                    <div className="title">
-                        <h2>Unete a nuestra comunidad! </h2> 
+                <div className="fm_student">
+                    <div>
+                        <Jumbotron id="jubmt_student">
+                            <h2>Unete a nuestra comunidad como estudiante! </h2> 
+                        </Jumbotron>
                     </div>
-                    {this.renderFormBody()}
+                    <div>
+                        {this.renderFormBody()}
+                    </div>
                 </div>
             );
         }
@@ -59,8 +64,8 @@ class StudentSignup extends Component {
             <Form onSubmit={this.handleSubmission}>
                 <FormGroup>
                     <div className="rest">
-                        <Col>
-                            <Form.Label>Nombre</Form.Label>
+                        <Col xs="12">
+                            <Form.Label className="lbl">Nombre</Form.Label>
                             <Input  bsSize="lg"
                                     type="text"
                                     name="firstname"
@@ -69,7 +74,7 @@ class StudentSignup extends Component {
                                             />
                         </Col>
 
-                        <Col>
+                        <Col xs="12">
                             <Form.Label>Apellido(s)</Form.Label>
                             <Input  bsSize="lg"
                                     type="text"
@@ -82,7 +87,7 @@ class StudentSignup extends Component {
                         {/*
                         *   If the username is taken, then we need to mark the error
                         */}
-                        <Col>
+                        <Col xs="12">
                             <Form.Label>Correo electrónico</Form.Label>
                             {this.state.taken ? (<FormGroup>
                                                     <Input     invalid
@@ -101,7 +106,7 @@ class StudentSignup extends Component {
                                                         required />)}
                         </Col>
 
-                        <Col>
+                        <Col xs="12">
                             <Form.Label>Contraseña</Form.Label>
                             <Input  bsSize="lg"
                                     type="password"
@@ -111,7 +116,7 @@ class StudentSignup extends Component {
                                             />
                         </Col>
 
-                        <Col>
+                        <Col xs="12">
                             <Form.Label>Institución</Form.Label>
                             <Input  bsSize="lg"
                                     type="text"
@@ -121,7 +126,7 @@ class StudentSignup extends Component {
                                             />
                         </Col>
 
-                        <Col>
+                        <Col xs="12">
                             <Form.Label>Semestre</Form.Label>
                             <Input  bsSize="lg"
                                     type="number"
