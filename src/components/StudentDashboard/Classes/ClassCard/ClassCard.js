@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './ClassCard.css';
 import axios from 'axios';
+import url from '../../../../Url';
+
 
 class ClassesCard extends Component {
 
@@ -34,15 +36,17 @@ class ClassesCard extends Component {
     }
 
     renderConfirmationModal(){
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Agendar cita</ModalHeader>
-          <ModalBody>
-            ¿Estás seguro que deseas agendar esta cita? ¿Ya revisaste el precio y el horario?
-          </ModalBody>
-          <ModalFooter>
-            <Button color="info" onClick={this.scheduleDate}>Confirmar</Button>{' '}
-          </ModalFooter>
-        </Modal>
+        return(
+            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                <ModalHeader toggle={this.toggle}>Agendar cita</ModalHeader>
+                <ModalBody>
+                    ¿Estás seguro que deseas agendar esta cita? ¿Ya revisaste el precio y el horario?
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="info" onClick={this.scheduleDate}>Confirmar</Button>{' '}
+                </ModalFooter>
+            </Modal>
+        )
     }
 
     toggle() {
@@ -58,13 +62,13 @@ class ClassesCard extends Component {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-         axios.get('https://young-fortress-54541.herokuapp.com/book/new-classes/'+id, {headers})
+         axios.get(url + '/book/new-classes/'+id, {headers})
             .then(data => {
                 console.log(data);
                 this.setState({
                     modal: false
                 });
-                alert("Fecha agendad con éxito");
+                alert("Fecha agendada con éxito");
             })
             .catch(reason =>{
                 console.log(reason);

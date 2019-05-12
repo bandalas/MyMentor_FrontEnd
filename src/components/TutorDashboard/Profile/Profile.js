@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './profile.css';
 import ProfileCard from './ProfileCard/ProfileCard';
+import url from '../../../Url';
 
 class Profile extends Component {
      constructor(props){
         super(props);
         this.state = {
-            userInfo: []
+            userInfo: ''
         }
         this.getuserInfo = this.getuserInfo.bind(this);
 
@@ -19,25 +20,17 @@ class Profile extends Component {
 
     render() {
         return(
-
               <div id='userInfo-container'>
-
-                {this.state.userInfo.map(userInfo => {
-                    return (<ProfileCard       
-                                firstName={userInfo.firstName}
-                                lastName={userInfo.lastName}
-                                email= {userInfo.email}
-                                institution= {userInfo.institution}
-                                semester= {userInfo.semester}
-                                description= {userInfo.description}
-                            />)
-                })}    
+                <ProfileCard    firstName={this.state.userInfo.firstName}
+                                lastName={this.state.userInfo.lastName}
+                                email= {this.state.userInfo.email}
+                                institution= {this.state.userInfo.institution}
+                                semester= {this.state.userInfo.semester}
+                                description= {this.state.userInfo.description}
+                />
             </div>
         );
     }
-
-
-
 
     getuserInfo() {
         const token = localStorage.getItem('token');
@@ -45,10 +38,11 @@ class Profile extends Component {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-        const url ='http://localhost:3001/tutors/userInfo';
-        axios.get(url, {headers})
+        
+        const URL = url + '/tutors/userInfo';
+        axios.get(URL, {headers})
             .then(response => {
-                const userInfo = response.data;
+                const userInfo = response.data[0];
                 this.setState({
                     userInfo: userInfo
                 });

@@ -4,6 +4,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter , Alert, Input, FormGroup, F
 import Axios from 'axios';
 import './preset.css';
 import queryString from 'query-string'
+import url from '../../../../Url';
 
 class PasswordReset extends Component {
 
@@ -168,7 +169,8 @@ Confirma tu nuevo password
             token: values.token,
             password: this.state.password
         }
-        Axios.post('http://localhost:3001/students/reset_password', data)
+
+        Axios.post(url + '/students/reset_password', data)
             .then(data => {
                 this.setState({
                     success: data.data.success,

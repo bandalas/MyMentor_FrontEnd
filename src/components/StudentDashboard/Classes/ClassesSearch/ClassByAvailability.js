@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ClassesCard from '../ClassCard/ClassCard';
+import url from '../../../../Url';
 
 class ClassByAvailability extends Component {
 
@@ -40,7 +41,7 @@ class ClassByAvailability extends Component {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-         axios.get('https://young-fortress-54541.herokuapp.com/classes', {headers})
+         axios.get(url + '/classes', {headers})
             .then(data => {
                 const arr = data.data;
                 this.setState({

@@ -4,6 +4,7 @@ import { fetchUtils, Admin, Resource, ShowGuesser, ListGuesser } from 'react-adm
 import { ClassList, TutorList, ReportList, StudentList, ReviewList } from './Lists/Lists';
 import { ReportShow } from './Show/Show';
 import jsonServerProvider from 'ra-data-json-server';
+import url from '../../Url';
 
 class AdminDashboard extends Component {
     render() {
@@ -31,7 +32,7 @@ class AdminDashboard extends Component {
             return fetchUtils.fetchJson(url, options);
         }
 
-        return jsonServerProvider('https://young-fortress-54541.herokuapp.com', httpClient);
+        return jsonServerProvider(url, httpClient);
     }
 }
 

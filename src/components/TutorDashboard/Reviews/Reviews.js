@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './reviews.css';
 import ReviewCard from './ReviewCard/ReviewCard';
+import url from '../../../Url';
 
 class Reviews extends Component {
     constructor(props){
@@ -21,7 +22,6 @@ class Reviews extends Component {
 
     render() {
         return(
-
               <div id='review-container'>
                 {this.state.reviews.map(reviews => {
                     return (<ReviewCard    student={reviews.student}
@@ -43,8 +43,8 @@ getAllAvailableTutorReviews() {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-        const url ='http://localhost:3001/tutors/reviews';
-        axios.get(url, {headers})
+        const URL = url + '/tutors/reviews';
+        axios.get(URL, {headers})
             .then(response => {
                 const reviews = response.data;
                 this.setState({

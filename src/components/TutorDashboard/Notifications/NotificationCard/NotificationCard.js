@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../notifications.css';
 import { Button } from 'reactstrap';
 import axios from 'axios';
+import url from '../../../../Url';
 
 class NotificationCard extends Component {
 
@@ -27,17 +28,17 @@ class NotificationCard extends Component {
 
     onAcceptBooking() {
         const id = this.props.id;
-        const url = 'http://localhost:3001/tutors/bookings/accept/'+id;
-        this.makeAxiosRequest(url);
+        const URL = url + '/tutors/bookings/accept/'+id;
+        this.makeAxiosRequest(URL);
     }
 
     onRejectBooking() {
         const id = this.props.id;
-        const url = 'http://localhost:3001/tutors/bookings/reject/'+id;
-        this.makeAxiosRequest(url);
+        const URL = url + '/tutors/bookings/reject/'+id;
+        this.makeAxiosRequest(URL);
     }
 
-    makeAxiosRequest(url) {
+    makeAxiosRequest(URL) {
         const token = localStorage.getItem('token');
         const headers = {
             'Content-Type': 'application/json',
@@ -46,7 +47,7 @@ class NotificationCard extends Component {
 
         axios({
             method: 'put',
-            url: url,
+            url: URL,
             headers: headers
         })
          .then(data => {

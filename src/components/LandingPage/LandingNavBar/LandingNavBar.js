@@ -10,7 +10,7 @@ class LandingNavBar extends Component {
             <div id="landing-navbar" className="nav-bar">
                 <div className="navbar-item left">
                     <NavLink to="/">MyMentor</NavLink>
-                    <NavLink to="/search">Busca</NavLink>
+                    <NavLink to="/search">Buscar Clases</NavLink>
                 </div>
                 <div className="navbar-item right">
                     <NavLink to="/login">Inicia Sesión</NavLink>

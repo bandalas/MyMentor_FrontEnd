@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Show, SimpleShowLayout, TextField, DateField, EditButton, DeleteButton, ReferenceField } from 'react-admin';
 import { FullNameField } from '../Fields/Fields';
+import url from '../../../Url';
 
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
@@ -43,8 +44,8 @@ function censorReview() {
         const params = {
            'id': this.props.data.id
         }
-        const url ='http://localhost:3001/admins/new-review/';
-        axios.put(url, {headers}, {params} )
+        const URL = url + '/admins/new-review/';
+        axios.put(URL, {headers}, {params} )
             .then(response => {
                 console.log(response);
             })

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import BookingCard from '../BookingCard/BookingCard';
+import url from '../../../../../Url';
 
 class Cancelled extends Component {
     constructor(props) {
@@ -38,7 +39,7 @@ class Cancelled extends Component {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-        axios.get('http://localhost:3001/tutors/bookings/cancelled', {headers})
+        axios.get(url + '/tutors/bookings/cancelled', {headers})
             .then(data => {
                 const arr = data.data;
                 console.log(arr);

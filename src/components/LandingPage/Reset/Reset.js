@@ -4,6 +4,7 @@ import { Input, FormGroup, FormFeedback} from 'reactstrap';
 import { Link } from 'react-router-dom'
 import './reset.css';
 import Axios from 'axios';
+import url from '../../../Url';
 
 class Reset extends Component {
 
@@ -46,14 +47,14 @@ class Reset extends Component {
     renderNormalForm = () => {
         return(
             <FormGroup>
-<div class="emailinput">
-                <Col md="12">
-                    <Input  type="email" placeholder="El correo con el que te registraste...	"
-                            name="email"
-                            required
-                            onChange={this.handleInputChange}/>
-                </Col>
-</div>
+                <div class="emailinput">
+                    <Col md="12">
+                        <Input  type="email" placeholder="El correo con el que te registraste...	"
+                                name="email"
+                                required
+                                onChange={this.handleInputChange}/>
+                    </Col>
+                </div>
             </FormGroup>       
         );
     };
@@ -101,7 +102,8 @@ class Reset extends Component {
         let data = {
             'email' : this.state.email
         };
-        Axios.post('http://localhost:3001/students/forgot-password', data)
+        
+        Axios.post(url + '/students/forgot-password', data)
             .then(data => {
                 const wasSuccessfull = data.data.success;
                 this.setState({
@@ -114,8 +116,5 @@ class Reset extends Component {
                 console.log(error);
             })
     }
-
- 
 }
-
 export default Reset;

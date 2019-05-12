@@ -5,6 +5,7 @@ import { Redirect } from 'react-router'
 import { Jumbotron } from 'react-bootstrap';
 import axios from 'axios';
 import './studentsignup.css';
+import url from '../../../../Url';
 
 
 class StudentSignup extends Component {
@@ -161,7 +162,8 @@ class StudentSignup extends Component {
         const req_body = {
             tutor_email: this.state.email
         };
-        axios.post('http://localhost:3001/students/email', req_body)
+        
+        axios.post(url + '/students/email', req_body)
             .then((response) => {
                 this.setState({
                     taken: response.data.found,
@@ -183,7 +185,7 @@ class StudentSignup extends Component {
                 'semester'  :   this.state.semester
             }
             // Creating the post function for the record
-            axios.post('http://localhost:3001/students/signup', studentData)
+            axios.post(url + '/students/signup', studentData)
                 .then( response => {
                     const success = response.data.success;
                     if(success) {

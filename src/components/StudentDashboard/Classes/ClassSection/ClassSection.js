@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import ClassesCard from '../ClassCard/ClassCard';
 import '../style.css';
+import url from '../../../../Url';
 
 class ClassSection extends Component {
 
@@ -42,7 +43,7 @@ class ClassSection extends Component {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-         axios.get('https://young-fortress-54541.herokuapp.com/students/new-classes', {headers})
+         axios.get(url + '/students/new-classes', {headers})
             .then(data => {
                 const arr = data.data;
                 this.setState({
