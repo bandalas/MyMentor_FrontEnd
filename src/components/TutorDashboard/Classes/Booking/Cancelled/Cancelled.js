@@ -11,6 +11,7 @@ class Cancelled extends Component {
             cancelled: []
         };
         this.fetchCancelledBookings = this.fetchCancelledBookings.bind(this);
+        this.shouldRefresh = this.shouldRefresh.bind(this);
     }
 
     componentDidMount() {
@@ -28,6 +29,7 @@ class Cancelled extends Component {
                                             booked_class={booking.class}
                                             student={booking.student}
                                             date={booking.date}
+                                            refresh={this.shouldRefresh}
                                             
                             />)
                 })
@@ -52,6 +54,10 @@ class Cancelled extends Component {
             })
             .catch(error => console.log(error));
 
+    }
+
+    shouldRefresh(refresh) {
+        if(refresh) this.fetchPendingBookings();
     }
 }
 export default Cancelled;

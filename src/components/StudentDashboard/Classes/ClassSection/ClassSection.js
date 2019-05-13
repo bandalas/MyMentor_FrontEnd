@@ -12,6 +12,7 @@ class ClassSection extends Component {
         this.state = {
             newestClasses : []
         }
+        this.reload = this.reload.bind(this);
     }
 
     componentDidMount() {
@@ -31,6 +32,7 @@ class ClassSection extends Component {
                                     date={new_class.date}
                                     cost={new_class.cost}
                                     id = {new_class._id}
+                                    refresh = {this.reload}
                     />
                 ))}
             </div>
@@ -53,6 +55,10 @@ class ClassSection extends Component {
             .catch(reason =>{
                 console.log(reason);
             });
+    }
+
+    reload(value) {
+        if(value) this.queryNewestClasses();
     }
     
 }

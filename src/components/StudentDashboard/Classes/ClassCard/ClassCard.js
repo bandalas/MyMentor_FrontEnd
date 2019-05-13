@@ -133,6 +133,7 @@ class ClassesCard extends Component {
                     modal: false
                 });
                 alert("Fecha agendada con éxito");
+                this.props.refresh(true);
             })
             .catch(reason =>{
                 console.log(reason);
