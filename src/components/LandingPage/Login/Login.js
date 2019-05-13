@@ -5,6 +5,7 @@ import './login.css';
 import { NavLink} from 'react-router-dom';
 import NormalForm from './NormalForm.js/NormalForm';
 import ErrorForm from './ErrorForm/ErrorForm';
+import url from '../../../Url';
 
 class Login extends Component {
 
@@ -98,8 +99,9 @@ class Login extends Component {
             'email' : this.state.email,
             'password' : this.state.password
         };
+
         
-        axios.post('https://young-fortress-54541.herokuapp.com/auth', data)
+        axios.post(url + '/auth', data)
             .then(value => {
                 // Sets wrong data to true if a record with the data was not found
                 if(value.data.record_not_found) {

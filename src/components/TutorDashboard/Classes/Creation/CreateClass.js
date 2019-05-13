@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { FormGroup, Form, Col} from 'react-bootstrap';
 import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter, Popover, PopoverHeader, PopoverBody, FormText} from 'reactstrap';
 import axios from 'axios';
+import url from '../../../../Url';
 
 class CreateClass extends Component {
 
@@ -263,15 +264,9 @@ class CreateClass extends Component {
                 'description': this.state.class_description,
                 'cost': this.state.class_price
             };
-            axios.post('https://young-fortress-54541.herokuapp.com/tutors/class',  data, config )
-                .then( response => {
-                    this.setState({
-                        showSpinner: true
-                    })
-                    setTimeout(function() {
-                        this.props.unload(false);
-                    }.bind(this),1000);
-
+            axios.post(url + '/tutors/class',  data, config )
+                .then( () => {
+                    this.props.shouldReload(true);
                 })
                 .catch( error => {
                     console.log(error);

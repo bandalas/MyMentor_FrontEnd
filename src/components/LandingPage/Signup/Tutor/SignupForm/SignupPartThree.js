@@ -3,6 +3,7 @@ import { FormGroup, Col, Form } from 'react-bootstrap';
 import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter, FormFeedback, Popover, PopoverHeader, PopoverBody  } from 'reactstrap';
 import { Redirect } from 'react-router'
 import axios from 'axios';
+import url from '../../../../../Url';
 
 class SignupPartThree extends Component {
     
@@ -196,7 +197,8 @@ class SignupPartThree extends Component {
         const req_body = {
             tutor_email: this.state.email
         };
-        axios.post('https://young-fortress-54541.herokuapp.com/tutors/email', req_body)
+        
+        axios.post(url + '/tutors/email', req_body)
             .then((response) => {
                 this.setState({
                     taken: response.data.found
@@ -242,7 +244,7 @@ class SignupPartThree extends Component {
                 }
             };
 
-            axios.post('https://young-fortress-54541.herokuapp.com/tutors/signup', tutor_data, config)
+            axios.post(url + '/tutors/signup', tutor_data, config)
                 .then((response) => {
                     this.setState({
                         redirect:true

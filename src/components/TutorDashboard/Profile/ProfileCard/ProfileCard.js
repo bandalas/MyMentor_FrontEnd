@@ -3,29 +3,28 @@ import { Button } from 'reactstrap';
 import axios from 'axios';
 class ProfileCard extends Component {
 
+    constructor(props) {
+        super(props);
+    }
 
-
- render(){
+    render(){
         return(
             <div className="review-card">
-            <div class="picture">
-            picture goes here
-</div>
-            <div class="outer">
+                <div className="picture">
+                    picture goes here
+                </div>
+            <div className="outer">
                 <p>Nombre: {this.props.firstName} {this.props.lastName}</p>
                 <p>Email: {this.props.email}</p>
                 <p>Institucion: {this.props.institution}</p>
                 <p>Semestre: {this.props.semester} Estrellas</p>
                 <p>Descripcion: {this.props.description}</p>
-
-</div>
-<div class="report">
- <Button  color="primary" onClick={this.reportReview}>Cambiar mi informacion</Button>
-</div>
-</div>
+            </div>
+                {/* <div className="report">
+                    <Button color="primary" onClick={this.reportReview}>Cambiar mi informacion</Button>
+                </div> */}
+            </div>
         );
     }
-
-
 }
 export default ProfileCard;

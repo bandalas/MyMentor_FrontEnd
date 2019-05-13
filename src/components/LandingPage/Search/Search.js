@@ -8,6 +8,8 @@ import StarRatings from 'react-star-ratings';
 import Input from './Input/Input'
 
 import './searches.css'
+import url from '../../../Url';
+
 
 class Search extends Component {
 
@@ -24,11 +26,13 @@ class Search extends Component {
           showModal: false,
           stars: 0
         };
-        this.handleInputChange = this.handleInputChange.bind(this);
-
-        this.handleFormInput = this.handleFormInput.bind(this);
+        // Views
+        this.renderFiltersModal = this.renderFiltersModal.bind(this);
         this.handleShowModal = this.handleShowModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
+        // Input
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleFormInput = this.handleFormInput.bind(this);
         this.changeRating = this.changeRating.bind(this);
     }
 
@@ -43,82 +47,7 @@ class Search extends Component {
                       <Button variant="outline-info" onClick={this.handleShowModal}>
                         Filtros
                       </Button>
-
-                      <Modal show={this.state.showModal} onHide={this.handleCloseModal}>
-                        <Modal.Header closeButton>
-                          <Modal.Title>Filtros de Búsqueda</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                          <Form>
-                            <Form.Group controlId="name">
-                              <Form.Label>Nombre de Clase</Form.Label>
-                              <InputGroup>
-                                <InputGroup.Prepend>
-                                  <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                                </InputGroup.Prepend>
-                                <Form.Control placeholder="Alemán 1" onInput={this.handleFormInput}/>
-                              </InputGroup>
-                            </Form.Group>
-
-                            <Form.Group controlId="area">
-                              <Form.Label>Area</Form.Label>
-                              <InputGroup>
-                                <InputGroup.Prepend>
-                                  <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                                </InputGroup.Prepend>
-                                <Form.Control placeholder="Lenguas" onInput={this.handleFormInput}/>
-                              </InputGroup>
-                            </Form.Group>
-
-                            <Form.Group controlId="subject">
-                              <Form.Label>Tema</Form.Label>
-                              <InputGroup>
-                                <InputGroup.Prepend>
-                                  <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                                </InputGroup.Prepend>
-                                <Form.Control placeholder="Idiomas" onInput={this.handleFormInput}/>
-                              </InputGroup>
-                            </Form.Group>
-
-                            <Form.Group controlId="cost">
-                              <Form.Label>Precio</Form.Label>
-                              <InputGroup>
-                                <InputGroup.Prepend>
-                                  <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                                  <InputGroup.Text>$</InputGroup.Text>
-                                </InputGroup.Prepend>
-                                <Form.Control type="number" placeholder="50" onInput={this.handleFormInput}/>
-                                <InputGroup.Append>
-                                  <InputGroup.Text>por hora</InputGroup.Text>
-                                </InputGroup.Append>
-                              </InputGroup>
-                            </Form.Group>
-
-                            <Form.Group controlId="average">
-                              <Form.Label>Promedio de reseñas</Form.Label>
-                              <div className="d-flex justify-content-center">
-                                <StarRatings
-                                  rating={this.state.stars}
-                                  starHoverColor='rgb(135,206,250)'
-                                  starRatedColor='rgb(255,223,0)'
-                                  starDimension="40px"
-                                  changeRating={this.changeRating}
-                                  numberOfStars={5}
-                                  name='rating'
-                                />
-                              </div>
-                            </Form.Group>
-                          </Form>
-                        </Modal.Body>
-                        <Modal.Footer>
-                          <Button id="dismiss-filters" variant="secondary" onClick={this.handleCloseModal}>
-                            Nvm
-                          </Button>
-                          <Button id="update-filters" variant="primary" onClick={this.handleCloseModal}>
-                            Buscar
-                          </Button>
-                        </Modal.Footer>
-                      </Modal>
+                      {this.renderFiltersModal()}
                   </div>
               </div>
             </div>
@@ -151,6 +80,87 @@ class Search extends Component {
       );
     }
 
+    renderFiltersModal() {
+      return(
+          <Modal show={this.state.showModal} onHide={this.handleCloseModal}>
+            <Modal.Header closeButton>
+                <Modal.Title>Filtros de Búsqueda</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Form>
+                  <Form.Group controlId="name">
+                    <Form.Label>Nombre de Clase</Form.Label>
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+                      </InputGroup.Prepend>
+                      <Form.Control placeholder="Alemán 1" onInput={this.handleFormInput}/>
+                    </InputGroup>
+                  </Form.Group>
+
+                  <Form.Group controlId="area">
+                    <Form.Label>Area</Form.Label>
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+                      </InputGroup.Prepend>
+                      <Form.Control placeholder="Lenguas" onInput={this.handleFormInput}/>
+                    </InputGroup>
+                  </Form.Group>
+
+                  <Form.Group controlId="subject">
+                    <Form.Label>Tema</Form.Label>
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+                      </InputGroup.Prepend>
+                      <Form.Control placeholder="Idiomas" onInput={this.handleFormInput}/>
+                    </InputGroup>
+                  </Form.Group>
+
+                  <Form.Group controlId="cost">
+                    <Form.Label>Precio</Form.Label>
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+                        <InputGroup.Text>$</InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control type="number" placeholder="50" onInput={this.handleFormInput}/>
+                      <InputGroup.Append>
+                        <InputGroup.Text>por hora</InputGroup.Text>
+                      </InputGroup.Append>
+                    </InputGroup>
+                  </Form.Group>
+
+                  <Form.Group controlId="average">
+                    <Form.Label>Promedio de reseñas</Form.Label>
+                    <div className="d-flex justify-content-center">
+                      <StarRatings
+                        rating={this.state.stars}
+                        starHoverColor='rgb(135,206,250)'
+                        starRatedColor='rgb(255,223,0)'
+                        starDimension="40px"
+                        changeRating={this.changeRating}
+                        numberOfStars={5}
+                        name='rating'
+                      />
+                    </div>
+                  </Form.Group>
+                </Form>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button id="dismiss-filters" variant="secondary" onClick={this.handleCloseModal}>
+                  Cancelar
+                </Button>
+                <Button id="update-filters" variant="primary" onClick={this.handleCloseModal}>
+                  Buscar
+                </Button>
+              </Modal.Footer>
+            </Modal>
+      );
+    }
+
+
     handleCloseModal(event) {
       if(event && event.target.id === "update-filters") {
         let inputs = document.getElementsByClassName("input-group");
@@ -182,13 +192,10 @@ class Search extends Component {
     }
 
     handleInputChange(input) {
-      console.log(input)
       this.setState({ [input.name] : input.value }, () => {
-        console.log(this.state.name)
         if (this.state.name.length !== "") {
           this.performPostAction();
         }
-        console.log(this.state.results);
       })
     }
 
@@ -212,16 +219,15 @@ class Search extends Component {
             'cost' : this.state.cost,
             'average' : this.state.average
         };
-
-        axios.post('https://young-fortress-54541.herokuapp.com/search/class', data)
+        axios.post( url +'/api/class', data )
         .then((data) => {
+          console.log(data);
           this.setState({
             results: data.data
           })
         })
         .catch(() => this.setState({ error: true }))
     }
-
 }
 
 export default Search;

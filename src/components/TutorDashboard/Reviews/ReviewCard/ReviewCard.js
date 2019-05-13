@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import { Button } from 'reactstrap';
 import axios from 'axios';
+import url from '../../../../Url';
 class ReviewCard extends Component {
-
-
 
 constructor (props){
 
@@ -16,9 +15,9 @@ this.reportReview=this.reportReview.bind(this)
     render(){
         return(
             <div className="review-card">
-            <div class="picture">
-            picture goes here
-</div>
+                <div class="picture">
+                picture goes here
+                </div>
             <div class="outer">
                 <p>Review por: {this.props.student}</p>
                 <p>Materia: {this.props.class}</p>
@@ -26,11 +25,11 @@ this.reportReview=this.reportReview.bind(this)
                 <p>Rating: {this.props.stars} Estrellas</p>
                 <p>Fecha: {this.props.date}</p>
 
-</div>
-<div class="report">
- <Button  color="danger" onClick={this.reportReview}>Reportar</Button>
-</div>
-</div>
+            </div>
+                <div class="report">
+                <Button  color="danger" onClick={this.reportReview}>Reportar</Button>
+                </div>
+            </div>
         );
     }
 
@@ -48,7 +47,8 @@ reportReview()
                     'x-auth-token' : token 
             }}
             const params = {description: ""} 
-            axios.post('https://young-fortress-54541.herokuapp.com/tutors/report-review/' + id, params, headers)
+            
+            axios.post(url + '/tutors/report-review/' + id, params, headers)
                 .then(data => {
                     const report = data.data;
                     console.log(report)
