@@ -4,8 +4,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NavBar from './Navigation/NavBar';
 import MentorByRating from './Mentor/MentorSearch/MentorByRating';
 import StudentDashboardContent from './Content/StudentDashboardContent';
-import ClassByAvailability from './Classes/ClassesSearch/ClassByAvailability';
 import { logout } from '../Auth/Auth';
+import SessionsSection from './Sessions/SessionsSection';
 
 class StudentDashboard extends Component{
     
@@ -35,7 +35,7 @@ class StudentDashboard extends Component{
                     <Switch>
                         <Route path="/student/search/mentor" component={MentorByRating}/>
                         <Route path="/student/dashboard" component={StudentDashboardContent}/>
-                        <Route path="/student/search/class" component={ClassByAvailability}/>
+                        <Route path="/student/sessions" component={SessionsSection}/>
                         <Route path="/logout" render={logout}/>
                     </Switch>
                 </div>

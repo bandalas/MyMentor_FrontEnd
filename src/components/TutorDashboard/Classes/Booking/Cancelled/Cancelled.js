@@ -21,14 +21,16 @@ class Cancelled extends Component {
         
         return(
             <div id='cancelled-container'>
-                {this.state.raw_cancelled.map(booking => {
+                {this.state.raw_cancelled.length == 0 ? <h4>Ninguna clase cancelada (:</h4> :
+                this.state.raw_cancelled.map(booking => {
                     return (<BookingCard    key={booking._id}
                                             tutor={booking.tutor}
                                             booked_class={booking.booked_class}
                                             student={booking.student}
                                             
                             />)
-                })}    
+                })
+                }    
             </div>
         );
     }

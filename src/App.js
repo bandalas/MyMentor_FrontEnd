@@ -27,7 +27,6 @@ class App extends Component {
       );
     }
     else {
-      console.log(this.state.type)
       if(this.state.type === 'Student') {
         return(<StudentDashboard/>);
       }
@@ -50,10 +49,8 @@ class App extends Component {
       token: data.token,
       id: data.id,
       type: data.type
-    },() => {
-      console.log(this.state.token)
-      console.log(this.state.id)
     });
+
     
   }
 }

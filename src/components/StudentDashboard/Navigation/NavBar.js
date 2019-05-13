@@ -10,7 +10,7 @@ class NavBar extends Component {
                 <div id="navbar-right" className = "content-right">
                     <NavLink to='/student/dashboard'>Home</NavLink>
                     <NavLink to='/student/search/mentor'>Mentores</NavLink>
-                    <NavLink to='/student/search/class'>Clases</NavLink>
+                    <NavLink to='/student/sessions'>Mis sesiones</NavLink>
                     <NavLink to='/logout'>Logout</NavLink>
                 </div>
             </div>

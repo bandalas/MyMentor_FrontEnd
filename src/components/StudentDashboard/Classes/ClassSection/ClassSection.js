@@ -8,21 +8,20 @@ class ClassSection extends Component {
 
     constructor(props) {
         super(props);
-        this.queryTopRatedClasses = this.queryTopRatedClasses.bind(this);
+        this.queryNewestClasses = this.queryNewestClasses.bind(this);
         this.state = {
             newestClasses : []
         }
     }
 
     componentDidMount() {
-        this.queryTopRatedClasses();
+        this.queryNewestClasses();
     }
 
     render(){
         return(
             <div className='newest-classes-section'>
                 <h1 id="jumboh1" className="jumbo">Clases más recientes</h1>
-                {console.log(this.state.newestClasses)}
                 {this.state.newestClasses.map(new_class => (
                     <ClassesCard    key={new_class._id}
                                     name={new_class.name}
@@ -30,6 +29,7 @@ class ClassSection extends Component {
                                     area={new_class.area}
                                     description={new_class.description}
                                     date={new_class.date}
+                                    cost={new_class.cost}
                                     id = {new_class._id}
                     />
                 ))}
@@ -37,7 +37,7 @@ class ClassSection extends Component {
         );
     }
 
-    queryTopRatedClasses() {
+    queryNewestClasses() {
         const token = localStorage.getItem('token');
         const headers = {
             'Content-Type': 'application/json',

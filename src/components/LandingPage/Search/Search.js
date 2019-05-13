@@ -221,6 +221,7 @@ class Search extends Component {
         };
         axios.post( url +'/api/class', data )
         .then((data) => {
+          console.log(data);
           this.setState({
             results: data.data
           })

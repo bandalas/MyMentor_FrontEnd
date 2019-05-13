@@ -18,19 +18,21 @@ class Accepted extends Component {
     }
 
     render() {
-        
         return(
-            this.state.raw_accepted.map(booking => {
-                return (<BookingCard    key={booking._id}
-                                        id={booking._id}
-                                        tutor={booking.tutor}
-                                        booked_class={booking.booked_class}
-                                        student={booking.student}
-                                        status={booking.status}
-                                        refreshBookings={this.fetchAcceptedBookings}
-                                        
-                        />)
-            })
+            <div id='cancelled-container'>
+                {this.state.raw_accepted.length == 0 ? <h4>Ninguna clase aceptada ):</h4> :
+                this.state.raw_accepted.map(booking => {
+                    return (<BookingCard    key={booking._id}
+                                            id={booking._id}
+                                            booked_class={booking.class}
+                                            student={booking.student}
+                                            status={booking.status}
+                                            date={booking.date}
+                                            refreshBookings={this.fetchPendingBookings}
+                            />)
+                })
+                }    
+            </div>
         );
     }
 
@@ -49,7 +51,6 @@ class Accepted extends Component {
                 });
             })
             .catch(error => console.log(error));
-
     }
 }
 export default Accepted;

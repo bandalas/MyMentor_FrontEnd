@@ -7,35 +7,36 @@ class Pending extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            raw_cancelled : [],
-            cancelled: []
+            raw_pending : [],
+            pending: []
         };
-        this.fetchCancelledBookings = this.fetchCancelledBookings.bind(this);
+        this.fetchPendingBookings = this.fetchPendingBookings.bind(this);
     }
 
     componentDidMount() {
-        this.fetchCancelledBookings();
+        this.fetchPendingBookings();
     }
 
     render() {
-        
         return(
             <div id='cancelled-container'>
-                {this.state.raw_cancelled.map(booking => {
+                {this.state.raw_pending.length == 0 ? <h4>Ninguna clase pendiente :)</h4>:
+                this.state.raw_pending.map(booking => {
                     return (<BookingCard    key={booking._id}
                                             id={booking._id}
-                                            tutor={booking.tutor}
-                                            booked_class={booking.booked_class}
+                                            booked_class={booking.class}
                                             student={booking.student}
                                             status={booking.status}
-                                            refreshBookings={this.fetchCancelledBookings}
+                                            date={booking.date}
+                                            refreshBookings={this.fetchPendingBookings}
                             />)
-                })}    
+                })
+                }    
             </div>
         );
     }
 
-    fetchCancelledBookings() {
+    fetchPendingBookings() {
         const token = localStorage.getItem('token');
         const headers = {
             'Content-Type': 'application/json',
@@ -44,13 +45,11 @@ class Pending extends Component {
         axios.get(url + '/tutors/bookings/', {headers})
             .then(data => {
                 const arr = data.data;
-                console.log(arr);
                 this.setState({
-                    raw_cancelled : arr
+                    raw_pending : arr
                 });
             })
             .catch(error => console.log(error));
-
     }
 }
 
