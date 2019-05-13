@@ -28,13 +28,8 @@ class NotificationCard extends Component {
 
     onAcceptBooking() {
         const id = this.props.id;
-<<<<<<< HEAD
-        const url = 'https://young-fortress-54541.herokuapp.com/tutors/bookings/accept/'+id;
-        this.makeAxiosRequest(url);
-=======
         const URL = url + '/tutors/bookings/accept/'+id;
         this.makeAxiosRequest(URL);
->>>>>>> fixes
     }
 
     onRejectBooking() {

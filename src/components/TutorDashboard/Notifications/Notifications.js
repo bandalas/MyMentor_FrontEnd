@@ -62,11 +62,7 @@ class Notifications extends Component {
             'Content-Type': 'application/json',
             'x-auth-token' : token 
         }
-<<<<<<< HEAD
-        axios.get('https://young-fortress-54541.herokuapp.com/tutors/bookings', {headers})
-=======
         axios.get(url + '/tutors/bookings', {headers})
->>>>>>> fixes
             .then(val => {
                 const arr = val.data;
                 this.setState({raw_notifications : arr}, () => {
