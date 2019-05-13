@@ -191,7 +191,7 @@ class SessionsCard extends Component{
                                 name='rating'
                             />
                         </div>
-                  </Form.Group>
+                    </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={this.handleHideReviewModal}>
