@@ -24,7 +24,8 @@ class Reviews extends Component {
         return(
               <div id='review-container'>
                 {this.state.reviews.map(reviews => {
-                    return (<ReviewCard    student={reviews.student}
+                    return (<ReviewCard     key={reviews._id}
+                                            student={reviews.student}
                                             class={reviews.class}
                                             comment={reviews.comment}
                                             stars={reviews.stars}

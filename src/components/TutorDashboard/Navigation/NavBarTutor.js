@@ -13,8 +13,8 @@ class NavBarTutor extends Component {
                     <NavLink to='/search'>Buscar</NavLink>
                     <NavLink to='/tutor/classes'>Mis Clases</NavLink>
                     <NavLink to='/tutor/bookings'>Mis Reservaciones</NavLink>
-                    <NavLink to='/tutors/reviews'>Reviews de mi</NavLink>
-                    <NavLink to='/tutors/profile'>Yo</NavLink>
+                    <NavLink to='/tutors/reviews'>Mis Reviews</NavLink>
+                    {/* <NavLink to='/tutors/profile'>Perfil</NavLink> */}
                     <NavLink to='/logout'>Logout</NavLink>
                 </div>
             </div>

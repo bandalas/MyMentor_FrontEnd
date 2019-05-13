@@ -7,10 +7,10 @@ class Accepted extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            raw_accepted : [],
-            accepted: []
+            accepted : []
         };
         this.fetchAcceptedBookings = this.fetchAcceptedBookings.bind(this);
+        this.shouldRefresh = this.shouldRefresh.bind(this);
     }
 
     componentDidMount() {
@@ -20,15 +20,15 @@ class Accepted extends Component {
     render() {
         return(
             <div id='cancelled-container'>
-                {this.state.raw_accepted.length == 0 ? <h4>Ninguna clase aceptada ):</h4> :
-                this.state.raw_accepted.map(booking => {
+                {this.state.accepted.length == 0 ? <h4>Ninguna clase aceptada ):</h4> :
+                this.state.accepted.map(booking => {
                     return (<BookingCard    key={booking._id}
                                             id={booking._id}
                                             booked_class={booking.class}
                                             student={booking.student}
                                             status={booking.status}
                                             date={booking.date}
-                                            refreshBookings={this.fetchPendingBookings}
+                                            refresh={this.shouldRefresh}
                             />)
                 })
                 }    
@@ -47,10 +47,14 @@ class Accepted extends Component {
                 const arr = data.data;
                 console.log(arr);
                 this.setState({
-                    raw_accepted : arr
+                    accepted : arr
                 });
             })
             .catch(error => console.log(error));
+    }
+
+    shouldRefresh(refresh) {
+        if(refresh) { this.fetchAcceptedBookings();}
     }
 }
 export default Accepted;

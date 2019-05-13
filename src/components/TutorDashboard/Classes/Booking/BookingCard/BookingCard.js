@@ -64,6 +64,7 @@ class BookingCard extends Component {
     acceptBooking() {
         const accept_msg = "NOTA: Aceptar esta reserva rechazará el resto para esta clase";
         this.updateBooking(accept_msg, 'accept/');
+        this.props.refresh(true);
     }
 
     rejectBooking() {

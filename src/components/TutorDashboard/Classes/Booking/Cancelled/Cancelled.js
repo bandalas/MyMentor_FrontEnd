@@ -25,8 +25,9 @@ class Cancelled extends Component {
                 this.state.raw_cancelled.map(booking => {
                     return (<BookingCard    key={booking._id}
                                             tutor={booking.tutor}
-                                            booked_class={booking.booked_class}
+                                            booked_class={booking.class}
                                             student={booking.student}
+                                            date={booking.date}
                                             
                             />)
                 })
