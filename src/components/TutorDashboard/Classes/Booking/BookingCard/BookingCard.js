@@ -64,7 +64,6 @@ class BookingCard extends Component {
     acceptBooking() {
         const accept_msg = "NOTA: Aceptar esta reserva rechazará el resto para esta clase";
         this.updateBooking(accept_msg, 'accept/');
-        this.props.refresh(true);
     }
 
     rejectBooking() {
@@ -90,8 +89,8 @@ class BookingCard extends Component {
             axios.put(url + '/tutors/bookings/' + endpoint + id, params, headers)
                 .then(data => {
                     const booking = data.data;
-                    console.log(booking)
-                    this.props.refreshBookings();
+                    console.log(booking);
+                    this.props.refresh(true);
                 })
                 .catch(error => console.log(error));
         }
