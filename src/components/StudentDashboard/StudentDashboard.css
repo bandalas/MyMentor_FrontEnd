@@ -1,0 +1,38 @@
+#jmb{
+    background-image: linear-gradient(to right,#499349, #5BADA1, #6FC5EC);
+    color: white;
+    text-align: center;
+    margin: 2% 5%;
+}
+
+#log_dashboard{
+    height: 100px;
+    width: auto;
+}
+#slogan_1{
+    color: #499145;
+    font-size: 25px;
+}
+
+.car-student{
+    margin: 3% 25%;
+}
+
+.head_intro_dashboard{
+    /* margin: 3% 0; */
+    /* background-color: black; */
+    /* padding-top: 20%;  */
+    text-align: center;
+}
+
+.head_intro_dashboard > h4{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    color: #70C6F0;
+    font-size: 25px;
+}
+
+.head_intro_dashboard > p{
+    color: #499145;
+    /* font-size: 20px; */
+}

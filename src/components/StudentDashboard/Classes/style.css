@@ -1,8 +1,8 @@
-.jumbo{ 
+.jumbo_class{ 
     padding: 30px; /* fills out the jumbotron */
     max-width: 100%;
-    background-image: linear-gradient(to left,#D24751, #812851 ,#6E2152);
-    /* background-image: linear-gradient(to right, #1188b3e7, #13afe8,#1188b3e7); */
+    /* background-image: linear-gradient(to right,#6BD26F, #9CDA4D ,#FBE83E); */
+    background-image: linear-gradient(to right,#499349, #5BADA1, #6FC5EC);
     /* background-image: linear-gradient(to right, #d5e85cbe, #d5e85c,#d5e85cbe); */
     /* background-color: #f3f35f; */
     /* background-color: antiquewhite; */
@@ -11,7 +11,7 @@
 
 #jumboh1{
     text-align: center; /*centers the heading */
-    color: #DDD;  
+    color: white;  
     font-family: 'Raleway', Helvetica, Arial, sans-serif;
     /* font-weight: 600; */
     /* text-transform: uppercase; */

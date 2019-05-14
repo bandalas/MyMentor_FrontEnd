@@ -3,6 +3,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Jumbotron, Containe
 import './ClassCard.css';
 import axios from 'axios';
 import url from '../../../../Url';
+import {Card} from 'react-bootstrap'
+import paso1 from '../../../../img/paso1.png'
 
 class ClassesCard extends Component {
 
@@ -30,7 +32,7 @@ class ClassesCard extends Component {
                 <div className="modal-confirmation">
                 {this.renderConfirmationModal()}
                 </div>
-                <div className="class-card">
+                {/* <div className="class-card">
                     <p>{this.props.name}</p>
                     <p>Materia:{this.props.subject}</p>
                     <p>Área:{this.props.area}</p>
@@ -39,7 +41,23 @@ class ClassesCard extends Component {
                     <p>Hora: {this.state.time}</p>
                     <p>Costo: $ {this.props.cost} MXN</p>
                     <Button color="primary" onClick={this.toggle}>Agendar</Button>
-                </div>
+                </div> */}
+
+                <Card className = "card_class">
+                    <Card.Img variant="top" src={paso1} />
+                    <Card.Body>
+                        <Card.Title>{this.props.name}</Card.Title>
+                        <Card.Text>
+                            <span className="span-card">Materia: </span>{this.props.subject}<br/>
+                            <span className="span-card">Área: </span>{this.props.area}<br/>
+                            {this.props.description}<br/>
+                            <span className="span-card">Fecha: </span>{this.state.date}<br/>
+                            <span className="span-card">Hora: </span>{this.state.time}<br/>
+                            <span className="span-card">Costo: </span>$ {this.props.cost} MXN<br/>
+                        </Card.Text>
+                        <Button color="primary" onClick={this.toggle}>Agendar</Button>
+                    </Card.Body>
+                </Card>
             </div> 
         );
     }
@@ -57,17 +75,17 @@ class ClassesCard extends Component {
                     <Jumbotron fluid>
                         <Container fluid>
                             <h1 className="display-3">{this.props.name}</h1>
-                            <h1 className="display-5">{this.state.date} a las </h1>
-                            <h1 className="display-5">{this.state.time} hrs.</h1>
-                            <h1 className="display-5">$ {this.props.cost} MXN</h1>
-                            <p className="lead">Estas a punto de agendar esta clase. 
+                            <h1 className="display-5">{this.state.date} a las</h1>
+                            <h1 className="display-5">{this.state.time} hrs</h1>
+                            <h1 >$ {this.props.cost} MXN</h1>
+                            <p className="lead">Estas a punto de agendar esta clase. <br/>
                             Recuerda que debes de pagar a tu tutor al inicio de la sesión.<br/>
-                            ¿Estás seguro que deseas continuar?</p>
+                            <span className="span-card-class">¿Estás seguro que deseas continuar?</span></p>
                         </Container>
                     </Jumbotron>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="info" onClick={this.scheduleDate}>Confirmar</Button>{' '}
+                    <Button color="primary" onClick={this.scheduleDate}>Confirmar</Button>{' '}
                 </ModalFooter>
             </Modal>
         )
