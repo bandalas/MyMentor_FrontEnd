@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Button } from 'reactstrap';
 import axios from 'axios';
+import './profilecard.css';
 class ProfileCard extends Component {
 
     constructor(props) {
@@ -9,7 +10,9 @@ class ProfileCard extends Component {
 
     render(){
         return(
+
             <div className="review-card">
+                    <h4 id="jumboh1" className="jumbo">Mi Perfil</h4>
                 <div className="picture">
                     picture goes here
                 </div>

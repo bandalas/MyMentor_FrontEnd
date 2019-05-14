@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import BookingCard from '../BookingCard/BookingCard';
 import url from '../../../../../Url';
+import './pending.css'
 
 class Pending extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class Pending extends Component {
 
     render() {
         return(
-            <div id='cancelled-container'>
+            <div id='cancelled-container'> <div class="pendingcard">
                 {this.state.raw_pending.length == 0 ? <h4>Ninguna clase pendiente :)</h4>:
                 this.state.raw_pending.map(booking => {
                     return (<BookingCard    key={booking._id}
@@ -33,7 +34,7 @@ class Pending extends Component {
                             />)
                 })
                 }    
-            </div>
+            </div></div>
         );
     }
 

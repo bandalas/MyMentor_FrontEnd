@@ -23,7 +23,7 @@ class ClassEditor extends Component {
 
     render() {
         return(
-            <Card className="tutor-class" id={this.props.id}>
+            <Card className="tutor-class"   class="d-block mx-auto" id={this.props.id}>
               <Card.Body>
                 <Card.Title>{this.props.name}</Card.Title>
                 <Card.Text>
