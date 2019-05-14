@@ -1,0 +1,26 @@
+.createbutton {
+
+margin-top: 50px;
+margin-bottom: 20px;
+text-align: center;
+
+}
+
+
+.mx-auto {
+color: gray;
+}
+
+
+.flex-container {
+    display: flex;
+ flex-direction: row;
+ justify-content: center;
+}
+
+.jumbo {
+text-align: center;
+color: white;
+
+box-shadow: 0 0 10px 10px rgba(20,23,28,0.1);
+}

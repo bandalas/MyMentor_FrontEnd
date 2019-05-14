@@ -1,4 +1,7 @@
 .tutor-class {
-    width: 18rem !important;
-    margin: 10px;
+    max-width:40%;
+    margin: 20px;
+    margin-top: 50px;
+
 }
+

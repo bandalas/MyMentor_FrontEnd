@@ -8,8 +8,10 @@ import './Bookings.css'
 class Bookings extends Component {
     
     render() {
-        return(
-            <div className="booking-tabs">
+        return( 
+                    <div className="booking-tabs">
+           <div class ="header1">
+                    <h4 id="jumboh1" className="jumbo">Mis Reservas</h4></div>
                 <Tabs defaultActiveKey="pending" id="booking-tabs">
                     <Tab eventKey="pending" title="Pendientes" className="tab">
                         <Pending/>

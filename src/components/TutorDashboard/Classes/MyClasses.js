@@ -5,6 +5,7 @@ import ClassEditor from './Editor/ClassEditor';
 import axios from 'axios';
 import url from '../../../Url';
 import { throws } from 'assert';
+import './myclasses.css';
 
 class MyClasses extends Component {
 
@@ -13,8 +14,11 @@ class MyClasses extends Component {
         this.state = {
             classes: [],
             display: false,
-            reload: false
-        }
+            reload: false,
+           userInfo: ''
+}
+
+        this.getuserInfo = this.getuserInfo.bind(this);
         this.getAllAvailableTutorClass = this.getAllAvailableTutorClass.bind(this);
         this.displayModal = this.displayModal.bind(this);
         this.displayAllClasses = this.displayAllClasses.bind(this);
@@ -24,20 +28,28 @@ class MyClasses extends Component {
 
     componentDidMount() {
         this.getAllAvailableTutorClass();
+        this.getuserInfo();
     }
 
     render() {
-        return(
-            <div> 
+        return( 
+            <div>
+            <div class ="header1">
+                    <h1 id="jumboh" className="jumbo">Hola {this.state.userInfo.firstName} ! Estas son tus clases...</h1></div>
+            <div class ="createbutton"> 
+
                 <Button color="primary" onClick={this.displayModal}>Crea nueva asesoría</Button>
-                {this.displayAllClasses()}
+                
+<div class="flex-container">
+<div class="mx-auto">
+{ this.state.classes.length == 0 ? <h7><p>Nuevo? Crea una clase!</p></h7>: this.displayAllClasses()} </div>
                 {/*  
                 *    Conditional rendering of modal that will contain the 
                 *    necessary form for creating a new class
                 */}
                 {this.state.display ? <CreateClass  unload={this.unloadCreation}
                                                     shouldReload={this.shouldReload}/> : null}
-            </div>
+            </div></div></div>
         );
     }
 
@@ -122,5 +134,27 @@ class MyClasses extends Component {
             }
         })
     }
+
+
+    getuserInfo() {
+        const token = localStorage.getItem('token');
+        const headers = {
+            'Content-Type': 'application/json',
+            'x-auth-token' : token 
+        }
+        
+        const URL = url + '/tutors/userInfo';
+        axios.get(URL, {headers})
+            .then(response => {
+                const userInfo = response.data[0];
+                this.setState({
+                    userInfo: userInfo
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
 }
 export default MyClasses;

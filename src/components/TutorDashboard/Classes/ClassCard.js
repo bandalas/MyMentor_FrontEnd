@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../classcard.css';
 class ClassesCard extends Component {
     render(){
         return(

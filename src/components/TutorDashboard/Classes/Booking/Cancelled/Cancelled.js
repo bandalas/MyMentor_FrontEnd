@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import BookingCard from '../BookingCard/BookingCard';
 import url from '../../../../../Url';
+import './cancelled.css'
 
 class Cancelled extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class Cancelled extends Component {
     render() {
         
         return(
-            <div id='cancelled-container'>
+            <div id='cancelled-container'> <div class="cancelledcard">
                 {this.state.raw_cancelled.length == 0 ? <h4>Ninguna clase cancelada (:</h4> :
                 this.state.raw_cancelled.map(booking => {
                     return (<BookingCard    key={booking._id}
@@ -32,7 +33,7 @@ class Cancelled extends Component {
                             />)
                 })
                 }    
-            </div>
+            </div> </div>
         );
     }
 

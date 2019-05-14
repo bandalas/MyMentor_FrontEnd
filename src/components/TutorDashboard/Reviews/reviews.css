@@ -16,6 +16,13 @@ font-size: 18px;
 
 }
 
+.emptymsg {
+
+margin-top: 20px;
+color:gray;
+text-align: center;
+
+}
 
 .picture {
 display: inline-block;
