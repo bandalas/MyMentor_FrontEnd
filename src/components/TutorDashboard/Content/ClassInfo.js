@@ -18,7 +18,7 @@ class ClassInfo extends Component {
 
     render() {
         return(
-            <div style={{backgroundColor:'salmon'}}>
+            <div style={{backgroundColor:'white'}}>
                 <h3>{this.props.name}</h3>
                 <h5>{this.state.date} @ {this.state.time}</h5>
             </div>

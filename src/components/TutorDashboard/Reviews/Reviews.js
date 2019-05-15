@@ -28,9 +28,12 @@ class Reviews extends Component {
         return(
               <div id='review-container'>
 
+ <h1 id="jumboh" className="jumbo">Como vamos,  {this.state.userInfo.firstName} ? Que opinan tus estudiantes? </h1>
                 <div class="emptymsg">
                 { this.state.reviews.length == 0 ? <h4><p>Aun no tienes reviews {this.state.userInfo.firstName}! Da tu primera clase y espera la retroalimentacion...</p></h4> : this.state.reviews.map(reviews => {
-                    return (<ReviewCard     key={reviews._id}
+                    return ( 
+     
+<ReviewCard     key={reviews._id}
                                             student={reviews.student}
                                             class={reviews.class}
                                             comment={reviews.comment}

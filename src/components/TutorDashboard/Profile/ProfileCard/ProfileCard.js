@@ -11,7 +11,7 @@ class ProfileCard extends Component {
     render(){
         return(
 
-            <div className="review-card">
+            <div className="profile-card">
                     <h4 id="jumboh1" className="jumbo">Mi Perfil</h4>
                 <div className="picture">
                     picture goes here

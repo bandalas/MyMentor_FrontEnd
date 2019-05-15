@@ -16,6 +16,7 @@ color: gray;
     display: flex;
  flex-direction: row;
  justify-content: center;
+margin-left: 250px;
 }
 
 .jumbo {
