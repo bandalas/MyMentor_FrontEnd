@@ -40,16 +40,16 @@ class MyClasses extends Component {
 
                 <Button color="primary" onClick={this.displayModal}>Crea nueva asesoría</Button>
                 
-<div class="flex-container">
+
 <div class="mx-auto">
-{ this.state.classes.length == 0 ? <h7><p>Nuevo? Crea una clase!</p></h7>: this.displayAllClasses()} </div>
+{ this.state.classes.length == 0 ? <div class="emptymsg"><h7><p>Nuevo? Crea una clase!</p></h7></div>: <div class="flex-container"> {this.displayAllClasses()} </div>} </div>
                 {/*  
                 *    Conditional rendering of modal that will contain the 
                 *    necessary form for creating a new class
                 */}
                 {this.state.display ? <CreateClass  unload={this.unloadCreation}
                                                     shouldReload={this.shouldReload}/> : null}
-            </div></div></div>
+            </div></div>
         );
     }
 

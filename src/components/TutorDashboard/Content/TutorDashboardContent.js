@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import url from '../../../Url';
+import { NavLink} from 'react-router-dom';
 import ClassInfo from './ClassInfo';
+import './tutordashboardcontent.css';
 
 class TutorDashboardContent extends Component {
     constructor(props){
@@ -18,8 +20,7 @@ class TutorDashboardContent extends Component {
 
     render(){
         return(
-            <div>
-                <h1>Próximas Clases:</h1>
+            <div class ="home1">  <h4 id="jumboh1" className="jumbo">Próximas Clases</h4>
                 {this.state.upcoming.length === 0 ? <h3>No tienes ninguna clase próxima agendada ):</h3>
                 : this.state.upcoming.map(upcom => {
                     return(<ClassInfo   key={upcom._id} 
@@ -27,7 +28,7 @@ class TutorDashboardContent extends Component {
                                         date={upcom.date}
                     />)
                 })}
-            </div>
+            <div class="cancelC">  <NavLink to="/tutor/bookings">¿Deseas cancelar una de tus clases?</NavLink></div></div>
         );
     }
 
