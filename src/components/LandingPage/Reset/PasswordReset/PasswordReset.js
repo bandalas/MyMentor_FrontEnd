@@ -40,61 +40,55 @@ class PasswordReset extends Component {
             <Form onSubmit={this.handleSubmit}>
                 {this.renderSuccessModal()}
                 {this.state.error ? this.renderErrorAlert() : null}
-            <div class="mainwindow">              
-  <FormGroup>
-
+            <div className="mainwindow">     
+                     
+                <FormGroup>
                     <Col md="12">
-Escribe tu nuevo password
-<div class="pwinput1">
-                        <Input  type="password"
-                                name="password"
-                                required
-                                minLength="7"
-                                onChange={this.handlePasswordChange}/>
-                        
-                    </div> </Col>
-                    <Col md="12">
-                        {this.renderPasswordConfirmation()}
+                    Escribe tu nuevo password
+                    <Input  type="password"
+                            name="password"
+                            required
+                            minLength="7"
+                            onChange={this.handlePasswordChange}/>
                     </Col>
-
                 </FormGroup>
-                {this.state.passwordMatch ?    <div class="resetbtn">  <Button type="submit">
+
+                <FormGroup>
+                    Confirma tu nuevo password
+                        {this.state.passwordMatch ? 
+                            <Col md="12">
+                                <Input  type="password"
+                                    name="confirmation"
+                                    required
+                                    minLength="7"
+                                    onChange={this.handlePasswordChange}/>
+                            </Col> 
+                            :
+                            <Col md="12">
+                                <Input  invalid
+                                    type="password"
+                                    name="confirmation"
+                                    required
+                                    minLength="7"
+                                    onChange={this.handlePasswordChange}/>
+                                <FormFeedback>
+                                    Ambas contraseñas deben de ser igual.
+                                </FormFeedback>
+                            </Col>
+                        }
+                </FormGroup>
+                <div className="resetbtn"> 
+                {this.state.passwordMatch ?  
+                                                <Button type="submit">
                                                     Guardar
-                                                </Button> </div>
+                                                </Button> 
                                           :     <Button disabled>
                                                     Guardar
                                                 </Button>}
-            </div></Form>
-        );
-    }
-
-    renderPasswordConfirmation = () => {
-        return(
-            <div>
-                {this.state.passwordMatch ? <div>
-Confirma tu nuevo password
-
-<div class="pwinput2">
-                                                <Input  type="password"
-                                                    name="confirmation"
-                                                    required
-                                                    minLength="7"
-                                                    onChange={this.handlePasswordChange}/>
-                                            </div> </div>
-                                          : <div>
-                                              <Input  invalid
-                                                    type="password"
-                                                    name="confirmation"
-                                                    required
-                                                    minLength="7"
-                                                    onChange={this.handlePasswordChange}/>
-                                              <FormFeedback>
-                                                  Ambas contraseñas deben de ser igual.
-                                              </FormFeedback>
-                                            </div>
-                }
+                </div>
             </div>
-        )
+            </Form>
+        );
     }
 
     renderSuccessModal = () => {
