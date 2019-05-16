@@ -22,7 +22,7 @@ class ClassSection extends Component {
     render(){
         return(
             <div className='newest-classes-section'>
-                <h1 id="jumboh1" className="jumbo">Clases más recientes</h1>
+                <h1 id="jumboh1" className="jumbo_class">Clases más recientes</h1>
                 {this.state.newestClasses.map(new_class => (
                     <ClassesCard    key={new_class._id}
                                     name={new_class.name}

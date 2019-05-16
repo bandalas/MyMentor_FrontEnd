@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import MentorCard from '../MentorCard/MentorCard';
 import url from '../../../../Url';
+import '../mentorstyle.css';
 
 class MentorByRating extends Component {
 
@@ -21,6 +22,7 @@ class MentorByRating extends Component {
         console.log(this.state.topMentors);
         return(
             <div className="all-mentors">
+                <h1 id="jumboh1" className="jumbo">Mentores mejor calificados</h1>
                 {this.state.topMentors.map(mentor => (
                     <MentorCard key={mentor._id}
                                 firstName={mentor.firstName}

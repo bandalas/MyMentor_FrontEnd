@@ -4,7 +4,7 @@
     width: 100%;
     height: auto;
     float: left;
-    padding-top: 10px;
+    /* padding-top: 10px; */
     text-align: center;
     /* border-color: #d5e85c; */
 
@@ -17,10 +17,21 @@
     /* display: flex; */
   }
 
-  .mentor-card-container{
-    display: flex;
-    padding-bottom: 15px;
 
+  .card_mentor{
+    width: 18rem;
+    margin: 0 10px;
+    height: auto;
+  }
+
+  .span-card{
+    font-weight: bold;
+  }
+
+  .mentor-card-container{
+    display: -webkit-inline-box;
+    /* padding-bottom: 15px; */
+    margin: 1% 25px;
     /* padding: 0px 15px 0px 15px;  */
     /* width: 95%;
     margin-left: 5% ; */
