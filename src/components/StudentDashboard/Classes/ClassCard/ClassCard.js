@@ -32,16 +32,6 @@ class ClassesCard extends Component {
                 <div className="modal-confirmation">
                 {this.renderConfirmationModal()}
                 </div>
-                {/* <div className="class-card">
-                    <p>{this.props.name}</p>
-                    <p>Materia:{this.props.subject}</p>
-                    <p>Área:{this.props.area}</p>
-                    <p>{this.props.description}</p>
-                    <p>Fecha:{this.state.date}</p>
-                    <p>Hora: {this.state.time}</p>
-                    <p>Costo: $ {this.props.cost} MXN</p>
-                    <Button color="primary" onClick={this.toggle}>Agendar</Button>
-                </div> */}
 
                 <Card className = "card_class">
                     <Card.Img variant="top" src={paso1} />

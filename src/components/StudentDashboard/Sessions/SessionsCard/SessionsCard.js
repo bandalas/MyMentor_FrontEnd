@@ -141,7 +141,12 @@ class SessionsCard extends Component{
         else if(this.props.status === 'Past') {
             return (
                 <div>
-                    <Button variant="outline-success" onClick={this.handleShowReviewModal}>Dejar Review</Button>
+                    {this.props.hasReview ? 
+                        <Button variant="outline-info" disabled>Ya dejaste tu review</Button>
+                        :
+                        <Button variant="outline-success" onClick={this.handleShowReviewModal}>Dejar Review</Button>
+                    }
+                    
                 </div>
             );
         }

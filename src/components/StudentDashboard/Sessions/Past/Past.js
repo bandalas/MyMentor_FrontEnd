@@ -28,6 +28,7 @@ class Past extends Component {
                                             id={booking._id}
                                             refresh={this.refreshUpcomingClassesData}
                                             class={booking.class}
+                                            hasReview={booking.hasReview}
                             />)
                 })
                 }    
