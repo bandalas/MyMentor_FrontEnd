@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SessionsCard from '../SessionsCard/SessionsCard';
 import Axios from 'axios';
 import url from '../../../../Url';
+import './past.css'
 class Past extends Component {
     constructor(props){
         super(props);
@@ -16,7 +17,7 @@ class Past extends Component {
 
     render() {
         return(
-            <div id='cancelled-container'>
+            <div id='cancelled-container'><div class="acceptedcard">
                 {this.state.past.length == 0 ? <h4>Ninguna clase pasada :(</h4>:
                 this.state.past.map(booking => {
                     return (<SessionsCard   key={booking._id}
@@ -30,7 +31,7 @@ class Past extends Component {
                             />)
                 })
                 }    
-            </div>
+            </div></div>
         );
     }
 

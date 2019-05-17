@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Button } from 'reactstrap';
 import axios from 'axios';
 import './profilecard.css';
+import logo from '../../../../img/android.png'
+
 class ProfileCard extends Component {
 
     constructor(props) {
@@ -13,14 +15,14 @@ class ProfileCard extends Component {
 
             <div className="profile-card">
                     <h4 id="jumboh1" className="jumbo">Mi Perfil</h4>
-                <div className="picture">
-                    picture goes here
+                <div className="MyPicture">
+                      <img id="log_dashboard" src={logo} alt="imagen del logotipo"></img>
                 </div>
             <div className="outer">
                 <p>Nombre: {this.props.firstName} {this.props.lastName}</p>
                 <p>Email: {this.props.email}</p>
                 <p>Institucion: {this.props.institution}</p>
-                <p>Semestre: {this.props.semester} Estrellas</p>
+                <p>Semestre: {this.props.semester}</p>
                 <p>Descripcion: {this.props.description}</p>
             </div>
                 {/* <div className="report">

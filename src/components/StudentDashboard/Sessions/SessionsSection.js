@@ -6,6 +6,8 @@ class SessionsSection extends Component {
     render() {
         return(
             <div className="booking-tabs">
+   <div class ="header1">
+                    <h4 id="jumboh1" className="jumbo">Mis Reservas</h4></div>
                 <Tabs defaultActiveKey="upcoming" id="booking-tabs">
                     <Tab eventKey="upcoming" title="Futuras" className="tab">
                         <Upcoming/>
