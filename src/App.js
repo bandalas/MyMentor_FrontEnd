@@ -41,6 +41,7 @@ class App extends Component {
   }
 
   handleAuth(data) {
+    console.log(data)
     localStorage.setItem('token', data.token);
     localStorage.setItem('id', data.id);
     localStorage.setItem('type', data.type);
