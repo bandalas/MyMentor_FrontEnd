@@ -246,6 +246,7 @@ class SessionsCard extends Component{
         axios.post(URL, data, config)
          .then(data => {
              this.handleHideReviewModal();
+             window.location.reload();
          })
          .catch(e =>{
              console.log(e);
