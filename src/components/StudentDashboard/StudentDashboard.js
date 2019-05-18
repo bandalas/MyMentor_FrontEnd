@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Search from '../LandingPage/Search/Search';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NavBar from './Navigation/NavBar';
 import MentorByRating from './Mentor/MentorSearch/MentorByRating';
@@ -103,6 +103,7 @@ class StudentDashboard extends Component{
                         <Route path="/student/dashboard" component={StudentDashboardContent}/>
                         <Route path="/student/sessions" component={SessionsSection}/>
                         <Route path="/logout" render={logout}/>
+                        <Route path="/search" component={Search} exact/>
                     </Switch>
                 </div>
             </BrowserRouter>
