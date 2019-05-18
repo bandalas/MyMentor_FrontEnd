@@ -88,9 +88,7 @@ class BookingCard extends Component {
             const params = {}
             axios.put(url + '/tutors/bookings/' + endpoint + id, params, headers)
                 .then(data => {
-                    const booking = data.data;
-                    console.log(booking);
-                    this.props.refresh(true);
+                    window.location.reload();
                 })
                 .catch(error => console.log(error));
         }

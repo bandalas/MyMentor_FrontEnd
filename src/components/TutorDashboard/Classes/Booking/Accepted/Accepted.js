@@ -12,7 +12,6 @@ class Accepted extends Component {
             accepted : []
         };
         this.fetchAcceptedBookings = this.fetchAcceptedBookings.bind(this);
-        this.shouldRefresh = this.shouldRefresh.bind(this);
     }
 
     componentDidMount() {
@@ -30,7 +29,6 @@ class Accepted extends Component {
                                             student={booking.student}
                                             status={booking.status}
                                             date={booking.date}
-                                            refresh={this.shouldRefresh}
                             />)
                 })
                 }    
@@ -53,10 +51,6 @@ class Accepted extends Component {
                 });
             })
             .catch(error => console.log(error));
-    }
-
-    shouldRefresh(refresh) {
-        if(refresh) { this.fetchAcceptedBookings();}
     }
 }
 export default Accepted;

@@ -12,7 +12,6 @@ class Pending extends Component {
             pending: []
         };
         this.fetchPendingBookings = this.fetchPendingBookings.bind(this);
-        this.shouldRefresh = this.shouldRefresh.bind(this);
     }
 
     componentDidMount() {
@@ -30,7 +29,6 @@ class Pending extends Component {
                                             student={booking.student}
                                             status={booking.status}
                                             date={booking.date}
-                                            refresh={this.shouldRefresh}
                             />)
                 })
                 }    
@@ -52,10 +50,6 @@ class Pending extends Component {
                 });
             })
             .catch(error => console.log(error));
-    }
-
-    shouldRefresh(refresh) {
-        if(refresh) this.fetchPendingBookings();
     }
 }
 
