@@ -56,7 +56,7 @@ export const ReviewList = props => (
 );
 
 export const ReportList = props => (
-    <List {...props} title="Reseñas">
+    <List {...props} title="Reportes">
         <Datagrid rowClick="show">
             <ReferenceField source="review" reference="admins/reviews" label="Reseña">
                 <ReviewCommentField/>

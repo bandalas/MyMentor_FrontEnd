@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { Show, SimpleShowLayout, TextField, DateField, EditButton, DeleteButton, ReferenceField } from 'react-admin';
+import { Show, SimpleShowLayout, TextField, DeleteButton, ReferenceField } from 'react-admin';
+import Button from '@material-ui/core/Button';
 import { FullNameField } from '../Fields/Fields';
 import url from '../../../Url';
 import CardActions from '@material-ui/core/CardActions';
@@ -11,13 +12,10 @@ const cardActionStyle = {
     float: 'right',
 };
 
-
-
-
 const ReportShowActions = ({ basePath, data, resource }) => (
     <CardActions style={cardActionStyle}>
-        <EditButton basePath={basePath} onClick={censorReview} record={data}/>
         <DeleteButton basePath={basePath} record={data}/>
+        <Button color="primary" onClick={() => censorReview(data)} record={data}>Censurar Review</Button>
     </CardActions>
 );
 
@@ -25,7 +23,7 @@ export const ReportShow = (props) => (
     <Show actions={<ReportShowActions/>} {...props}>
         <SimpleShowLayout>
             <ReferenceField source="review" reference="admins/reviews">
-                <TextField source="description" />
+                <TextField source="comment" />
             </ReferenceField>
             <ReferenceField source="tutor" reference="admins/tutors">
                 <FullNameField />
@@ -35,21 +33,21 @@ export const ReportShow = (props) => (
     </Show>
 );
 
-function censorReview() {
+function censorReview(data) {
+        console.log(data)
+        const token = localStorage.getItem('token');
         const headers = {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'x-auth-token': token
         }
-        const params = {
-           'id': this.props.data.id
-        }
-        const URL = url + '/admins/new-review/';
-        axios.put(URL, {headers}, {params} )
+        const URL = url + '/admins/new-review/' + data.review;
+        axios.put(URL, {}, {headers})
             .then(response => {
                 console.log(response);
+                window.location.reload(false);
             })
             .catch(error => {
                 console.log(error);
             })
-
 
 }
